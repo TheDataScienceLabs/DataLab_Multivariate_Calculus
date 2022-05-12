@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mathematics &#8212; The Data Science Labs on Multivariable Calculus</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">The Data Science Labs on Multivariable Calculus</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Color_Labs/lab01.html">
+   Mathematics
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Planimeter_Lab/planimeter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=lab/tree/Planimeter_Lab/planimeter.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/Planimeter_Lab/planimeter.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Mathematics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-skills">
+   Programming Skills
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#embedded-systems">
+   Embedded Systems
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-background-color-lightblue-fill-in-information-below-span">
+   <span style="background-color:lightblue">
+    Fill in information below:
+   </span>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#green-s-theorem">
+   Green’s Theorem
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#planimeters">
+   Planimeters
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-rolling-planimeters-work">
+   Why Do Rolling Planimeters Work?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-span">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-background-color-lightblue-answer-span">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-planimeter">
+   Building a Planimeter
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Mathematics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Mathematics
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#programming-skills">
+   Programming Skills
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#embedded-systems">
+   Embedded Systems
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-background-color-lightblue-fill-in-information-below-span">
+   <span style="background-color:lightblue">
+    Fill in information below:
+   </span>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#green-s-theorem">
+   Green’s Theorem
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#planimeters">
+   Planimeters
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-rolling-planimeters-work">
+   Why Do Rolling Planimeters Work?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-span">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-background-color-lightblue-answer-span">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-a-planimeter">
+   Building a Planimeter
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     <span style="color:red">
+      Exercise
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     <span style="background-color:lightblue">
+      Answer
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div style="background-color:lightblue">
+<h1><center>
+    The Data Science Labs on <br/>
+     Multivariable Calculus  <br/>
+   <small>by Kindyl King and Mireille Boutin</small>
+</center></h1>
+    </div><h1><center>
+    Laboratory on<br/>
+    Green's Theorem<br/>
+    <p style="font-size: 16px"> Last Updated on May 1, 2022</p>
+</center></h1><h2 style="color:orange;"><left>00. Content </left></h2>
+<div class="section" id="mathematics">
+<h1>Mathematics<a class="headerlink" href="#mathematics" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Fundamental Theorem of Calculus</p></li>
+<li><p>Fundamental Theorem for Line Integrals</p></li>
+<li><p>Green’s Theorem</p></li>
+<li><p>Partial Derivatives</p></li>
+<li><p>Vector Fields</p></li>
+<li><p>Path Integrals</p></li>
+<li><p>Double Integration</p></li>
+</ul>
+</div>
+<div class="section" id="programming-skills">
+<h1>Programming Skills<a class="headerlink" href="#programming-skills" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li></li>
+</ul>
+</div>
+<div class="section" id="embedded-systems">
+<h1>Embedded Systems<a class="headerlink" href="#embedded-systems" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Thonny and MicroPython</p></li>
+</ul>
+<h2 style="color:orange;"><left>0. Required Hardware </left></h2> 
+<ul class="simple">
+<li><p>microcontroller: Raspberry Pi Pico</p></li>
+<li><p>breadboard</p></li>
+<li><p>USB connector</p></li>
+<li><p>rotary encoder</p></li>
+<li><p>rolling platform</p></li>
+<li><p>fixed or adjustable arm</p></li>
+<li><p>tracer (like a pencil or pen)</p></li>
+</ul>
+</div>
+<div class="section" id="span-style-background-color-lightblue-fill-in-information-below-span">
+<h1><span style="background-color:lightblue"> Fill in information below: </span><a class="headerlink" href="#span-style-background-color-lightblue-fill-in-information-below-span" title="Permalink to this headline">¶</a></h1>
+<p><strong>Name:</strong> me</p>
+<p><strong>Email:</strong> me &#64; <a class="reference external" href="http://purdue.edu">purdue.edu</a></p>
+</div>
+<div class="section" id="green-s-theorem">
+<h1>Green’s Theorem<a class="headerlink" href="#green-s-theorem" title="Permalink to this headline">¶</a></h1>
+<p>Recall the Fundamental Theorem of Calculus. If the function <span class="math notranslate nohighlight">\(f(x)\)</span> is continuous on the closed interval <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(F'(x)=f(x)\)</span>, i.e., <span class="math notranslate nohighlight">\(F\)</span> is an antiderivative of <span class="math notranslate nohighlight">\(f\)</span>, then
+$<span class="math notranslate nohighlight">\( \int_a^b f(x)dx = F(b)-F(a). \)</span>$</p>
+<p>We also have seen the Fundamental Theorem for Line Integrals. Suppose the smooth curve <span class="math notranslate nohighlight">\(C\)</span> is parameterized by <span class="math notranslate nohighlight">\(\mathbf{r}(t), a \leq t \leq b\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable with gradient <span class="math notranslate nohighlight">\(\nabla f\)</span>. Then,
+$<span class="math notranslate nohighlight">\( \int_C \nabla f(\mathbf{r}) \cdot d\mathbf{r} = \int_a^b \nabla f(\mathbf{r}(t)) \cdot \mathbf{r}'(t) dt = f(\mathbf{r}(b)) - f(\mathbf{r}(a)). \)</span>$</p>
+<p>Green’s Theorem is an extension of the Fundamental Theorem of Calculus to two dimensions. In a general sense, the theorem relates line integrals to double integrals, and more specifically, Green’s theorem tells us that we can calculate a double integral over a region using only information on the boundary of that region. Suppose the region <span class="math notranslate nohighlight">\(D\)</span> is bounded by a simple, smooth, closed curve <span class="math notranslate nohighlight">\(C\)</span> which is parameterized in a counter-clockwise direction. If the two-dimensional vector field <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle\)</span> is such that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> have continous partial derivatives on <span class="math notranslate nohighlight">\(D\)</span>, then
+$<span class="math notranslate nohighlight">\(\oint_C \mathbf{F} \cdot dr = \oint_C Pdx+Qdy = \iint_D (Q_x-P_y)dA, \)</span><span class="math notranslate nohighlight">\(
+where \)</span>Q_x = \frac{\partial Q}{\partial x}<span class="math notranslate nohighlight">\( and \)</span>P_y = \frac{\partial P}{\partial y}$.</p>
+</div>
+<div class="section" id="planimeters">
+<h1>Planimeters<a class="headerlink" href="#planimeters" title="Permalink to this headline">¶</a></h1>
+<p>One really neat application of Green’s Theorem is that we can calculate the area of a region simply by measuring the boundary. A planimeter is an instrument that does exactly this! The first planimeters were invented as early as 1814 due to a need to calculate land area. In the late 19th century, planimeters became more popular, different internal mechanisms were developed, and even specialty planimeters emerged to calculate things like engine horse-power. More modern uses include finding leaf area in botany and measuring the area of cross-sectional regions from MRI images. All planimeters have a tracer point, a pivot point, and a measuring wheel or mechanism that measures rotation. Here are some examples.</p>
+<p align="center">
+    <img src="polar_planimeter.jpg">
+    <img src="rolling_planimeter.jpg">
+    <img src="modern_planimeter.jpg">
+</p>
+<p>The left image is of a polar planimeter. It has two arms and is fixed at one end while the arm with the tracer point is able to move in a circular region around the fixed point. The center image is of a rolling planimeter. This kind of planimeter is able to move freely on a linear path. The right image is of a modern rolling planimeter that is still being produced.</p>
+<p>Watch this 18 second <a class="reference external" href="https://www.youtube.com/watch?v=qThV6gTaYMI">animation</a> of a rolling planimeter. Notice that the gray roller only moves forward and backward on a fixed path, and the yellow arm pivots at the point <span class="math notranslate nohighlight">\(B\)</span>. As the arm pivots, the marked wheel at the back rotates and skids as the tracer point at <span class="math notranslate nohighlight">\(A\)</span> follows the red curve. As the tracer follows the curve the marked wheel will rotate some amount. We will prove that the area of the region is length of the tracer arm (the length from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>) multiplied by the total rolling distance of the wheel after the tracer completely follows the curve counter-clockwise.</p>
+</div>
+<div class="section" id="why-do-rolling-planimeters-work">
+<h1>Why Do Rolling Planimeters Work?<a class="headerlink" href="#why-do-rolling-planimeters-work" title="Permalink to this headline">¶</a></h1>
+<p>Later in the lab, we are going to build a rolling planimeter, so let’s first understand why these instruments work. To calculate area in two dimensions
+$<span class="math notranslate nohighlight">\( \text{area of region \)</span>D<span class="math notranslate nohighlight">\(} = \iint_D 1 \,dA.\)</span>$</p>
+<p>Remember in Green’s Theorem, <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle\)</span> and
+$<span class="math notranslate nohighlight">\(\oint_C \mathbf{F} \cdot dr = \oint_C Pdx+Qdy = \iint_D (Q_x-P_y)dA. \)</span>$</p>
+<p>So to calculate area, we need a function <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)\)</span> such that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle 0,x \rangle\)</span>, then
+$<span class="math notranslate nohighlight">\( Q_x-P_y = \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(0) = 1-0 = 1.\)</span><span class="math notranslate nohighlight">\(
+This leads us to an important result:
+\)</span><span class="math notranslate nohighlight">\( \text{area of region \)</span>D<span class="math notranslate nohighlight">\(} = \iint_D 1 \,dA = \oint_C Pdx+Qdy = \oint_C xdy.\)</span>$</p>
+<div class="section" id="span-style-color-red-exercise-span">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#span-style-color-red-exercise-span" title="Permalink to this headline">¶</a></h2>
+<p>In the our proof, we specifically chose <span class="math notranslate nohighlight">\(P(x,y)=0\)</span> and <span class="math notranslate nohighlight">\(Q(x,y)=x\)</span>, but there are infintely many pairs of <span class="math notranslate nohighlight">\(P(x,y)\)</span> and <span class="math notranslate nohighlight">\(Q(x,y)\)</span> with the property that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.
+Edit this cell to fill in three different pairs of functions <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.</p>
+</div>
+<div class="section" id="span-style-background-color-lightblue-answer-span">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#span-style-background-color-lightblue-answer-span" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+</ol>
+<p>We write points on the curve <span class="math notranslate nohighlight">\(C\)</span> as ordered pairs <span class="math notranslate nohighlight">\((x,y)\)</span>. In the diagram below (from <a class="reference external" href="https://openstax.org/books/calculus-volume-3/pages/6-4-greens-theorem">here</a>),
+the pivot point is at <span class="math notranslate nohighlight">\((0,Y)\)</span> so the roller moves up and down the <span class="math notranslate nohighlight">\(y\)</span>-axis. The tracer arm is length <span class="math notranslate nohighlight">\(L\)</span> and the distance from the wheel to the pivot is <span class="math notranslate nohighlight">\(l\)</span>.</p>
+<p align="center">
+    <img height=400 src="derivation.jpg">
+</p><p>Say we move a very small distance counter-clockwise along the curve <span class="math notranslate nohighlight">\(C\)</span> from the point <span class="math notranslate nohighlight">\((x,y)\)</span> to <span class="math notranslate nohighlight">\((x+dx,y+dy)\)</span>. Then, the pivot point will move from <span class="math notranslate nohighlight">\((0,Y)\)</span> to <span class="math notranslate nohighlight">\((0,Y+dY)\)</span>. We want to know how much the measuring wheel turns as a result of this small motion. If we first move the roller forward without moving the tracer arm, then the tracer moves from <span class="math notranslate nohighlight">\((x,y)\)</span> to <span class="math notranslate nohighlight">\((x,y+dY)\)</span>. Next, we move the tracer arm by <span class="math notranslate nohighlight">\(d \theta\)</span> without moving the roller. Now we are at the point <span class="math notranslate nohighlight">\((x+dx,y+dy).\)</span> The wheel only rolls with motion that is perpendicular to the tracer arm. The distance the wheel rolls is
+<span class="math notranslate nohighlight">\(\begin{align*}
+    \text{total wheel roll} &amp;= \text{wheel roll from translation} + \text{wheel roll from rotation}\\
+    &amp;= \text{distance between the parallel lines} + \frac{d\theta}{2\pi}\cdot 2l\pi \\
+    &amp;= \sin(\phi)dY + ld\theta \\
+    &amp;= \frac{x}{L}dY + ld\theta.
+\end{align*}\)</span></p>
+<p>If we integrate over <span class="math notranslate nohighlight">\(C\)</span> the total wheel roll, then
+$<span class="math notranslate nohighlight">\( \oint_C \frac{x}{L}dY + \oint_C l\,d\theta = \frac{1}{L} \oint_C x\,dY + l\oint_C d\theta = \frac{1}{L} \oint_C x\,dY. \)</span>$</p>
+</div>
+<div class="section" id="id1">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Explain why $<span class="math notranslate nohighlight">\(\oint_C d\theta = 0.\)</span>$</p>
+</div>
+<div class="section" id="id2">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><em>student answer here</em></p>
+<p>We are almost there. We only need to relate <span class="math notranslate nohighlight">\(\frac{1}{L} \oint_C x\,dY\)</span> to the area of <span class="math notranslate nohighlight">\(D\)</span>, which we found to be <span class="math notranslate nohighlight">\(\oint_C xdy\)</span>.
+From the diagram, imagine the right triangle formed by the vertices <span class="math notranslate nohighlight">\((0,Y),(x,y)\)</span>, and <span class="math notranslate nohighlight">\((0,y)\)</span>.
+By the Pythagorean theorem, $<span class="math notranslate nohighlight">\( x^2 + (y-Y)^2 = L^2. \)</span><span class="math notranslate nohighlight">\(
+From the mechanical design of a rolling planimeter, the tracer arm never passes behind the roller, so \)</span>y \geq Y<span class="math notranslate nohighlight">\( for every point \)</span>(x,y)<span class="math notranslate nohighlight">\( on \)</span>C<span class="math notranslate nohighlight">\(.
+That is, \)</span>Y<span class="math notranslate nohighlight">\( is unique given \)</span>(x,y)<span class="math notranslate nohighlight">\(.
+Differentiating both sides of \)</span>x^2 + (y-Y)^2 = L^2<span class="math notranslate nohighlight">\(, we get
+\)</span>\begin{align*}
+2x dx + 2(y-Y)(dy-dY) &amp;= 0 \
+x dx + (y-Y)(dy-dY) &amp;= 0 \
+dy-dY &amp;= -\frac{x}{y-Y}dx \
+dY &amp;= dy + \frac{x}{y-Y}dx \
+dY &amp;= dy + \frac{x}{\sqrt{L^2-x^2}}dx
+\end{align*}$</p>
+<p>Now, the total amount the wheel rolls is
+$<span class="math notranslate nohighlight">\( \frac{1}{L} \oint_C x\,dY = \frac{1}{L} \oint_C x\,dy + \frac{1}{L} \oint_C \frac{x^2}{\sqrt{L^2-x^2}}dx. \)</span>$</p>
+</div>
+<div class="section" id="id3">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Explain why $<span class="math notranslate nohighlight">\( \oint_C \frac{x^2}{\sqrt{L^2-x^2}}dx = 0.\)</span>$ (Hint: use Green’s Theorem)</p>
+</div>
+<div class="section" id="id4">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><em>student answer here</em></p>
+</div>
+<div class="section" id="id5">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Show that the area of <span class="math notranslate nohighlight">\(D\)</span> is <span class="math notranslate nohighlight">\(L\)</span> times the total wheel roll after tracing the curve <span class="math notranslate nohighlight">\(C\)</span> counter-clockwise.</p>
+</div>
+<div class="section" id="id6">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p><em>student answer here</em></p>
+<p>Great job! One pretty remarkable fact is that at the end, the wheel placement - the length <span class="math notranslate nohighlight">\(l\)</span> - didn’t matter at all! Now we know exactly how a rolling planimeter works. The derivation for how polar planimeters calculate area is very similar. The big difference is that the integration is done in polar coordinates instead of Cartesian coordinates.</p>
+</div>
+</div>
+<div class="section" id="building-a-planimeter">
+<h1>Building a Planimeter<a class="headerlink" href="#building-a-planimeter" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>find some sort of rolling platform to put the breadboard on</p></li>
+<li><p>2 types of rotary encoders in the lab</p></li>
+</ul>
+<div class="section" id="id7">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>To test out your planimeter, measure some well known shapes like circles, rectangles, etc.
+Describe how close your estimates are to the exact area.</p>
+</div>
+<div class="section" id="id8">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><em>student answer here</em></p>
+</div>
+<div class="section" id="id9">
+<h2><span style="color:red">Exercise</span><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>Print out a map to calculate area of Indiana or some other state/country with a well known land area. Use your planimeter to measure the area. How close are your calculations? Keep in mind the scale of the map you print.</p>
+</div>
+<div class="section" id="id10">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="span-style-color-green-reflection-span">
+<h1><span style="color:green">Reflection</span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">¶</a></h1>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<div class="section" id="id11">
+<h2><span style="background-color:lightblue">Answer</span><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p><em>student answer here</em></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Planimeter_Lab"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Kindyl King and Mireille Boutin<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
