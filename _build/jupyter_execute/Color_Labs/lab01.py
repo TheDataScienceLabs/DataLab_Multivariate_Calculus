@@ -54,9 +54,6 @@ plt.show()
 
 # ### <span style="color:red">Exercise</span>
 # What are the RGB values of the color in lower left square in the random $2\times 2$ array `larger_img`?
-# ### <span style="color:blue">Answer</span>
-
-# *student answer here*
 
 # ### <span style="color:red">Exercise</span>
 # 
@@ -68,13 +65,7 @@ plt.show()
 # 4. Purdue Old Gold square (red,green,blue) = (206, 184, 136)
 # 5. square that is half red and half yellow
 # 
-# ### <span style="color:blue">Answer</span>
-
-# In[22]:
-
-
-# student answer here
-
+# 
 
 # ## NeoPixels
 # 
@@ -148,9 +139,7 @@ print(open('color_loop.py', 'r').read())
 # 
 # In a few sentences describe how the color coordinates displayed here in a Jupyter notebook compare to the color coordinates of the NeoPixels. For example, does red look the same on the NeoPixel as it does in the Jupyter notebook?
 # 
-# ### <span style="color:blue">Answer</span>
-
-# *student answer here*
+# 
 
 # ### Duty Cycle 
 # 
@@ -338,10 +327,6 @@ ani
 # ### <span style="color:red">Exercise</span>
 # 
 # If we think about RGB values being in a 3D cube with R on the $x$-axis, G on the $y$-axis, and B on the $z$-axis, then the gradient animation follows what kind of path?
-# 
-# ### <span style="color:blue">Answer</span>
-
-# *student answer here*
 
 # <h3 style="color:green;"><left> Sandbox </left></h3>
 # 
@@ -374,7 +359,7 @@ print(open('answer.py', 'r').read())
 # 
 # Find a colorful object around you or image online. Try to match the color of the object or a color in the image by adjusting the red, green, and blue channel values and display the matched color.
 # 
-# ### <span style="color:blue">Answer</span>
+# 
 
 # In[ ]:
 
@@ -382,6 +367,8 @@ print(open('answer.py', 'r').read())
 # student answer here
 
 
+# ### Trichromatic Coefficients
+# 
 # Some of the most influential color matching experiments were done in the 1920's by W.D. Wright and J. Guild, and their methodology was similar to the exercise you just completed
 # [[ref1]](https://iopscience.iop.org/article/10.1088/1475-4878/30/4/301/meta?casa_token=zjfAyCvyOBcAAAAA:zajVm7GdwsTn1MwpnpXUvlOIAF6Xu1RWpnTgFbJcV846Eu0GDiHJPX44VwgA12tCVsZo-4I6u5oslN2b0JQ)
 # [[ref2]](https://royalsocietypublishing.org/doi/abs/10.1098/rsta.1932.0005).
@@ -431,7 +418,7 @@ print(b[index])
 # 3. Are there any topics that could use more clarification? <br>
 # 4. Do you have any suggestions on parts of the lab to improve?__
 # 
-# ### <span style="color:blue">Answer</span>
+# 
 
 # *student answer here*
 
