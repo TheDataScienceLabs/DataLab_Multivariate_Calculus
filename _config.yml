@@ -8,12 +8,15 @@ author: Kindyl King and Mireille Boutin
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: 'off'
 
 # Add a bibtex file for citations
 bibtex_bibfiles:
   - references.bib
 
+repository:
+  url                       : "https://github.com/kindyl/DataLab_Multivariate_Calculus"
+
 launch_buttons:
-  notebook_interface        : jupyterlab  
-  colab_url                 : https://colab.research.google.com
+  notebook_interface        : "jupyterlab"
+  colab_url                 : "https://colab.research.google.com"

@@ -49,7 +49,7 @@
 # 
 # Take a look at the file `temperature.py`, which records the Pico's internal temperature in degrees Celcius and writes these temperature values to the file `temp.txt`.  Using Thonny, run `temperature.py` on your Pico. After the script is done running, move the `temp.txt` file that is stored on the Pico into the folder you are currently working in, delete `temp.txt` from the Pico's storage, and then execute the following cell.
 
-# In[1]:
+# In[ ]:
 
 
 import numpy as np

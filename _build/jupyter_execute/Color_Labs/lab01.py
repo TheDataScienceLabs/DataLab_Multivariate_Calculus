@@ -44,7 +44,7 @@
 # 
 # You are reading an interactice textbook. As you read the text, you will be asked to perform certain tasks and answer some questions. You will write your answers directly in this textbook. The textbook contains text and (Python) code written in "boxes." The boxes containing code are grey. You can run a grey box of code by holding the "shift" key while pressing the "enter" key (shift-enter). The output of the code will then be displayed below the code. Some of these boxes are labeled as "Sandbox". Feel free to use the sandboxes as a place to experiment with functions and see the capabilities of Python as you read about them. You may create additional boxes as needed by clicking the "+" sign in the menu above this window or by hovering your mouse at the bottom of a cell. 
 
-# In[1]:
+# In[2]:
 
 
 import numpy as np
