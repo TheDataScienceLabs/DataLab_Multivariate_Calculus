@@ -5,3 +5,6 @@ format: jb-book
 root: intro
 chapters:
 - file: howtouse
+- file: Color_Labs/lab01_info
+  sections:
+  - file: Color_Labs/lab01

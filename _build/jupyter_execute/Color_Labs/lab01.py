@@ -1,48 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <div style="background-color:lightblue">
-# <h1><center>
-#     The Data Science Labs on <br/>
-#      Multivariable Calculus  <br/>
-#    <small>by Kindyl King and Mireille Boutin</small>
-# </center></h1>
-#     </div>
-# <h1><center>
-#     Laboratory 1:<br/>
-#     An Exploration of Color Spaces<br/>
-#     <p style="font-size: 16px"> Last Updated on April 27, 2022</p>
-# </center></h1>
+# # Color Spaces
+# <p style="font-size: 16px"> Last Updated on April 27, 2022</p>
 
-# <h2 style="color:orange;"><left> Content </left></h2>
+# ## Student Info
 # 
-# #### Mathematics ###
-# - 3 dimensional vectors
-# - curve parameterization
-# ### Programming Skills ###
-# - multi-dimensional array manipulation
-# - while loops
-# - functions
-# ### Embedded Systems ###
-# - Thonny and MicroPython
-# 
-# <h2 style="color:orange;"><left> Required Hardware </left></h2> 
-# 
-# - microcontroller: Raspberry Pi Pico
-# - breadboard
-# - USB connector
-# - NeoPixels
-# - Level shifter
-# 
-
-# ### <span style="background-color:lightblue"> Fill in information below: </span>
 # __Name:__ me
 # 
-# __Email:__ me @ purdue.edu
-
-# ## How to Use This Textbook
-# 
-# You are reading an interactice textbook. As you read the text, you will be asked to perform certain tasks and answer some questions. You will write your answers directly in this textbook. The textbook contains text and (Python) code written in "boxes." The boxes containing code are grey. You can run a grey box of code by holding the "shift" key while pressing the "enter" key (shift-enter). The output of the code will then be displayed below the code. Some of these boxes are labeled as "Sandbox". Feel free to use the sandboxes as a place to experiment with functions and see the capabilities of Python as you read about them. You may create additional boxes as needed by clicking the "+" sign in the menu above this window or by hovering your mouse at the bottom of a cell. 
+# __Email:__ me @ purdue . edu
 
 # In[2]:
 
@@ -88,7 +54,7 @@ plt.show()
 
 # ### <span style="color:red">Exercise</span>
 # What are the RGB values of the color in lower left square in the random $2\times 2$ array `larger_img`?
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # *student answer here*
 
@@ -102,7 +68,7 @@ plt.show()
 # 4. Purdue Old Gold square (red,green,blue) = (206, 184, 136)
 # 5. square that is half red and half yellow
 # 
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # In[22]:
 
@@ -116,7 +82,6 @@ plt.show()
 # 
 # __add pictures__
 
-# 
 # ### Connecting Everything
 # Do not connect your microcontroller to the computer while you are wiring things together. If you are uncertain about your wiring, ask for an instructor to check it.
 # 
@@ -183,7 +148,7 @@ print(open('color_loop.py', 'r').read())
 # 
 # In a few sentences describe how the color coordinates displayed here in a Jupyter notebook compare to the color coordinates of the NeoPixels. For example, does red look the same on the NeoPixel as it does in the Jupyter notebook?
 # 
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # *student answer here*
 
@@ -191,7 +156,8 @@ print(open('color_loop.py', 'r').read())
 # 
 # So how do the NeoPixels work? The NeoPixels use something called pulse-width modulation to display different colors, which means that the LEDs within the NeoPixel are actually switching on and off at a very fast pace (about 400 times per second). Since these pulses of light alternate on and off so quickly, we only see a uniform brightness. The time between pulses determines the intensity of the color. For a half-strength red (127,0,0), the LEDs are still switching from off to full red (255,0,0), but the LED is on for an equal amount of time that it is off. 
 # 
-# <img src="dutycycle.png"/>
+# <!-- <img src="dutycycle.png"/> -->
+# ![](dutycycle.png)
 # 
 # The length of a cycle in the NeoPixel is about 2.5 ms. To further interpret the graphs above (from [here](https://learn.adafruit.com/led-tricks-gamma-correction?view=all)), let's pretend that the length of a cycle is 1 second. We can simulate a 50% duty cycle by creating an animation with the library Matplotlib.
 
@@ -373,7 +339,7 @@ ani
 # 
 # If we think about RGB values being in a 3D cube with R on the $x$-axis, G on the $y$-axis, and B on the $z$-axis, then the gradient animation follows what kind of path?
 # 
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # *student answer here*
 
@@ -408,7 +374,7 @@ print(open('answer.py', 'r').read())
 # 
 # Find a colorful object around you or image online. Try to match the color of the object or a color in the image by adjusting the red, green, and blue channel values and display the matched color.
 # 
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # In[ ]:
 
@@ -465,7 +431,7 @@ print(b[index])
 # 3. Are there any topics that could use more clarification? <br>
 # 4. Do you have any suggestions on parts of the lab to improve?__
 # 
-# ### <span style="background-color:lightblue">Answer</span>
+# ### <span style="color:blue">Answer</span>
 
 # *student answer here*
 

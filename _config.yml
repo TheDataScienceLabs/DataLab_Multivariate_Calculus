@@ -20,3 +20,4 @@ repository:
 launch_buttons:
   notebook_interface        : "jupyterlab"
   colab_url                 : "https://colab.research.google.com"
+  binderhub_url             : ""
