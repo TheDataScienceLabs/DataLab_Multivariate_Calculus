@@ -3,11 +3,14 @@ This is a demo of the Neopixels, using a library published at
 https://github.com/blaz-r/pi_pico_neopixel
 """
 
+
+#how to close the led
+
 import time
 from neopixel import Neopixel
 
 numpix = 6
-strip = Neopixel(numpix, 0, 0)
+strip = Neopixel(numpix, 0, 0,"GRB")
 
 red = (255, 0, 0)
 orange = (255, 165, 0)
