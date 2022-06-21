@@ -9,7 +9,6 @@ parts:
   - file: howtouse
 - caption: Color
   chapters:
-  - file: Color_Labs/lab01_info
   - file: Color_Labs/lab01
   - file: Color_Labs/lab02
   - file: Color_Labs/lab03
