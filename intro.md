@@ -1,6 +1,6 @@
 # Introduction
 ## The Data Science Labs on Multivariable Calculus
-**By Alden Bradford and Mireille Boutin with Kindyl King and Naazneen Rana**
+**By Kindyl King and Mireille Boutin with Alden Bradford**
 
 Welcome to MA29000, The Data Science Labs on Multivariable Calculus! This is a one credit course to accompany Calculus 3, during which you will discover applications of multivariable calculus to data science. You will also practice programming in Python and using Arduino sensors and microprocessors to acquire data.
 
