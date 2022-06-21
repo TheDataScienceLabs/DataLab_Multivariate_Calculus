@@ -3,8 +3,28 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: howtouse
-- file: Color_Labs/lab01_info
-  sections:
+parts:
+- caption: Intro
+  chapters:
+  - file: howtouse
+- caption: Color
+  chapters:
   - file: Color_Labs/lab01
+  - file: Color_Labs/lab02
+  - file: Color_Labs/lab03
+  - file: Color_Labs/lab04
+  - file: Color_Labs/lab05
+- caption: Gait
+  chapters:
+  - file: Gait_Labs/pedometer
+  - file: Gait_Labs/gait_analysis
+- caption: Integration
+  chapters:
+  - file: Integration_Lab/integration
+- caption: Green's Theorem
+  chapters:
+  - file: Planimeter_Lab/planimeter
+- caption: Motion Tracking
+  chapters:
+  - file: MOtion_Tracking_Lab/motion
+  
