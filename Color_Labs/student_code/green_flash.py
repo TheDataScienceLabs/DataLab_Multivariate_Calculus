@@ -4,27 +4,22 @@ https://github.com/blaz-r/pi_pico_neopixel
 """
 
 
-#how to close the led
-
 import time
 from neopixel import Neopixel
 
 numpix = 6
 strip = Neopixel(numpix, 0, 0,"GRB")
 
-red = (255, 0, 0)
-orange = (255, 165, 0)
-yellow = (255, 150, 0)
-green = (0, 255, 0)
-blue = (0, 0, 255)
-indigo = (75, 0, 130)
-violet = (138, 43, 226)
-colors = (red, orange, yellow, green, blue, indigo, violet)
 
-shift = 0
-while True:
-    shift = (shift+1)%numpix
-    for i in range(numpix):
-        strip.set_pixel(i, colors[(i+shift)%numpix])
-    strip.show()
-    time.sleep(0.1)
+pwd = 0.1
+green = (0 , 255  , 0)
+green_10_percent = (0 ,255 * pwd,0)
+
+for i in range(6):
+    if i % 2 == 0:
+        strip.set_pixel(i, green) #set the even indexing neopixel to 100% duty circule red 
+    if i % 2 == 1:
+        strip.set_pixel(i, green_10_percent) # set the odd indexing neopixel to 10% duty circule red 
+   
+
+strip.show()
