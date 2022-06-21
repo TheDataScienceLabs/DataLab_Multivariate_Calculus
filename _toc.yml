@@ -16,8 +16,8 @@ parts:
   - file: Color_Labs/lab05
 - caption: Gait
   chapters:
-  - file: Gait_Labs/pedometer
-  - file: Gait_Labs/gait_analysis
+#  - file: Gait_Labs/pedometer
+#  - file: Gait_Labs/gait_analysis
 - caption: Integration
   chapters:
   - file: Integration_Lab/integration
