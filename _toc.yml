@@ -16,15 +16,15 @@ parts:
   - file: Color_Labs/lab05
 - caption: Gait
   chapters:
-  - file: Gait_Labs/pedometer
-  - file: Gait_Labs/gait_analysis
+  - file: Gait_Labs/lab06
+  - file: Gait_Labs/lab07
 - caption: Integration
   chapters:
-  - file: Integration_Lab/integration
+  - file: Integration_Lab/lab08
 - caption: Green's Theorem
   chapters:
-  - file: Planimeter_Lab/planimeter
+  - file: Planimeter_Lab/lab09
 - caption: Motion Tracking
   chapters:
-  - file: MOtion_Tracking_Lab/motion
+  - file: MOtion_Tracking_Lab/lab10
   
