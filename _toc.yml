@@ -6,7 +6,7 @@ root: intro
 parts:
 - caption: Intro
   chapters:
-  - file: howtouse
+  - file: lab0
 - caption: Color
   chapters:
   - file: Color_Labs/lab01
