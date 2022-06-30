@@ -26,5 +26,5 @@ parts:
   - file: Planimeter_Lab/lab09
 - caption: Motion Tracking
   chapters:
-  - file: MOtion_Tracking_Lab/lab10
+  - file: Motion_Tracking_Lab/lab10
   
