@@ -27,4 +27,6 @@ parts:
 - caption: Motion Tracking
   chapters:
   - file: Motion_Tracking_Lab/lab10
+- caption: Design a project of your own
+  - file: labfinal.ipynb
   
