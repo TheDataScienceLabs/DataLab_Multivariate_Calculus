@@ -1,3 +1,16 @@
+New to do (07/08/2022):
+Motion Lab:
+    - Add camera instructions and wiring
+Planimeter Lab:
+    - Figure out how to make a simple planimeter
+Final Project:
+    - Add example projects
+Make Notebook public and compile automatically
+Missing 2 weeks worth of labs
+Gait labs need to be made or replaced
+
+
+-----------------------------------------------------------------------------------------
 Unfinished Labs: gait analysis
 
 All Labs: 
