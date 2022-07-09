@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Week 9: Numerical Integration &#8212; The Data Science Labs on Multivariable Calculus</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Week 10: Green’s Theorem" href="../4_Greens_Theorem_Labs/lab09.html" />
+    <link rel="prev" title="Week 8: Gait Analysis???" href="../2_Gait_Labs/7_Analysis/lab07.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">The Data Science Labs on Multivariable Calculus</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Color
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab01.html">
+   Week 2: Color as a Vector
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/2_Human_Perception/lab02.html">
+   Week 3: Human Perception of Color
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/3_Color_Quantization/lab03.html">
+   Week 4: Color Quantization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/4_MnMs/lab04.html">
+   Week 5: Detect the Color of M&amp;Ms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/5_Edge_Detection/lab05.html">
+   Week 6: Edge Detection in Images
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Gait
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Gait_Labs/6_Pedometer/lab06.html">
+   Week 7: Making a Pedometer
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../2_Gait_Labs/7_Analysis/lab07.html">
+   Week 8: Gait Analysis???
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Integration
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Week 9: Numerical Integration
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Green's Theorem
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../4_Greens_Theorem_Labs/lab09.html">
+   Week 10: Green’s Theorem
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Motion Tracking
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../5_Motion_Tracking_Labs/lab10.html">
+   Week 11: Motion Tracking
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Design a project of your own
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Final_Project/labfinal.html">
+   Weeks 14-15: Final Project
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/3_Integration_Labs/lab08.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/3_Integration_Labs/lab08.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/labs/3_Integration_Labs/lab08.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
+   <span style="color:orange;">
+    00. Content
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
+   <span style="color:orange;">
+    0. Required Hardware
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-1-about-the-lsm9ds0-span">
+   <span style="color:orange;">
+    1. About the LSM9DS0
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+     <span style="color:red">
+      Exercise 4
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-error-span">
+   <span style="color:orange;">
+    2. Error
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-3-can-we-remove-drift-span">
+   <span style="color:orange;">
+    3. Can We Remove Drift?
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Week 9: Numerical Integration</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
+   <span style="color:orange;">
+    00. Content
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
+   <span style="color:orange;">
+    0. Required Hardware
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-1-about-the-lsm9ds0-span">
+   <span style="color:orange;">
+    1. About the LSM9DS0
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+     <span style="color:red">
+      Exercise 4
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-error-span">
+   <span style="color:orange;">
+    2. Error
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-3-can-we-remove-drift-span">
+   <span style="color:orange;">
+    3. Can We Remove Drift?
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="week-9-numerical-integration">
+<h1>Week 9: Numerical Integration<a class="headerlink" href="#week-9-numerical-integration" title="Permalink to this headline">#</a></h1>
+<p><font size="6"> Laboratory 8 </font> <br>
+<font size="3"> Last updated July 07, 2022 </font></p>
+<section id="span-style-color-orange-00-content-span">
+<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
+<p><font size="5"> Mathematics </font></p>
+<ul class="simple">
+<li><p>Numerical integration</p></li>
+<li><p>Error in numerical integration</p></li>
+</ul>
+<p><font size="5"> Programming Skills </font></p>
+<ul class="simple">
+<li><p>Functions</p></li>
+</ul>
+<p><font size="5"> Embedded Systems </font></p>
+<ul class="simple">
+<li><p>Thonny and MicroPython</p></li>
+</ul>
+</section>
+<section id="span-style-color-orange-0-required-hardware-span">
+<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Microcontroller: Raspberry Pi Pico</p></li>
+<li><p>Breadboard</p></li>
+<li><p>USB connector</p></li>
+<li><p>Accelerometer</p></li>
+</ul>
+<h3 style="background-color:lightblue"> Write your name and email below: </h3>
+<p><strong>Name:</strong> me</p>
+<p><strong>Email:</strong> me &#64;purdue.edu</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="span-style-color-orange-1-about-the-lsm9ds0-span">
+<h2><span style="color:orange;"> 1. About the LSM9DS0 </span><a class="headerlink" href="#span-style-color-orange-1-about-the-lsm9ds0-span" title="Permalink to this headline">#</a></h2>
+<p>The LSM9DS0 accelerometers we’ve been using actually collect more data than we have been using. The chip has 3 sensors: an accelerometer to calculate linear acceleration in 3 directions, a gyroscope to measure angular velocity in 3 directions, and a magnetometer that measures the strength of magnetic fields in 3 direction.</p>
+<p>In theory, since the gyroscope measure angular velocity in degrees per second, we could integrate the velocity data over time to find out the angle in each of the three directions. In other words, the gyroscope measures how fast the angle is changing so we can figure out the current angle of the gyroscope by adding up how much the angle changes times how much time has elapsed. What we’ve described is an integral:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \theta(t) = \int_0^T \omega(t) dt,
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta(t)\)</span> is the angle and <span class="math notranslate nohighlight">\(\omega(t)\)</span> is the angular velocity at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>In practice, we can’t ignore the error in our data. At every time <span class="math notranslate nohighlight">\(t\)</span>, the gyroscope reading is the true value plus some error.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \hat\theta(t) = \int_0^T (\omega(t)+\epsilon(t)) dt =  \theta(t) + \int_0^T \epsilon(t)dt.
+\end{align*}\]</div>
+<section id="span-style-color-red-exercise-1-span">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
+<p>Keep the gyroscope still for a few seconds and save the data to a <code class="docutils literal notranslate"><span class="pre">.txt</span></code> file. Plot the output of the 3 channel measurements with time as the independent variable and angular velocity in degrees/second as the dependent variable.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><p>We aren’t moving the gyroscope so all of our reading should be about zero right? Ideally, yes, but our digital gyroscope uses tiny internal springs to measure rotation which are sensitive to temperature. In order to get meaningful data, we need to account for this offset.</p>
+</section>
+<section id="span-style-color-red-exercise-2-span">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
+<p>Using the data you just collected, compute the mean value in each channel. Take a new still measurement for a few seconds, read it in, and subtract the offset. Plot your results.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3></section>
+<section id="span-style-color-red-exercise-3-span">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
+<p>Write 5 functions to compute the integral</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \hat\theta(t) = \int_0^T (\omega(t)+\epsilon(t)) dt
+\end{align*}\]</div>
+<p>according to</p>
+<ul class="simple">
+<li><p>Left Riemann sum</p></li>
+<li><p>Right Riemann sum</p></li>
+<li><p>Midpoint Rule</p></li>
+<li><p>Trapezoid Rule</p></li>
+<li><p>Simpson’s Rule</p></li>
+</ul>
+<p>Plot all 5 curves on one graph, labeled clearly.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
+<section id="span-style-color-red-exercise-4-span">
+<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
+<p>Previously we used averaging to reduce measurement error in the accelerometer with the class <code class="docutils literal notranslate"><span class="pre">Averager</span></code>.
+Using different lengths to average across, report how it affects drift. Justify what range of values you chose and present your results with clear plots and short explanations.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
+</section>
+<section id="span-style-color-orange-2-error-span">
+<h2><span style="color:orange;"> 2. Error </span><a class="headerlink" href="#span-style-color-orange-2-error-span" title="Permalink to this headline">#</a></h2>
+<p>Suppose <span class="math notranslate nohighlight">\(\theta(t)\)</span> is continuous over <span class="math notranslate nohighlight">\([0,T]\)</span> and let</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    M_1 &amp;= \max_{t \in (0,T)} |\theta'(t)| \\
+    M_2 &amp;= \max_{t \in (0,T)} |\theta''(t)|
+\end{align*}\]</div>
+<p>That is, <span class="math notranslate nohighlight">\(M_1\)</span> is the maximum of the absolute value of the first derivative <span class="math notranslate nohighlight">\(\theta'(t)\)</span> over the interval <span class="math notranslate nohighlight">\((0,T)\)</span> and <span class="math notranslate nohighlight">\(M_2\)</span> is the maximum of the absolute value of the second derivative <span class="math notranslate nohighlight">\(\theta''(t)\)</span> over the interval <span class="math notranslate nohighlight">\((0,T)\)</span>. If we split the interval  <span class="math notranslate nohighlight">\([0,T]\)</span> into <span class="math notranslate nohighlight">\(n\)</span> equal subintervals, then</p>
+<ul class="simple">
+<li><p>the error in using either the left Riemann sum or right riemann sum is bounded by</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{Riemann Error} \leq \frac{M_1T^2}{2n}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><p>the error in using the midpoint rule is bounded by</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{Midpoint Error} \leq \frac{M_2T^3}{24n^2}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><p>the error in using the trapezoid rule is bounded by</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{Trapezoid Error} \leq \frac{M_2T^3}{12n^2}.
+\end{align*}\]</div>
+<ul class="simple">
+<li><p>the error in using Simpson’s rule is bounded by</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{Simpson's Error} \leq \frac{M_2T^5}{180n^4}.
+\end{align*}\]</div>
+<section id="span-style-color-red-exercise-5-span">
+<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
+<p>For each integration rule, use the error bound to determine a value for <span class="math notranslate nohighlight">\(n\)</span> that ensures that the integration error is less than <span class="math notranslate nohighlight">\(0.1\)</span>. The value <span class="math notranslate nohighlight">\(n\)</span> gives a better sampling frequency to use when collecting data. Implement the better sampling frequency and compare</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3></section>
+<section id="span-style-color-red-exercise-6-span">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
+<p>The value of <span class="math notranslate nohighlight">\(n\)</span> gives a better sampling frequency to use when collecting data. Implement the better sampling frequency (keeping time the same) and compare your new results to your original result.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
+</section>
+<section id="span-style-color-orange-3-can-we-remove-drift-span">
+<h2><span style="color:orange;"> 3. Can We Remove Drift? </span><a class="headerlink" href="#span-style-color-orange-3-can-we-remove-drift-span" title="Permalink to this headline">#</a></h2>
+<p>If we are only using gyroscope data, then unfortunately the answer is no. We have shown that there are ways to reduce drift but in any case, the error from integration will always be a factor in calculating angles. In practice, gyroscope data is usually combined with accelerometer data and/or magnetometer data to correct the drift or recalibrate over long periods of time.</p>
+</section>
+<section id="span-style-color-green-reflection-span">
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<h3 style="background-color:lightblue"> Write Answers for the Reflection Below </h3></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./labs/3_Integration_Labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../2_Gait_Labs/7_Analysis/lab07.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Week 8: Gait Analysis???</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../4_Greens_Theorem_Labs/lab09.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 10: Green’s Theorem</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Kindyl King and Mireille Boutin<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
