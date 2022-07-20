@@ -17,6 +17,7 @@ parts:
 - caption: Video
   chapters:
   - file: labs/2_Video_Labs/lab07.ipynb
+  - file: labs/2_Video_Labs/lab08.ipynb
 - caption: Integration
   chapters:
   - file: labs/3_Integration_Labs/lab08.ipynb
