@@ -14,6 +14,7 @@ parts:
   - file: labs/1_Color_Labs/3_Color_Quantization/lab03.ipynb
   - file: labs/1_Color_Labs/4_MnMs/lab04.ipynb
   - file: labs/1_Color_Labs/5_Edge_Detection/lab05.ipynb
+  - file: labs/1_Color_Labs/6_Loops/lab06.ipynb
 - caption: Video
   chapters:
   - file: labs/2_Video_Labs/lab07.ipynb
