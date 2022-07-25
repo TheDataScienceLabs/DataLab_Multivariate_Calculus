@@ -20,6 +20,9 @@ parts:
   - file: labs/2_Video_Labs/lab07.ipynb
   - file: labs/2_Video_Labs/lab08.ipynb
   - file: labs/2_Video_Labs/lab09.ipynb
+  - file: labs/2_Video_Labs/lab10.ipynb
+  - file: labs/2_Video_Labs/lab11.ipynb
+  - file: labs/2_Video_Labs/lab12.ipynb
 - caption: Integration
   chapters:
   - file: labs/3_Integration_Labs/lab08.ipynb
