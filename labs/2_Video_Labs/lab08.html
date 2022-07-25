@@ -50,6 +50,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Week 10: Motion Detection" href="lab09.html" />
@@ -465,12 +467,38 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-modifying-videos-span">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-optical-flow-and-motion-tracking-span">
    <span style="color:orange;">
-    2. Modifying Videos
+    2. Optical Flow and Motion Tracking
    </span>
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#farneback-optimal-flow">
+     Farneback Optimal Flow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
      <span style="color:red">
@@ -482,34 +510,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
      <span style="color:red">
       Exercise 5
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
-     <span style="color:red">
-      Exercise 6
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
-     <span style="color:red">
-      Exercise 7
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
-     <span style="color:red">
-      Exercise 8
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span">
-     <span style="color:red">
-      Exercise 9
      </span>
     </a>
    </li>
@@ -586,12 +586,38 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-modifying-videos-span">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-optical-flow-and-motion-tracking-span">
    <span style="color:orange;">
-    2. Modifying Videos
+    2. Optical Flow and Motion Tracking
    </span>
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#farneback-optimal-flow">
+     Farneback Optimal Flow
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
      <span style="color:red">
@@ -603,34 +629,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
      <span style="color:red">
       Exercise 5
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
-     <span style="color:red">
-      Exercise 6
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
-     <span style="color:red">
-      Exercise 7
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
-     <span style="color:red">
-      Exercise 8
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span">
-     <span style="color:red">
-      Exercise 9
      </span>
     </a>
    </li>
@@ -789,40 +787,182 @@ title="Print to PDF"
 <p><em>Hint</em>: Compare the frames and determine where there are differences between them.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 </section>
-<section id="span-style-color-orange-2-modifying-videos-span">
-<h2><span style="color:orange;"> 2. Modifying Videos </span><a class="headerlink" href="#span-style-color-orange-2-modifying-videos-span" title="Permalink to this headline">#</a></h2>
-<p>Using editing apps, you can make many changes to a video. Next we will be making some of these common changes through coding.</p>
-<p>Take a video using the camera sensor and save it to use for the labs in this section.</p>
+<section id="span-style-color-orange-2-optical-flow-and-motion-tracking-span">
+<h2><span style="color:orange;"> 2. Optical Flow and Motion Tracking </span><a class="headerlink" href="#span-style-color-orange-2-optical-flow-and-motion-tracking-span" title="Permalink to this headline">#</a></h2>
+<p>Optical flow is the motion and light patterns observed when an object and camera move relative to each other. The velocity of objects in a video can be estimated using optical flow. This is especially relevant in computer vision tasks when the goal is motion-based object detection or robot navigation.</p>
+<p>Let <span class="math notranslate nohighlight">\(f(x,y,t)\)</span> be a continuous grayscale video mapping <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> to <span class="math notranslate nohighlight">\(\mathbb{R}\)</span>.
+The variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> represent pixel coordinates and <span class="math notranslate nohighlight">\(t\)</span> is the frame number.
+The output is the pixel intensity, a integer between <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(255\)</span>, at location <span class="math notranslate nohighlight">\((x,y)\)</span> in frame <span class="math notranslate nohighlight">\(t\)</span>.
+When we read in an image in Python we are observing a sampling of points of <span class="math notranslate nohighlight">\(f(x,y,t)\)</span> which we will call <span class="math notranslate nohighlight">\(f_d(n,m,t)\)</span>.
+So, <span class="math notranslate nohighlight">\(
+    f_d(n,m,t) = f(n\Delta i, m \Delta j,t).\)</span>
+where <span class="math notranslate nohighlight">\(\Delta i\)</span> and <span class="math notranslate nohighlight">\(\Delta j\)</span> are the sampling distances along the x and y-axis, respectively.</p>
+<p>Let’s assume there is a object at the location <span class="math notranslate nohighlight">\((x,y,t)\)</span> and after a small <span class="math notranslate nohighlight">\(\Delta t\)</span> step forward in time, the object moves from <span class="math notranslate nohighlight">\((x,y)\)</span> to <span class="math notranslate nohighlight">\((x+\Delta x,y+\Delta y)\)</span> in the video.
+Using Taylor series to expand <span class="math notranslate nohighlight">\(f(x,y,t)\)</span> and truncating after the first degree terms, we can estimate the velocity of the object.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+f(x+\Delta x,y+\Delta y,t+\Delta t) \approx f(x,y,t) +
+    \frac{\partial f}{dx}\Delta x + 
+    \frac{\partial f}{dy}\Delta y + 
+    \frac{\partial f}{dt}\Delta t 
+\end{align*}\]</div>
+<p>Assuming the object’s brightness do not change as it moves, <span class="math notranslate nohighlight">\(f(x+\Delta x,y+\Delta y,t+\Delta t)=f(x,y,t)\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{\partial f}{dx}\Delta x + 
+    \frac{\partial f}{dy}\Delta y + 
+    \frac{\partial f}{dt}\Delta t = 0
+\end{align*}\]</div>
+<p>Divide both sides by <span class="math notranslate nohighlight">\(\Delta t\)</span> to get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{\partial f}{dx} \frac{\Delta x}{\Delta t} + 
+    \frac{\partial f}{dy} \frac{\Delta y}{\Delta t} + 
+    \frac{\partial f}{dt} = 0 
+\end{align*}\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(\frac{\partial f}{dx}\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial f}{dy}\)</span> are the image gradients we calculated in the lab on edge detection, and <span class="math notranslate nohighlight">\(\frac{\partial f}{dt}\)</span> is the pixel-wise difference between frame <span class="math notranslate nohighlight">\(t+\Delta t\)</span> and frame <span class="math notranslate nohighlight">\(t\)</span>.
+That means in the last equation the velocity components <span class="math notranslate nohighlight">\(\frac{\Delta x}{\Delta t}\)</span> and <span class="math notranslate nohighlight">\(\frac{\Delta y}{\Delta t}\)</span> are unknown and the other 3 terms <span class="math notranslate nohighlight">\(\frac{\partial f}{dx},\frac{\partial f}{dy},\)</span> and  <span class="math notranslate nohighlight">\(\frac{\partial f}{dt}\)</span> we can calculate, but we can’t solve for 2 unknowns with only one equation. We’re going to need some more assumptions.</p>
+<section id="id1">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Look up “the aperature problem” as it relates to optical flow. In a few sentences, describe what it is and how it impacts the type of objects we are able to track with optical flow.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
+<section id="farneback-optimal-flow">
+<h3>Farneback Optimal Flow<a class="headerlink" href="#farneback-optimal-flow" title="Permalink to this headline">#</a></h3>
+<p>The assumption that <span class="math notranslate nohighlight">\(f(x+\Delta x,y+\Delta y,t+\Delta t)=f(x,y,t)\)</span> is reasonable for most situations. However, if there is a lot of change from frame to frame, for example a helicopter-mounted camera undergoing strong vibrations, then our results will not be as good. In 2003, Gunnar Farneback proposed a solution to this problem. To fully explain his method, a good knowledge of linear algebra and least squares minimization is necessary, but we will give a general overview.</p>
+<p>The idea behind Farneback’s algorithm for calculating optimal flow is:</p>
+<ul class="simple">
+<li><p>Starting with the previous frame, reduce the resolution of the image.</p></li>
+<li><p>Estimate the values of a small patch of pixels with a quadratic polynomial (like how we did polynomial interpolation in 1 dimension but this is in 2 dimensions).</p></li>
+<li><p>In the next frame, do the same quadratic estimation.</p></li>
+<li><p>With the 2 simplified quadratic functions, it’s “easy” to calculate the displacement of the patch of pixels (this is where the linear algebra and least squares minimization comes into play).</p></li>
+<li><p>Increase the resolution of the frame and repeat the process again.</p></li>
+</ul>
+<p>By repeating on higher and higher resolution images, we are able to capture both big and small displacements. After refining how much displacement there is between the two frames, the result is <span class="math notranslate nohighlight">\(\frac{\Delta x}{\Delta t}\)</span> and <span class="math notranslate nohighlight">\(\frac{\Delta y}{\Delta t}\)</span> for each pixel in the image, so we call this type of process dense optimal flow.</p>
+</section>
+<section id="id2">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>Read through the following cell. Describe what each line of code does. It is okay to add comments in the cell but make sure the comments are not so long to where you need to scroll horizontally to read one line. After this is done, try out the code. The output will appear in a separate window.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+<span class="n">width</span>  <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span> 
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">new_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">))</span>
+
+<span class="n">success</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="n">new_size</span><span class="p">)</span>
+<span class="n">previous</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">frame2</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read frame. Exiting ...&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="n">new_size</span><span class="p">)</span>
+    
+    <span class="c1"># flow[i,j] = [dx/dt,dy/dt] for each pixel calculate optimal flow</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                    <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
+                    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">poly_n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+                    <span class="n">poly_sigma</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;next_frame&#39;</span><span class="p">,</span><span class="nb">next</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
+        <span class="k">break</span>
+    <span class="n">prvs</span> <span class="o">=</span> <span class="nb">next</span>
+
+<span class="n">vid</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At each step <code class="docutils literal notranslate"><span class="pre">flow</span></code> defines a vector field. At pixel location <span class="math notranslate nohighlight">\([i,j]\)</span>, we define a vector <span class="math notranslate nohighlight">\(\langle dx/dt, dy/dt\rangle\)</span>. This vector has a magnitude and a direction.</p>
+</section>
+<section id="id3">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>What are the formulas to calculate the magnitude and direction of the vector <span class="math notranslate nohighlight">\(\langle x,y \rangle\)</span>?</p></li>
+<li><p>Why would computing the magnitude and direction of <span class="math notranslate nohighlight">\(\langle x,y \rangle\)</span> be the same as converting the Cartesian ordered pair <span class="math notranslate nohighlight">\((x,y)\)</span> to polar coordinates?</p></li>
+</ol>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="span-style-color-red-exercise-4-span">
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
-<p><strong>Part 1</strong></p>
-<p>Play the video slower than its original playback speed.</p>
-<p><strong>Part 2</strong></p>
-<p>Play the video faster than its original playback speed.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Part 1 Below </h3><h3 style="background-color:lightblue"> Write Answers for Exercise 4 Part 2 Below </h3></section>
+<p>Pick two frames to calculate <code class="docutils literal notranslate"><span class="pre">flow</span></code>. Use the matplotlib function <a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.quiver.html">quiver</a> to plot the vector field using arrows.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for a constant vector field</span>
+<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> 
+                   <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span> <span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<span class="n">dxdt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">dydt</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">dxdt</span><span class="p">,</span><span class="n">dydt</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to visualize the vector field is using color to represent angles and the brightness of the color to represent the magnitude. The HSV or (Hue Saturation Value) color space is the perfect candidate. We are going to relate Hue to the angle of the vector. The image from <a class="reference external" href="https://sc.edu/study/colleges_schools/medicine/education/basic_science_departments/cell_biology_and_anatomy/index.php">src</a> shows each hue at full saturation for different angles.</p>
+<p><img alt="img" src="../../_images/hue_angle.jpg" /></p>
+</section>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
-<p>Play the video backward.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3></section>
-<section id="span-style-color-red-exercise-6-span">
-<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
-<p><strong>Part 1</strong></p>
-<p>Flip the video’s visuals over the y-axis.</p>
-<p><strong>Part 2</strong></p>
-<p>Flip the video’s visuals over the x-axis.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 1 Below </h3><h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 2 Below </h3></section>
-<section id="span-style-color-red-exercise-7-span">
-<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
-<p>Extract a few frames from the video. This can be done anywhere, whether you use it to trim the ends of the video or to remove a section in the middle.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3></section>
-<section id="span-style-color-red-exercise-8-span">
-<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#span-style-color-red-exercise-8-span" title="Permalink to this headline">#</a></h3>
-<p>Record a second video. Once this is done, splice the videos together.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 8 Below </h3></section>
-<section id="span-style-color-red-exercise-9-span">
-<h3><span style="color:red"> Exercise 9 </span><a class="headerlink" href="#span-style-color-red-exercise-9-span" title="Permalink to this headline">#</a></h3>
-<p>Now that you’ve tried a few different techniques, look through <a class="reference external" href="https://docs.opencv.org/3.4/modules.html">this list</a> of OpenCV commands and use one that you haven’t used prior. The <code class="docutils literal notranslate"><span class="pre">Video</span> <span class="pre">Analysis</span></code> module will most likely be the most helpful, but feel free to look through the other modules as well.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 9 Below </h3></section>
+<p>Fill in the code below to compute the magnitude and direction of the velocity vectors at each pixel location. Now we can visualize how the vector field changes from frame to frame and in what direction the objects in the frame are moving.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+<span class="n">width</span>  <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span> 
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="n">ret</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
+<span class="n">prvs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="n">hsv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">frame1</span><span class="p">)</span>
+<span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span> <span class="c1"># always at full saturation</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame2</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read frame. Exiting ...&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">prvs</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                    <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
+                    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">poly_n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+                    <span class="n">poly_sigma</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># compute magnitute and angle for each vector in flow</span>
+    <span class="c1"># mag and ang should have the same dimensions as the variable next </span>
+    <span class="n">mag</span> <span class="o">=</span> <span class="c1"># fill in</span>
+    <span class="n">ang</span> <span class="o">=</span> <span class="c1"># fill in</span>
+
+    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ang</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># converts radians to degrees</span>
+    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">mag</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
+
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;frame2&#39;</span><span class="p">,</span><span class="n">rgb</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
+        <span class="k">break</span>
+    <span class="n">prvs</span> <span class="o">=</span> <span class="nb">next</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
