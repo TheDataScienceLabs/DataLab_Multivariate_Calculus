@@ -130,3 +130,6 @@ dmypy.json
 
 # jupyter-book compiled output
 _build/
+
+# Macintosh filesystem
+.DS_Store
