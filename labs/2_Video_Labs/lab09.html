@@ -440,6 +440,45 @@ title="Print to PDF"
     1. Camera and Color Sensor
    </span>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-detecting-specific-colors-span">
+   <span style="color:orange;">
+    2. Detecting Specific Colors
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
  </li>
 </ul>
 
@@ -478,6 +517,45 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#span-style-color-orange-1-camera-and-color-sensor-span">
    <span style="color:orange;">
     1. Camera and Color Sensor
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-detecting-specific-colors-span">
+   <span style="color:orange;">
+    2. Detecting Specific Colors
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
    </span>
   </a>
  </li>
@@ -525,8 +603,33 @@ title="Print to PDF"
 </section>
 <section id="span-style-color-orange-1-camera-and-color-sensor-span">
 <h2><span style="color:orange;"> 1. Camera and Color Sensor </span><a class="headerlink" href="#span-style-color-orange-1-camera-and-color-sensor-span" title="Permalink to this headline">#</a></h2>
-<p>In the Color Labs, you made use of a color sensor to detect the color of M&amp;Ms and in the previous labs from the Video Labs you have learned how to record, analyze, and modify a video. In this lab, you will be combining the capabilities of both sensors. As the Arducam HM01B0 doesn’t pick up color, only shades of gray, you cannot detect color with it, that is, unless, you know what colors the grayscale values line up with. Use the wiring instructions from Lab 04 to connect the TCS34725 color sensor to the same breadboard you are using for the camera.</p>
+<p>In the Color Labs, you made use of a color sensor to detect the color of M&amp;Ms and in the previous labs from the Video Labs you have learned how to record, analyze, and modify a video. In this lab, you will be combining the capabilities of both sensors. As the Arducam HM01B0 doesn’t pick up color, only shades of gray, you cannot detect color with it, that is, unless, you know what colors the grayscale values line up with.</p>
+<section id="span-style-color-red-exercise-1-span">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
+<p>Use the wiring instructions from Lab 04 to connect the TCS34725 color sensor to the same breadboard you are using for the camera. Once the color sensor is connected, find the color vector associated with each of the individual M&amp;M colors. Using the techniques you learned in Lab 03, apply the grayscaling function to each of these colors to determine what the M&amp;M colors line up with in shades of gray.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
+<section id="span-style-color-red-exercise-2-span">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
+<p>Now that you have the M&amp;M value colors as the camera would pick them up, try detecting the colors in real time as you did in Lab 04, but this time using the camera instead.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3></section>
 </section>
+<section id="span-style-color-orange-2-detecting-specific-colors-span">
+<h2><span style="color:orange;"> 2. Detecting Specific Colors </span><a class="headerlink" href="#span-style-color-orange-2-detecting-specific-colors-span" title="Permalink to this headline">#</a></h2>
+<p>During the M&amp;M color detection lab, you were able to display the color of the individual M&amp;M being held in front of the color sensor. However, this method would be inefficient in the case of having a pile of M&amp;Ms, as you would need to individually hold each one up and sort them one-by-one. But with the camera, you can detect multiple instances at the same time as it’s picking up a field of vision rather than just one point. Using this functionality will help in picking out specific colors in a pile.</p>
+<p>One of the things you can do with the camera is have it “highlight” certain regions based on defined factors. For example, you can have it display a red box around the moving object by analyzing the differences between frames.</p>
+<p><strong>Include example</strong></p>
+<section id="span-style-color-red-exercise-3-span">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
+<p>Using the previous example and exercises, write a function that picks out the red M&amp;Ms in a pile.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
+</section>
+<section id="span-style-color-green-reflection-span">
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<h3 style="background-color:lightblue"> Write Answers for the Reflection Below </h3></section>
 </section>
 
     <script type="text/x-thebe-config">
