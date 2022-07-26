@@ -1,4 +1,4 @@
-# Introduction
+# About This Course
 ## The Data Science Labs on Multivariable Calculus
 **By Kindyl King and Mireille Boutin with Alden Bradford**
 
