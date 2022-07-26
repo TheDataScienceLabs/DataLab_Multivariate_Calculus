@@ -501,6 +501,36 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-repeat-with-your-own-video-span">
+   <span style="color:orange;">
+    2. Repeat with Your Own Video
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
    <span style="color:green">
     Reflection
@@ -584,6 +614,36 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
      <span style="color:red">
       Exercise 5
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-2-repeat-with-your-own-video-span">
+   <span style="color:orange;">
+    2. Repeat with Your Own Video
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <span style="color:red">
+      Exercise 6
      </span>
     </a>
    </li>
@@ -773,6 +833,71 @@ That means in the last equation the velocity components <span class="math notran
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
 <p>Fill in the code below to compute the magnitude and direction of the velocity vectors at each pixel location. Now we can visualize how the vector field changes from frame to frame and in what direction the objects in the frame are moving.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
+<span class="n">width</span>  <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span> 
+<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.25</span>
+
+<span class="n">ret</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
+<span class="n">prvs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="n">hsv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">frame1</span><span class="p">)</span>
+<span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span> <span class="c1"># always at full saturation</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">frame2</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read frame. Exiting ...&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">prvs</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                    <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
+                    <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
+                    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">poly_n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
+                    <span class="n">poly_sigma</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># compute magnitute and angle for each vector in flow</span>
+    <span class="c1"># mag and ang should have the same dimensions as the variable next </span>
+    <span class="n">mag</span> <span class="o">=</span> <span class="c1"># fill in</span>
+    <span class="n">ang</span> <span class="o">=</span> <span class="c1"># fill in</span>
+
+    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ang</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># converts radians to degrees</span>
+    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">mag</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
+
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;frame2&#39;</span><span class="p">,</span><span class="n">rgb</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
+        <span class="k">break</span>
+    <span class="n">prvs</span> <span class="o">=</span> <span class="nb">next</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="span-style-color-orange-2-repeat-with-your-own-video-span">
+<h2><span style="color:orange;"> 2. Repeat with Your Own Video </span><a class="headerlink" href="#span-style-color-orange-2-repeat-with-your-own-video-span" title="Permalink to this headline">#</a></h2>
+<p>As you did in the previous lab, you will be repeating some of exercises again with your own recorded video. You may use the video you recorded last time, or you can record a new one. When making this decision, take into account what is being done in the lab and consider if the video you have will produce good results.</p>
+<section id="span-style-color-red-exercise-6-span">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
+<p>Record a (or use the previously recorded) video and save it.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
+<section id="id1">
+<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Pick two frames to calculate <code class="docutils literal notranslate"><span class="pre">flow</span></code>.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3></section>
+<section id="id2">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>Fill in the code below to compute the magnitude and direction of the velocity vectors at each pixel location.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
