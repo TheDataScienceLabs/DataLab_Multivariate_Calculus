@@ -6,52 +6,54 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; The Data Science Labs on Multivariable Calculus</title>
+    <title>2. Loops Versus Vector Operations (comparing CPU times) &#8212; The Data Science Labs on Multivariable Calculus</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -86,14 +88,14 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
       
       
       
       <h1 class="site-logo" id="site-title">The Data Science Labs on Multivariable Calculus</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -101,7 +103,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
+                <a class="reference internal" href="../../../intro.html">
                     About This Course
                 </a>
             </li>
@@ -113,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../0_Introduction/lab0.html">
+  <a class="reference internal" href="../../0_Introduction/lab0.html">
    Week 1: Introduction
   </a>
  </li>
@@ -125,27 +127,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab01.html">
+  <a class="reference internal" href="lab01.html">
    Week 2: Color as a Vector
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/2_Human_Perception/lab02.html">
+  <a class="reference internal" href="../2_Human_Perception/lab02.html">
    Week 3: Human Perception of Color
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/3_Color_Quantization/lab03.html">
+  <a class="reference internal" href="../3_Color_Quantization/lab03.html">
    Week 4: Color Quantization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/4_MnMs/lab04.html">
+  <a class="reference internal" href="../4_MnMs/lab04.html">
    Week 5: Detect the Color of M&amp;Ms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/5_Edge_Detection/lab05.html">
+  <a class="reference internal" href="../5_Edge_Detection/lab05.html">
    Week 6: Edge Detection in Images
   </a>
  </li>
@@ -157,32 +159,32 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab07.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab07.html">
    Week 8: Acquiring and Manipulating Videos
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab08.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab08.html">
    Week 9: Optical Flow
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab09.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab09.html">
    Week 10: Motion Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab10.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab10.html">
    Week 11: Motion Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab11.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab11.html">
    Week 12: Red M&amp;M Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Video_Labs/lab12.html">
+  <a class="reference internal" href="../../2_Video_Labs/lab12.html">
    Week 13: Moving Red M&amp;M Detection
   </a>
  </li>
@@ -194,7 +196,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../3_Integration_Labs/lab08.html">
+  <a class="reference internal" href="../../3_Integration_Labs/lab08.html">
    Week 9: Numerical Integration
   </a>
  </li>
@@ -206,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="lab09.html">
+  <a class="reference internal" href="../../4_Greens_Theorem_Labs/lab09.html">
    Week 13 (12-13?): Build a Planimeter
   </a>
  </li>
@@ -218,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../Final_Project/labfinal.html">
+  <a class="reference internal" href="../../Final_Project/labfinal.html">
    Weeks 14-15: Final Project
   </a>
  </li>
@@ -273,6 +275,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/1_Color_Labs/1_Color_Vector/loop_exercises.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -312,7 +343,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/4_Greens_Theorem_Labs/planimeter_lab_outline.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/1_Color_Labs/1_Color_Vector/loop_exercises.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -340,7 +371,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/labs/4_Greens_Theorem_Labs/planimeter_lab_outline.md"
+        <a href="../../../_sources/labs/1_Color_Labs/1_Color_Vector/loop_exercises.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -351,7 +382,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -398,7 +429,30 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <span style="color:orange;">
+    2. Loops Versus Vector Operations (comparing CPU times)
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+   <span style="color:red">
+    Exercise 4
+   </span>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -408,7 +462,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1><span style="color:orange;"> 2. Loops Versus Vector Operations (comparing CPU times) </span></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -417,7 +471,30 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <span style="color:orange;">
+    2. Loops Versus Vector Operations (comparing CPU times)
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+   <span style="color:red">
+    Exercise 4
+   </span>
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -428,20 +505,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>Here is a rough outline of what needs to be done for the first planimeter lab (week 12).</p>
-<ul class="simple">
-<li><p>Give instructions on how to wire up/assemble the planimeter</p></li>
-<li><p>Have them print out a PDF (we need to make this) with some geometric shapes of known areas. These should include:</p>
-<ul>
-<li><p>a square, so that they can measure the side lengths to find the area and calibrate their planimeter</p></li>
-<li><p>a circle with a diameter equal to the square sidelength, so that they can predict what the planimeter will read and check their answer.</p></li>
-<li><p>a complicated geometric shape composed of simpler shapes, so they can compare the methods of finding the area.</p></li>
-<li><p>a curved region which they don’t have another way to compute</p></li>
-<li><p>a plot of the curve y=e^(-x^2) between 0 and 1, with vertical lines at 0 and 1, with an equal aspect ratio.</p></li>
-</ul>
-</li>
-</ul>
-<p>Besides that, we still need to make sure the planimeter is working as expected (giving answers to a reasonable degree of precision). You may have to try a couple surfaces to run it on, since some tables are too grippy. If it is really not working, we can change to geometry to give it a better shot at success. An example bit of code is provided to get readings off the potentiometer.</p>
+  <p>We could add this section after section 1</p>
+<section id="span-style-color-orange-2-loops-versus-vector-operations-comparing-cpu-times-span">
+<h1><span style="color:orange;"> 2. Loops Versus Vector Operations (comparing CPU times) </span><a class="headerlink" href="#span-style-color-orange-2-loops-versus-vector-operations-comparing-cpu-times-span" title="Permalink to this headline">#</a></h1>
+<p>This is a good time to practice loops!</p>
+<section id="span-style-color-red-exercise-3-span">
+<h2><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h2>
+<p>Use a loop to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 three pixel wide yellow vertical lines on a blue background.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><p>When running computations, it is sometimes desirable to find out how much CPU time was taken for the computation to be performed. One way to do this is to COMPLETE THIS. An example is shown below.</p>
+</section>
+</section>
+<section id="span-style-color-red-exercise-4-span">
+<h1><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h1>
+<p>Use two embedded loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 orange squares of side-length equal to 5 pixels equally spread on a purple background. Compute the CPU time required for your computation.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><p>You may have noticed that your computation took a lot of time. There are better ways to</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -456,7 +534,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./labs/4_Greens_Theorem_Labs"
+            path: "./labs/1_Color_Labs/1_Color_Vector"
         },
         predefinedOutput: true
     }
@@ -491,7 +569,7 @@ title="Print to PDF"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
