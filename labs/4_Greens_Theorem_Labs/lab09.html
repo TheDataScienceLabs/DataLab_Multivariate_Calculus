@@ -493,6 +493,31 @@ title="Print to PDF"
      </span>
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-derivation-for-a-polar-planimeter">
+     The derivation for a polar planimeter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#change-of-coordinates">
+     Change of coordinates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#putting-the-formula-together">
+     Putting the formula together
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -603,6 +628,31 @@ title="Print to PDF"
      <span style="color:red">
       Exercise 4
      </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-derivation-for-a-polar-planimeter">
+     The derivation for a polar planimeter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#change-of-coordinates">
+     Change of coordinates
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#putting-the-formula-together">
+     Putting the formula together
     </a>
    </li>
   </ul>
@@ -798,13 +848,100 @@ Differentiating both sides of <span class="math notranslate nohighlight">\(x^2 +
 <p>Show that the area of <span class="math notranslate nohighlight">\(D\)</span> is <span class="math notranslate nohighlight">\(L\)</span> times the total wheel roll after tracing the curve <span class="math notranslate nohighlight">\(C\)</span> counter-clockwise.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><p>Great job! One pretty remarkable fact is that at the end, the wheel placement - the length <span class="math notranslate nohighlight">\(l\)</span> - didn’t matter at all! Now we know exactly how a rolling planimeter works. The derivation for how polar planimeters calculate area is very similar. The big difference is that the integration is done in polar coordinates instead of Cartesian coordinates.</p>
 </section>
+<section id="the-derivation-for-a-polar-planimeter">
+<h3>The derivation for a polar planimeter<a class="headerlink" href="#the-derivation-for-a-polar-planimeter" title="Permalink to this headline">#</a></h3>
+<p>We begin by imposing a coordinate system. Place the stationary pivot at the origin and the tracer at a point <span class="math notranslate nohighlight">\((x, y)\)</span>. The “elbow” will be constrained to be at <span class="math notranslate nohighlight">\((a, b)\)</span>, a point <span class="math notranslate nohighlight">\(R\)</span> units from the origin and <span class="math notranslate nohighlight">\(L\)</span> units from <span class="math notranslate nohighlight">\((x, y)\)</span>. In this way, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>We place the measuring wheel a distance <span class="math notranslate nohighlight">\(\ell\)</span> from the elbow, along the tracer arm. Let <span class="math notranslate nohighlight">\(S\)</span> denote the distance from the wheel to the origin, and <span class="math notranslate nohighlight">\(Z\)</span> the distance from the tracer to the origin. Let <span class="math notranslate nohighlight">\(c=x-a\)</span>, and <span class="math notranslate nohighlight">\(d=y-b\)</span>. Then we can summarize many of the relationships succinctly:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a^2+b^2&amp;=R^2\\
+c^2+d^2&amp;=L^2\\
+x^2+y^2&amp;=z^2
+\end{align*}\]</div>
+<p>The most straightforward way to decompose the motions of the arm are by rotations at the pivots. For this reason, we define a few angles: <span class="math notranslate nohighlight">\(\theta\)</span> the angle from the elbow to the origin, <span class="math notranslate nohighlight">\(\phi\)</span> the exterior angle between the two arms, and <span class="math notranslate nohighlight">\(\psi\)</span> the angle between the tracer arm and a line extending from the origin, at the position of the wheel. All this is summarized in <a class="reference external" href="https://www.geogebra.org/calculator/btjmzmam">the following diagram</a>:</p>
+<p><img alt="a diagram of the geometry described above" src="../../_images/polar_derivation.png" /></p>
+<p>Let <span class="math notranslate nohighlight">\(w\)</span> denote the amount the wheel moves. Clearly <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \phi}=\ell\)</span>. Furthermore, since the wheel only picks up the component of its motion perpendicular to the rod, <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \theta} = S\cos\psi\)</span>. The chain rule allows us to write the change in <span class="math notranslate nohighlight">\(w\)</span> in terms of its component parts,</p>
+<p>\[
+dw = \ell d\phi + S\cos\psi d\theta.
+\]</p>
+<p>Since we are controlling the motion of the planimeter at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we should do what we can to put this formula in terms of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Notice the projection of line <span class="math notranslate nohighlight">\(S\)</span> onto <span class="math notranslate nohighlight">\(L\)</span> is just <span class="math notranslate nohighlight">\(\ell\)</span> units more than the projection of line <span class="math notranslate nohighlight">\(R\)</span> onto <span class="math notranslate nohighlight">\(L\)</span>. Therefore,</p>
+<p>\[
+S\cos\psi = R\cos\phi +\ell.
+\]</p>
+<p>We can go a step further and apply the law of cosines,</p>
+<p>\[
+Z^2=R^2+L^2+2RL\cos\phi,
+\]</p>
+<p>to get rid of the <span class="math notranslate nohighlight">\(\cos\phi\)</span>. All together, this gives us a nicer formula,</p>
+<p>\[
+dw = \ell d\phi + \left(\ell + \frac{Z^2-R^2-L^2}{2L}\right)d\theta.
+\]</p>
+<p>This is a nicer formula because everything except <span class="math notranslate nohighlight">\(Z\)</span> is a constant.</p>
+</section>
+<section id="exercise">
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h3>
+<p>Explain why <span class="math notranslate nohighlight">\(\oint \ell d\phi\)</span> and <span class="math notranslate nohighlight">\(\oint \ell-\frac{R^2+L^2}{2L}d\theta\)</span> are both zero, when you integrate over an entire loop. Explain how this reduces the integral to <span class="math notranslate nohighlight">\(w=\oint dw = \oint \frac{Z^2}{2L}d\theta\)</span>.</p>
+</section>
+<section id="change-of-coordinates">
+<h3>Change of coordinates<a class="headerlink" href="#change-of-coordinates" title="Permalink to this headline">#</a></h3>
+<p>Our goal is to apply Green’s theorem, which is given in Cartesian coordinates as</p>
+<p>\[
+\oint Pdx+Qdy = \iint \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} dxdy.
+\]</p>
+<p>To get our integral into Cartesian coordinates we will use the chain rule. In this case that gives</p>
+<p>\[
+d\theta = \frac{\partial \theta}{\partial x}dx + \frac{\partial \theta}{\partial y}dy.
+\]</p>
+<p>What is the formula for <span class="math notranslate nohighlight">\(\theta\)</span> in terms of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>? We can find the angle between <span class="math notranslate nohighlight">\((a, b)\)</span> and <span class="math notranslate nohighlight">\((x, y)\)</span> using the law of cosines,</p>
+<p>\[
+\arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right).
+\]</p>
+<p>The total angle from <span class="math notranslate nohighlight">\((x, y)\)</span> to the origin is <span class="math notranslate nohighlight">\(\arctan(y/x)\)</span>. <span class="math notranslate nohighlight">\(\theta\)</span> must therefore be their difference,</p>
+<p>\[
+\theta = \arctan(y/x)-\arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right).
+\]</p>
+<p>From this we can compute the derivatives we need. Actually, to keep things tidy, let’s write <span class="math notranslate nohighlight">\(h(Z)=-\arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right)\)</span>. For reasons which will become apparent, we won’t actually need to compute the derivatives of <span class="math notranslate nohighlight">\(h\)</span>, so it’s better to leave it symbolic.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\theta &amp;= \arctan(y/x) + h(Z)\\
+\frac{\partial \theta}{\partial x} &amp;=-\frac{y}{Z^2} + \frac{x}{Z}h'(z)\\
+\frac{\partial \theta}{\partial y} &amp;= \frac{x}{Z^2} + \frac{y}{Z}h'(Z)
+\end{align*}\]</div>
+</section>
+<section id="id1">
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Explain why
+\[
+\frac{\partial}{\partial x} h(Z) = \frac{x}{Z} h’(Z).
+\]</p>
+</section>
+<section id="putting-the-formula-together">
+<h3>Putting the formula together<a class="headerlink" href="#putting-the-formula-together" title="Permalink to this headline">#</a></h3>
+<p>All this comes together into one grand formula:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+w &amp;= \oint \frac{Z^2}{2L}d\theta\\
+&amp;=\oint  \left(-\frac{y}{2L}+\frac{xZ}{2L}h'(Z)\right) dx + \left(\frac{x}{2L}+\frac{yZ}{2L}h'(Z)\right)dy\\
+&amp;=\oint Pdx+Qdy
+\end{align*}\]</div>
+<p>We are now ready to apply the Green’s theorem. We will need some partial derivatives.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{\partial Q}{\partial x} &amp;= \frac{1}{2L} +\frac{xy}{2LZ}\frac{\partial (Zh'(Z))}{\partial Z}\\
+\frac{\partial P}{\partial y} &amp;= \frac{-1}{2L} +\frac{xy}{2LZ}\frac{\partial (Zh'(Z))}{\partial Z}
+\end{align*}\]</div>
+<p>Now it is clear why we don’t need to worry about computing <span class="math notranslate nohighlight">\(h'(Z)\)</span>. When we subtract, those terms will cancel.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)dxdy\\
+&amp;= \iint \frac{1}{L}dxdy
+\end{align*}\]</div>
+<p>There we have it: the distance on the wheel will be exactly the area of the region, divided by the tracer arm length L.</p>
+</section>
 </section>
 <section id="span-style-color-orange-3-building-a-planimeter-span">
 <h2><span style="color:orange;"> 3. Building a Planimeter </span><a class="headerlink" href="#span-style-color-orange-3-building-a-planimeter-span" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Find some sort of rolling platform to put the breadboard on</p></li>
-<li><p>2 types of rotary encoders in the lab</p></li>
-</ul>
+<p>TODO: include directions for how to wire the planimeter we use.</p>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
 <p>To test out your planimeter, measure some well known shapes like circles, rectangles, etc.
