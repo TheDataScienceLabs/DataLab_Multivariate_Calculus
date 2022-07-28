@@ -1,8 +1,8 @@
-Here is a rough outline of what needs to be done for the first planimeter lab.
+Here is a rough outline of what needs to be done for the first planimeter lab (week 12).
 
 - Give instructions on how to wire up/assemble the planimeter
 
-- Have them print out a PDF (we need to make this) with some geometric shapes of known areas. Thes should include:
+- Have them print out a PDF (we need to make this) with some geometric shapes of known areas. These should include:
 
 	- a square, so that they can measure the side lengths to find the area and calibrate their planimeter
 	- a circle with a diameter equal to the square sidelength, so that they can predict what the planimeter will read and check their answer.
