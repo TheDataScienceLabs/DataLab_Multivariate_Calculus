@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Week 13: Moving Red M&amp;M Detection &#8212; The Data Science Labs on Multivariable Calculus</title>
+    <title>&lt;no title&gt; &#8212; The Data Science Labs on Multivariable Calculus</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 12-13: Build a Planimeter" href="../4_Greens_Theorem_Labs/lab09.html" />
-    <link rel="prev" title="Week 12: Build a Red M&amp;M Detector" href="lab11.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -157,35 +155,30 @@ const thebe_selector_output = ".output, .cell_output"
   Video
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="lab07.html">
+  <a class="reference internal" href="../2_Video_Labs/lab07.html">
    Week 8: Acquiring and Manipulating Videos
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lab08.html">
+  <a class="reference internal" href="../2_Video_Labs/lab08.html">
    Week 9: Optical Flow
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lab09.html">
+  <a class="reference internal" href="../2_Video_Labs/lab09.html">
    Week 10: Motion Detection
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lab10.html">
+  <a class="reference internal" href="../2_Video_Labs/lab10.html">
    Week 11: Build a real-time Motion Detector
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lab11.html">
+  <a class="reference internal" href="../2_Video_Labs/lab11.html">
    Week 12: Build a Red M&amp;M Detector
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Week 13: Moving Red M&amp;M Detection
   </a>
  </li>
 </ul>
@@ -196,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../4_Greens_Theorem_Labs/lab09.html">
+  <a class="reference internal" href="lab12.html">
    Week 12-13: Build a Planimeter
   </a>
  </li>
@@ -263,35 +256,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/2_Video_Labs/lab12.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -331,7 +295,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/2_Video_Labs/lab12.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/3_Greens_Theorem_Labs/planimeter_lab_outline.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -359,7 +323,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/labs/2_Video_Labs/lab12.ipynb"
+        <a href="../../_sources/labs/3_Greens_Theorem_Labs/planimeter_lab_outline.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -370,7 +334,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="headerbtn__text-container">.md</span>
 </a>
 
       </li>
@@ -417,21 +381,7 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
-   <span style="color:orange;">
-    00. Content
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
-   <span style="color:orange;">
-    0. Required Hardware
-   </span>
-  </a>
- </li>
+        <ul class="simple visible nav section-nav flex-column">
 </ul>
 
     </nav>
@@ -441,7 +391,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Week 13: Moving Red M&M Detection</h1>
+                <h1><no title></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -450,21 +400,7 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
-   <span style="color:orange;">
-    00. Content
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
-   <span style="color:orange;">
-    0. Required Hardware
-   </span>
-  </a>
- </li>
+                            <ul class="simple visible nav section-nav flex-column">
 </ul>
 
                         </nav>
@@ -475,44 +411,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="week-13-moving-red-m-m-detection">
-<h1>Week 13: Moving Red M&amp;M Detection<a class="headerlink" href="#week-13-moving-red-m-m-detection" title="Permalink to this headline">#</a></h1>
-<p><font size="6"> Laboratory 12 </font> <br>
-<font size="3"> Last updated July 25, 2022 </font></p>
-<section id="span-style-color-orange-00-content-span">
-<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
-<p><font size="5"> Mathematics </font></p>
+  <p>Here is a rough outline of what needs to be done for the first planimeter lab (week 12).</p>
 <ul class="simple">
-<li><p>Type here</p></li>
+<li><p>Give instructions on how to wire up/assemble the planimeter</p></li>
+<li><p>Have them print out a PDF (we need to make this) with some geometric shapes of known areas. These should include:</p>
+<ul>
+<li><p>a square, so that they can measure the side lengths to find the area and calibrate their planimeter</p></li>
+<li><p>a circle with a diameter equal to the square sidelength, so that they can predict what the planimeter will read and check their answer.</p></li>
+<li><p>a complicated geometric shape composed of simpler shapes, so they can compare the methods of finding the area.</p></li>
+<li><p>a curved region which they don’t have another way to compute</p></li>
+<li><p>a plot of the curve y=e^(-x^2) between 0 and 1, with vertical lines at 0 and 1, with an equal aspect ratio.</p></li>
 </ul>
-<p><font size="5"> Programming Skills </font></p>
-<ul class="simple">
-<li><p>Type here</p></li>
+</li>
 </ul>
-<p><font size="5"> Embedded Systems </font></p>
-<ul class="simple">
-<li><p>Type here</p></li>
-</ul>
-</section>
-<section id="span-style-color-orange-0-required-hardware-span">
-<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Type here</p></li>
-</ul>
-<h3 style="background-color:lightblue"> Write your name and email below: </h3>
-<p><strong>Name:</strong> me</p>
-<p><strong>Email:</strong> me &#64;purdue.edu</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
+<p>Besides that, we still need to make sure the planimeter is working as expected (giving answers to a reasonable degree of precision). You may have to try a couple surfaces to run it on, since some tables are too grippy. If it is really not working, we can change to geometry to give it a better shot at success. An example bit of code is provided to get readings off the potentiometer.</p>
 
     <script type="text/x-thebe-config">
     {
@@ -527,7 +439,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./labs/2_Video_Labs"
+            path: "./labs/3_Greens_Theorem_Labs"
         },
         predefinedOutput: true
     }
@@ -541,20 +453,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lab11.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Week 12: Build a Red M&amp;M Detector</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../4_Greens_Theorem_Labs/lab09.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 12-13: Build a Planimeter</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
