@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>2. Loops Versus Vector Operations (comparing CPU times) &#8212; The Data Science Labs on Multivariable Calculus</title>
+    <title>2. Loops vs. Vector Operations &#8212; The Data Science Labs on Multivariable Calculus</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -408,17 +408,45 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
-   <span style="color:red">
-    Exercise 3
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <span style="color:orange;">
+    2. Loops vs. Vector Operations
    </span>
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+     <span style="color:red">
+      Exercise 4
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dithering">
+     Dithering
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
-   <span style="color:red">
-    Exercise 4
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green;">
+    Reflection
    </span>
   </a>
  </li>
@@ -431,7 +459,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><span style="color:orange;"> 2. Loops Versus Vector Operations (comparing CPU times) </span></h1>
+                <h1><span style="color:orange;"> 2. Loops vs. Vector Operations </span></h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -441,17 +469,45 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
-   <span style="color:red">
-    Exercise 3
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   <span style="color:orange;">
+    2. Loops vs. Vector Operations
    </span>
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span">
+     <span style="color:red">
+      Exercise 3
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
+     <span style="color:red">
+      Exercise 4
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span">
+     <span style="color:red">
+      Exercise 5
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dithering">
+     Dithering
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
-   <span style="color:red">
-    Exercise 4
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green;">
+    Reflection
    </span>
   </a>
  </li>
@@ -465,36 +521,146 @@ title="Print to PDF"
                 
               <div>
                 
-  <p>Section 1 + this lab renamed to lab01 and make neopixel stuff lab01_5</p>
-<section id="span-style-color-orange-2-loops-versus-vector-operations-comparing-cpu-times-span">
-<h1><span style="color:orange;"> 2. Loops Versus Vector Operations (comparing CPU times) </span><a class="headerlink" href="#span-style-color-orange-2-loops-versus-vector-operations-comparing-cpu-times-span" title="Permalink to this headline">#</a></h1>
-<p>This is a good time to practice loops!</p>
-<section id="span-style-color-red-exercise-3-span">
-<h2><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h2>
-<p>Use a loop to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 three pixel wide yellow vertical lines on a blue background.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
+  <section id="span-style-color-orange-2-loops-vs-vector-operations-span">
+<h1><span style="color:orange;"> 2. Loops vs. Vector Operations </span><a class="headerlink" href="#span-style-color-orange-2-loops-vs-vector-operations-span" title="Permalink to this headline">#</a></h1>
+<p>Loops have been a staple in our programming so far, but they have their drawbacks.
+As we work with large images in the coming sections, loops will slow down our code significantly.
+Python has a module <code class="docutils literal notranslate"><span class="pre">timeit</span></code> that allows us to compare CPU (central processing unit) times for different pieces of code to run. For example, let’s see how long it takes to add two numbers.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
-    <span class="k">pass</span>
+    <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="k">return</span>
 
 <span class="o">%</span><span class="k">timeit</span> myfunc()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>63 ns ± 0.823 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61.3 ns ± 1 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>When running computations, it is sometimes desirable to find out how much CPU time was taken for the computation to be performed. One way to do this is to COMPLETE THIS. An example is shown below.</p>
-</section>
+<section id="span-style-color-red-exercise-3-span">
+<h2><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h2>
+<p>Use loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 three pixel wide yellow vertical lines on a blue background. Compute the CPU time required for your computation.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
 <section id="span-style-color-red-exercise-4-span">
 <h2><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h2>
-<p>Use two embedded loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 orange squares of side-length equal to 5 pixels equally spread on a purple background. Compute the CPU time required for your computation.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><p>You may have noticed that your computation took a lot of time. There are better ways to</p>
+<p>Use loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 orange squares of side-length equal to 5 pixels equally spread on a purple background. Compute the CPU time required for your computation.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
+<section id="span-style-color-red-exercise-5-span">
+<h2><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h2>
+<p><strong>Part 1:</strong> In the cell below, briefly describe the similiarities and difference between function <code class="docutils literal notranslate"><span class="pre">f1</span></code> and <code class="docutils literal notranslate"><span class="pre">f2</span></code> and report which function is faster (with evidence).</p>
+<p><strong>Part 2:</strong> Speed up the operations from Exercises 3 &amp; 4 and show the differences in computation time. For example, can you set the whole first column of an image to the color yellow in one line of code?</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100</span>
+    <span class="k">return</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
+    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100</span>
+    <span class="k">return</span>
+
+<span class="o">%</span><span class="k">timeit</span> f1()
+
+<span class="o">%</span><span class="k">timeit</span> f2()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>740 ns ± 21.2 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+174 ns ± 3.27 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dithering">
+<h2>Dithering<a class="headerlink" href="#dithering" title="Permalink to this headline">#</a></h2>
+<p>So far, when we choose a color to display we have 256 choices for the red channel value, 256 choices for the green channel and another 256 choices for blue.
+In total, that is <span class="math notranslate nohighlight">\(256 \times 256 \times 256 = 16,777,216\)</span> colors available to us, but clearly there is an infinite number of colors.
+Dithering is the process of adding patterns in an image to create the visual effect of colors outside of a fixed color palette.</p>
+<p>Suppose that we can only use the colors red and yellow. We can create the illusion of orange by displaying red and yellow pixels in a large checkerboard pattern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 0: red</span>
+                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 1: green</span>
+                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="c1"># index 2: blue</span>
+                    <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="c1"># index 3: white</span>
+                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 4: black</span>
+                    <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">]</span>  <span class="c1"># index 5: yellow</span>
+                    <span class="p">])</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>     <span class="c1"># make the pattern using the index of the color           </span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>               <span class="c1"># 0=red, 5=yellow</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>   <span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">pattern</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">))])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/loop_exercises_9_0.png" src="../../../_images/loop_exercises_9_0.png" />
+</div>
+</div>
+<p>Next week we will be using small programmable LED lights called NeoPixels to create color patterns and light shows. Dithering is applied within the hardware of the NeoPixels to display a wide range of colors, but the color palette is much larger than simply bright red and yellow. We have red, green, and blue in varying intensities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">150</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 0: dimmer red</span>
+                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 1: dimmer green</span>
+                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>  <span class="c1"># index 2: blue</span>
+                    <span class="p">])</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>     <span class="c1"># make the pattern using the index of the color       </span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>              
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>   <span class="p">])</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">pattern</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">))])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/loop_exercises_12_0.png" src="../../../_images/loop_exercises_12_0.png" />
+</div>
+</div>
+<h3 style="color:green;"><left> Sandbox </left></h3>
+Sandboxes are a place for you to experiment with the code you've seen so far. Any code you write in a sandbox will not be graded.
+<p><span style="color:green;"><left> Try out some other patterns with different colors.  </left></span></p>
 </section>
 </section>
+<section id="span-style-color-green-reflection-span">
+<h1><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h1>
+<p>Do not skip this section! It will be graded only on completion.</p>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<h3 style="background-color:lightblue"> Write Answers for the Reflection Below </h3></section>
 
     <script type="text/x-thebe-config">
     {
