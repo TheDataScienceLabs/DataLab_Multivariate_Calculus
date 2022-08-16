@@ -474,8 +474,29 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
+     <span style="color:red">
+      Exercise 7
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dithering">
      Dithering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
+     <span style="color:red">
+      Exercise 8
+     </span>
     </a>
    </li>
   </ul>
@@ -572,8 +593,29 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span">
+     <span style="color:red">
+      Exercise 6
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
+     <span style="color:red">
+      Exercise 7
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dithering">
      Dithering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
+     <span style="color:red">
+      Exercise 8
+     </span>
     </a>
    </li>
   </ul>
@@ -598,7 +640,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="week-2-color-as-a-vector-part-1">
 <h1>Week 2: Color as a Vector - Part 1<a class="headerlink" href="#week-2-color-as-a-vector-part-1" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 1 </font> <br>
-<font size="3"> Last updated Aug 17, 2022 </font></p>
+<font size="3"> Last updated Aug 16, 2022 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -740,7 +782,8 @@ title="Print to PDF"
 <section id="span-style-color-orange-2-loops-vs-vector-operations-span">
 <h2><span style="color:orange;"> 2. Loops vs. Vector Operations </span><a class="headerlink" href="#span-style-color-orange-2-loops-vs-vector-operations-span" title="Permalink to this headline">#</a></h2>
 <p>Loops have been a staple in our programming so far, but they have their drawbacks.
-As we work with large images in the coming sections, loops will slow down our code significantly.
+As we work with large images (which are just large arrays) in the coming sections, loops may slow down your code significantly.
+Numpy’s functions are vectorized, meaning they are optimized to do computations strictly on numerical inputs and are much faster compared to using for loops in Python to compute, for example, the sum of values in a specific row.
 Python has a module <code class="docutils literal notranslate"><span class="pre">timeit</span></code> that allows us to compare CPU (central processing unit) times for different pieces of code to run. For example, let’s see how long it takes to add two numbers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -752,52 +795,65 @@ Python has a module <code class="docutils literal notranslate"><span class="pre"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>61.3 ns ± 1 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
-</pre></div>
 </div>
-</div>
-</div>
+<p><strong>Warning:</strong> Make sure there are no print statements or plotting functions called within the function you want to time. Since <code class="docutils literal notranslate"><span class="pre">timeit</span></code> calls your function over a million times, you do not want to be printing over a million lines!</p>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
-<p>Use loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 three pixel wide yellow vertical lines on a blue background. Compute the CPU time required for your computation.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
+<p>Write a function to manually compute the dot product between two vectors. Compare the CPU time for your function vs numpy’s dot function.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="span-style-color-red-exercise-4-span">
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
-<p>Use loops to create a <span class="math notranslate nohighlight">\(1000\times 1000\)</span> image consisting of 100 orange squares of side-length equal to 5 pixels equally spread on a purple background. Compute the CPU time required for your computation.</p>
+<p>Write a function to manually compute the cross product between two vectors. Compare the CPU time for your function vs numpy’s cross function.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
-<p><strong>Part 1:</strong> In the cell below, briefly describe the similiarities and difference between function <code class="docutils literal notranslate"><span class="pre">f1</span></code> and <code class="docutils literal notranslate"><span class="pre">f2</span></code> and report which function is faster (with evidence).</p>
-<p><strong>Part 2:</strong> Speed up the operations from Exercises 3 &amp; 4 and show the differences in computation time. For example, can you set the whole first column of an image to the color yellow in one line of code?</p>
+<p>Write a function with a parameter <span class="math notranslate nohighlight">\(n\)</span> to manually compute a randomly generated <span class="math notranslate nohighlight">\(n\times n\)</span> matrix multiplied by a randomly-generated <span class="math notranslate nohighlight">\(n\times 1\)</span> vector. Compare the CPU time for your function vs the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator. How do the times differ when <span class="math notranslate nohighlight">\(n\)</span> is large?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100</span>
-    <span class="k">return</span>
-
-<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
-    <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">100</span>
-    <span class="k">return</span>
-
-<span class="o">%</span><span class="k">timeit</span> f1()
-
-<span class="o">%</span><span class="k">timeit</span> f2()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s an example of matrix vector multiplication</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">@</span> <span class="n">b</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>740 ns ± 21.2 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
-174 ns ± 3.27 ns per loop (mean ± std. dev. of 7 runs, 10000000 loops each)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5, 11])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
+<section id="span-style-color-red-exercise-6-span">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
+<p><strong>Part 1:</strong> Display the outputs of functions <code class="docutils literal notranslate"><span class="pre">f1</span></code> and <code class="docutils literal notranslate"><span class="pre">f2</span></code> defined in the cell below.</p>
+<p><strong>Part 2:</strong> In a few sentences, describe the similarities and differences between the two functions and report which function is faster (with evidence).</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">8</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">img</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">img</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">img</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="span-style-color-red-exercise-7-span">
+<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
+<p>Look up the work of artist Piet Mondrian. In your own style, recreate a Mondrian-esqe painting using vectorized operations instead of mainly for loops.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3></section>
 <section id="dithering">
 <h3>Dithering<a class="headerlink" href="#dithering" title="Permalink to this headline">#</a></h3>
 <p>So far, when we choose a color to display we have 256 choices for the red channel value, 256 choices for the green channel and another 256 choices for blue.
@@ -832,11 +888,16 @@ Dithering is the process of adding patterns in an image to create the visual eff
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/loop_exercises_28_0.png" src="../../../_images/loop_exercises_28_0.png" />
 </div>
-</div>
-<p>Next week we will be using small programmable LED lights called NeoPixels to create color patterns and light shows. Dithering is applied within the hardware of the NeoPixels to display a wide range of colors, but the color palette is much larger than simply bright red and yellow. We have red, green, and blue in varying intensities.</p>
+</section>
+<section id="span-style-color-red-exercise-8-span">
+<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#span-style-color-red-exercise-8-span" title="Permalink to this headline">#</a></h3>
+<p>Recreate the three images above without using the <code class="docutils literal notranslate"><span class="pre">np.tile</span></code> function. You can use any other methods you’ve seen previously.
+Compare the CPU times to generate the set of images with your own function and the tile method given above.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 8 Below </h3><p>Next week we will be using small programmable LED lights called NeoPixels to create color patterns and light shows. Dithering is applied within the hardware of the NeoPixels to display a wide range of colors, but the color palette is much larger than simply bright red and yellow. We have red, green, and blue in varying intensities.</p>
+<h3 style="color:green;"><left> Sandbox </left></h3>
+Sandboxes are a place for you to experiment with the code you've seen so far. Any code you write in a sandbox will not be graded.
+<p><span style="color:green;"><left> Try out some other patterns with different colors.  </left></span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">150</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 0: dimmer red</span>
@@ -860,18 +921,12 @@ Dithering is the process of adding patterns in an image to create the visual eff
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../../_images/loop_exercises_31_0.png" src="../../../_images/loop_exercises_31_0.png" />
 </div>
-</div>
-<h3 style="color:green;"><left> Sandbox </left></h3>
-Sandboxes are a place for you to experiment with the code you've seen so far. Any code you write in a sandbox will not be graded.
-<p><span style="color:green;"><left> Try out some other patterns with different colors.  </left></span></p>
 </section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
-<p>Do not skip this section! It will be graded only on completion.</p>
+<p>Do not skip this section! It will be graded but only on completion.</p>
 <p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
 2. What are some things you learned today? <br>
 3. Are there any topics that could use more clarification? <br>
