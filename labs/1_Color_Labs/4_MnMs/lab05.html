@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Week 7: Different Types of Loops &#8212; The Data Science Labs on Multivariable Calculus</title>
+    <title>Week 6: Detect the Color of M&amp;Ms &#8212; The Data Science Labs on Multivariable Calculus</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Week 7: Edge Detection in Images" href="../5_Edge_Detection/lab06.html" />
+    <link rel="prev" title="Week 5: Color Quantization" href="../3_Color_Quantization/lab04.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -123,30 +125,35 @@ const thebe_selector_output = ".output, .cell_output"
   Color and Grayscale
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../1_Color_Vector/lab01.html">
+   Week 2: Color as a Vector - Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Vector/lab02.html">
    Week 3: Color as a Vector - Part 2
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../2_Human_Perception/lab02.html">
-   Week 3: Human Perception of Color
+  <a class="reference internal" href="../2_Human_Perception/lab03.html">
+   Week 4: Human Perception of Color
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../3_Color_Quantization/lab03.html">
-   Week 4: Color Quantization
+  <a class="reference internal" href="../3_Color_Quantization/lab04.html">
+   Week 5: Color Quantization
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Week 6: Detect the Color of M&amp;Ms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../4_MnMs/lab04.html">
-   Week 5: Detect the Color of M&amp;Ms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../5_Edge_Detection/lab05.html">
-   Week 6: Edge Detection in Images
+  <a class="reference internal" href="../5_Edge_Detection/lab06.html">
+   Week 7: Edge Detection in Images
   </a>
  </li>
 </ul>
@@ -259,7 +266,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/1_Color_Labs/6_Loops/lab06.ipynb"
+        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/1_Color_Labs/4_MnMs/lab05.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -319,7 +326,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/1_Color_Labs/6_Loops/lab06.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/1_Color_Labs/4_MnMs/lab05.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -347,7 +354,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../../_sources/labs/1_Color_Labs/6_Loops/lab06.ipynb"
+        <a href="../../../_sources/labs/1_Color_Labs/4_MnMs/lab05.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -420,6 +427,41 @@ title="Print to PDF"
    </span>
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span">
+   <span style="color:orange;">
+    1. RGB Color Sensors
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wiring-instructions">
+   Wiring Instructions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -429,7 +471,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Week 7: Different Types of Loops</h1>
+                <h1>Week 6: Detect the Color of M&Ms</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -453,6 +495,41 @@ title="Print to PDF"
    </span>
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span">
+   <span style="color:orange;">
+    1. RGB Color Sensors
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wiring-instructions">
+   Wiring Instructions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
+     <span style="color:red">
+      Exercise 1
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
+     <span style="color:red">
+      Exercise 2
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
+   <span style="color:green">
+    Reflection
+   </span>
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -463,43 +540,118 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="week-7-different-types-of-loops">
-<h1>Week 7: Different Types of Loops<a class="headerlink" href="#week-7-different-types-of-loops" title="Permalink to this headline">#</a></h1>
-<p><font size="6"> Laboratory 6 </font> <br>
-<font size="3"> Last updated July 22, 2022 </font></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-6-detect-the-color-of-m-ms">
+<h1>Week 6: Detect the Color of M&amp;Ms<a class="headerlink" href="#week-6-detect-the-color-of-m-ms" title="Permalink to this headline">#</a></h1>
+<p><font size="6"> Laboratory 5 </font> <br>
+<font size="3"> Last updated August 17, 2022 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
 <ul class="simple">
-<li><p>Type here</p></li>
+<li><p>3 dimensional vectors</p></li>
+<li><p>Distance</p></li>
 </ul>
 <p><font size="5"> Programming Skills </font></p>
 <ul class="simple">
-<li><p>Type here</p></li>
+<li><p>Modules</p></li>
 </ul>
 <p><font size="5"> Embedded Systems </font></p>
 <ul class="simple">
-<li><p>Type here</p></li>
+<li><p>Thonny and MicroPython</p></li>
 </ul>
 </section>
 <section id="span-style-color-orange-0-required-hardware-span">
 <h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Type here</p></li>
+<li><p>Raspberry Pi Pico</p></li>
+<li><p>RGB color sensor (TCS3472)</p></li>
+<li><p>OLED display</p></li>
 </ul>
 <h3 style="background-color:lightblue"> Write your name and email below: </h3>
 <p><strong>Name:</strong> me</p>
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
+<section id="span-style-color-orange-1-rgb-color-sensors-span">
+<h2><span style="color:orange;"> 1. RGB Color Sensors </span><a class="headerlink" href="#span-style-color-orange-1-rgb-color-sensors-span" title="Permalink to this headline">#</a></h2>
+<p>We’ve done a lot of theoretical work about color from learning about tristiulus vectors and metamers, but now let’s investigate a use for the RGB color space. The TCS3472 sensor we will be using can detect color and returns an RGB value. The sensor contains an infrared (IR) blocking filter for increased accuracy. IR light is light that has wavelengths of 800-1000 nm; it is invisible to us since humans only percieve wavelengths in the 400-700 nm range. If you want to learn more about this sensor, download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/4_MnMs/TCS34725.pdf">TCS34725.pdf</a>.</p>
+</section>
+<section id="wiring-instructions">
+<h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this headline">#</a></h2>
+<p>Please make sure your microcontroller is not plugged to the computer while you are wiring things together. Ask the instructor if you are unsure about your wiring.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>OLED</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>VCC</p></td>
+<td><p>3V3(OUT)</p></td>
+</tr>
+<tr class="row-even"><td><p>SCL</p></td>
+<td><p>I2C0 SCL  or I2C1 SCL</p></td>
+</tr>
+<tr class="row-odd"><td><p>SDA</p></td>
+<td><p>I2C0 SDA  or I2C1 SDA</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>TCS34725</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>VIN</p></td>
+<td><p>3V3(OUT)</p></td>
+</tr>
+<tr class="row-even"><td><p>SDA</p></td>
+<td><p>GP8</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCL</p></td>
+<td><p>GP9</p></td>
+</tr>
+<tr class="row-even"><td><p>LED</p></td>
+<td><p>GP15</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="img" src="../../../_images/oled.jpg" /> <img alt="img" src="../../../_images/colorsensor.jpg" /> <img alt="img" src="../../../_images/oledcolorwiring.jpg" /></p>
+<section id="span-style-color-red-exercise-1-span">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
+<p>It’s long been debated whether different color M&amp;Ms taste different <a class="reference external" href="https://www.mashed.com/748770/the-absolute-best-desserts-in-the-us/">[1]</a>. Let’s say you have a friend who is color blind who wants to test this theory themselves, but it’s a challenge to sort red from green from brown M&amp;Ms. To solve this critial problem, your goal is to create an M&amp;M sorter using your Pico and the TCS3472 color sensor. Connect the color sensor and an OLED display to your Pico. When you hold up an M&amp;M to the sensor, the screen should display the name of the color of the M&amp;M. To display the name of the color, you will have to play around with the color detection a bit to see what values generally are detected for each color. As a suggestion, it’ll be easier to read and manipulate your code if you write the color name display code in a function aside from main.</p>
+<p><em>Hint 1:</em> See <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/4_MnMs/example.py">example.py</a> for how to use the sensor. Make sure <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/4_MnMs/tcs34725.py">tcs34725.py</a> is stored on the Pico before you run the example file.</p>
+<p><em>Hint 2:</em> It may be helpful to use the distance between the RGB vector output and “target” colors to detect red, blue, etc.</p>
+<p><strong>Part 1</strong></p>
+<p>Describe in a few sentences how well your M&amp;M sorter works.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 1 Below </h3><p><strong>Part 2</strong></p>
+<p>Display all code you wrote either by copying and pasting or reading in and printing Python file contents.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 2 Below </h3></section>
+<section id="span-style-color-red-exercise-2-span">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
+<p>While displaying the color name helps, it may be easier to understand what the color sensor is seeing if we showed the actual color. This time using the Thonny terminal instead of the OLED, print a block of color based on the values that the color sensor is picking up. You may also want to change the time between each print to be a bit longer if the terminal gets too cluttered too quickly.</p>
+<p><em>Hint:</em> You learned how to print blocks of colors in Lab 1 so referencing that lab may be beneficial.</p>
+<p><strong>Part 1</strong></p>
+<p>Describe in a couple sentences how well your code works.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Part 1 Below </h3><p><strong>Part 2</strong></p>
+<p>Display all code you wrote either by copying and pasting or reading in and printing Python file contents.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Part 2 Below </h3></section>
+</section>
+<section id="span-style-color-green-reflection-span">
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<h3 style="background-color:lightblue"> Write Answers for the Reflection Below </h3></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -515,7 +667,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./labs/1_Color_Labs/6_Loops"
+            path: "./labs/1_Color_Labs/4_MnMs"
         },
         predefinedOutput: true
     }
@@ -529,6 +681,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../3_Color_Quantization/lab04.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Week 5: Color Quantization</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../5_Edge_Detection/lab06.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 7: Edge Detection in Images</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

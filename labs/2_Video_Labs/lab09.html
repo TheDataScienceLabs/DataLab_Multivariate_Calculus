@@ -128,27 +128,32 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab01.html">
+   Week 2: Color as a Vector - Part 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab02.html">
    Week 3: Color as a Vector - Part 2
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/2_Human_Perception/lab02.html">
-   Week 3: Human Perception of Color
+  <a class="reference internal" href="../1_Color_Labs/2_Human_Perception/lab03.html">
+   Week 4: Human Perception of Color
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/3_Color_Quantization/lab03.html">
-   Week 4: Color Quantization
+  <a class="reference internal" href="../1_Color_Labs/3_Color_Quantization/lab04.html">
+   Week 5: Color Quantization
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/4_MnMs/lab04.html">
-   Week 5: Detect the Color of M&amp;Ms
+  <a class="reference internal" href="../1_Color_Labs/4_MnMs/lab05.html">
+   Week 6: Detect the Color of M&amp;Ms
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Labs/5_Edge_Detection/lab05.html">
-   Week 6: Edge Detection in Images
+  <a class="reference internal" href="../1_Color_Labs/5_Edge_Detection/lab06.html">
+   Week 7: Edge Detection in Images
   </a>
  </li>
 </ul>
@@ -556,6 +561,15 @@ title="Print to PDF"
 <h3 style="background-color:lightblue"> Write your name and email below: </h3>
 <p><strong>Name:</strong> me</p>
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="span-style-color-orange-1-detecting-motion-span">
 <h2><span style="color:orange;"> 1. Detecting Motion </span><a class="headerlink" href="#span-style-color-orange-1-detecting-motion-span" title="Permalink to this headline">#</a></h2>
@@ -589,6 +603,16 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here are all the serial devices detected:
+/dev/ttyS1 n/a
+/dev/ttyS0 PNP0501
+/dev/ttyACM0 USB VID:PID=2E8A:000A SER=E66118604B6E1821 LOCATION=3-1:1.0
+
+selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,6 +629,9 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/lab09_6_0.png" src="../../_images/lab09_6_0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,6 +643,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "bf3128174f4745f898ac0cba60406f60", "version_major": 2, "version_minor": 0}
+</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -633,7 +664,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>When you are done, you will have to hit the <code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Kernel</span></code> button, which can found at the top of the screen (the stop symbol) or under Kernel.</p>
+<p>Remember that when you are done, you will have to hit the <code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Kernel</span></code> button, which can found at the top of the screen (the stop symbol) or under Kernel.</p>
 <section id="span-style-color-red-exercise-1-span">
 <h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
 <p><strong>Part 1</strong></p>
