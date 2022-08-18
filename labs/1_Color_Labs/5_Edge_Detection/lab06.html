@@ -590,7 +590,6 @@ title="Print to PDF"
 <li><p>Taylor series</p></li>
 <li><p>Partial derivatives</p></li>
 <li><p>Second partial derivative test</p></li>
-<li><p>Convolution</p></li>
 </ul>
 <p><font size="5"> Programming Skills </font></p>
 <ul class="simple">
@@ -680,13 +679,14 @@ title="Print to PDF"
 When we read in an image in Python we are observing a sampling of points of <span class="math notranslate nohighlight">\(f(x,y)\)</span> which we will call <span class="math notranslate nohighlight">\(f_d(n,m)\)</span>.
 So, <span class="math notranslate nohighlight">\(f_d(n,m) = f(n\Delta x, m \Delta y)\)</span>.
 where <span class="math notranslate nohighlight">\(\Delta x\)</span> and <span class="math notranslate nohighlight">\(\Delta y\)</span> are the sampling distances along the x and y-axis, respectively.
-Taking partial derivatives of <span class="math notranslate nohighlight">\(f\)</span> can be approximated by the forward difference formulas, <span class="math notranslate nohighlight">\(
-    \begin{align*}
-        \frac{df}{dx}(n\Delta x,m \Delta y) &amp;\approx \frac{f(n\Delta x+\Delta x,m \Delta y)-f(n\Delta x,m \Delta y)}{\Delta x}
-                                                = \frac{f_d(n+1,m)-f_d(n,m)}{\Delta x} \\
-        \frac{df}{dy}(n\Delta x,m \Delta y) &amp;\approx \frac{f(n\Delta x,m \Delta y+\Delta y)-f(n\Delta x,m \Delta y)}{\Delta y}
-                                                = \frac{f_d(n,m+1)-f_d(n,m)}{\Delta y}
-    \end{align*}\)</span></p>
+Taking partial derivatives of <span class="math notranslate nohighlight">\(f\)</span> can be approximated by the forward difference formulas,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{df}{dx}(n\Delta x,m \Delta y) &amp;\approx \frac{f(n\Delta x+\Delta x,m \Delta y)-f(n\Delta x,m \Delta y)}{\Delta x}
+                                            = \frac{f_d(n+1,m)-f_d(n,m)}{\Delta x} \\
+    \frac{df}{dy}(n\Delta x,m \Delta y) &amp;\approx \frac{f(n\Delta x,m \Delta y+\Delta y)-f(n\Delta x,m \Delta y)}{\Delta y}
+                                            = \frac{f_d(n,m+1)-f_d(n,m)}{\Delta y}
+\end{align*}\]</div>
 <p>The gradient of <span class="math notranslate nohighlight">\(f\)</span> is <span class="math notranslate nohighlight">\(
     \nabla f = \begin{pmatrix}  \frac{df}{dx} \\  \\ \frac{df}{dy}\end{pmatrix}\)</span>
 with magnitude <span class="math notranslate nohighlight">\(
@@ -730,35 +730,38 @@ and direction <span class="math notranslate nohighlight">\(
     g(x) = g(a) + \frac{g'(a)}{1}(x-a) + \frac{g''(a)}{1\cdot 2}(x-a)^2 + \frac{g'''(a)}{1\cdot 2\cdot 3}(x-a)^3 + \cdots  \)</span>
 This sum goes on forever, but if we truncate after a few terms we can get a good estimation of the function <span class="math notranslate nohighlight">\(g(x)\)</span> near <span class="math notranslate nohighlight">\(a\)</span>.
 Say we want to approximate <span class="math notranslate nohighlight">\(g'(a)\)</span>.
-By evaluating <span class="math notranslate nohighlight">\(g(x)\)</span> at <span class="math notranslate nohighlight">\(x=a+h\)</span> and <span class="math notranslate nohighlight">\(x=a-h\)</span> where <span class="math notranslate nohighlight">\(h&gt;0\)</span> is a small positive number and only keeping the first two terms in the Taylor series, <span class="math notranslate nohighlight">\(
-    \begin{align*}
-        g(a+h) &amp;\approx g(a) + \frac{g'(a)}{1}((a+h)-a) = g(a) + g'(a)h\\ 
-        g(a-h) &amp;\approx g(a) + \frac{g'(a)}{1}((a-h)-a) = g(a) - g'(a)h\\ 
-    \end{align*}\)</span>.
-Now, subtract <span class="math notranslate nohighlight">\(g(a+h)\)</span> and <span class="math notranslate nohighlight">\(g(a-h)\)</span> to get <span class="math notranslate nohighlight">\(
+By evaluating <span class="math notranslate nohighlight">\(g(x)\)</span> at <span class="math notranslate nohighlight">\(x=a+h\)</span> and <span class="math notranslate nohighlight">\(x=a-h\)</span> where <span class="math notranslate nohighlight">\(h&gt;0\)</span> is a small positive number and only keeping the first two terms in the Taylor series,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    g(a+h) &amp;\approx g(a) + \frac{g'(a)}{1}((a+h)-a) = g(a) + g'(a)h\\ 
+    g(a-h) &amp;\approx g(a) + \frac{g'(a)}{1}((a-h)-a) = g(a) - g'(a)h.\\ 
+\end{align*}\]</div>
+<p>Now, subtract <span class="math notranslate nohighlight">\(g(a+h)\)</span> and <span class="math notranslate nohighlight">\(g(a-h)\)</span> to get <span class="math notranslate nohighlight">\(
     g(a+h) - g(a-h) \approx 2g'(a)h \quad \Rightarrow \quad g'(a) \approx \frac{g(a+h)-g(a-h)}{2h},\)</span>
 which is the same symmetric difference formula you’ve seen before.
-To approximate the second derivative <span class="math notranslate nohighlight">\(g''(a)\)</span>, use the estimations <span class="math notranslate nohighlight">\(
-    \begin{align*}
-        g(a+h) &amp;\approx g(a) + \frac{g'(a)}{1}((a+h)-a) + \frac{g''(a)}{1\cdot 2}((a+h)-a)^2 = g(a) + g'(a)h + g''(a)h^2 \\ 
-        g(a-h) &amp;\approx g(a) + \frac{g'(a)}{1}((a-h)-a) + \frac{g''(a)}{1\cdot 2}((a-h)-a)^2 = g(a) - g'(a)h + g''(a)h^2 \\ 
-    \end{align*}\)</span>.</p>
+To approximate the second derivative <span class="math notranslate nohighlight">\(g''(a)\)</span>, use the estimations</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    g(a+h) &amp;\approx g(a) + \frac{g'(a)}{1}((a+h)-a) + \frac{g''(a)}{1\cdot 2}((a+h)-a)^2 = g(a) + g'(a)h + g''(a)h^2 \\ 
+    g(a-h) &amp;\approx g(a) + \frac{g'(a)}{1}((a-h)-a) + \frac{g''(a)}{1\cdot 2}((a-h)-a)^2 = g(a) - g'(a)h + g''(a)h^2. \\ 
+\end{align*}\]</div>
 <br><section id="span-style-color-red-exercise-2-span">
 <h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
 <p>Finish the derivation of the estimation of <span class="math notranslate nohighlight">\(g''(a)\)</span>. Your estimation should only depend on function values of <span class="math notranslate nohighlight">\(g\)</span>.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p>Going back to the 2-dimensional case, the Taylor series of the funtion <span class="math notranslate nohighlight">\(f(x,y)\)</span> at the point <span class="math notranslate nohighlight">\((a,b)\)</span> is <span class="math notranslate nohighlight">\(
+<h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p>Going back to the 2-dimensional case, the Taylor series of the funtion <span class="math notranslate nohighlight">\(f(x,y)\)</span> at the point <span class="math notranslate nohighlight">\((a,b)\)</span> is $<span class="math notranslate nohighlight">\(
     f(x,y) = f(a,b) + (x-a)\frac{df}{dx}(a,b) + (y-b)\frac{df}{dy}(a,b) + 
-        \frac{(x-a)^2\frac{d^2f}{dx^2}(a,b) + 2(x-a)(y-b)\frac{d^2f}{dxdy}(a,b) + (y-b)^2\frac{d^2f}{dy^2}(a,b)}{1 \cdot 2} + \cdots\)</span></p>
-<p>The second partial derivative test states that <span class="math notranslate nohighlight">\(f(x,y)\)</span> has a local minimum, local maximum, or saddle point at the point <span class="math notranslate nohighlight">\((a,b)\)</span> if <span class="math notranslate nohighlight">\(
-    \left[\frac{d^2f}{dx^2}(a,b) \right] \left[\frac{d^2f}{dy^2}(a,b) \right] - \left[\frac{d^2f}{dxdy}(a,b) \right]^2 = 0.\)</span></p>
+        \frac{(x-a)^2\frac{d^2f}{dx^2}(a,b) + 2(x-a)(y-b)\frac{d^2f}{dxdy}(a,b) + (y-b)^2\frac{d^2f}{dy^2}(a,b)}{1 \cdot 2} + \cdots\)</span>$</p>
+<p>The second partial derivative test states that <span class="math notranslate nohighlight">\(f(x,y)\)</span> has a local minimum, local maximum, or saddle point at the point <span class="math notranslate nohighlight">\((a,b)\)</span> if
+$<span class="math notranslate nohighlight">\(\left[\frac{d^2f}{dx^2}(a,b) \right] \left[\frac{d^2f}{dy^2}(a,b) \right] - \left[\frac{d^2f}{dxdy}(a,b) \right]^2 = 0.\)</span>$</p>
 <p>Similar to the 1-dimensional case, we can use Taylor series to derive approximations for <span class="math notranslate nohighlight">\(\frac{d^2f}{dx^2},\frac{d^2f}{dy^2}\)</span> and <span class="math notranslate nohighlight">\(\frac{d^2f}{dxdy}\)</span>.</p>
 <p>For <span class="math notranslate nohighlight">\(\frac{d^2f}{dx^2}\)</span>, evaluate <span class="math notranslate nohighlight">\(f\)</span> at <span class="math notranslate nohighlight">\((x,y)=(a+h,b)\)</span> and <span class="math notranslate nohighlight">\((x,y)=(a-h,b)\)</span> where <span class="math notranslate nohighlight">\(h&gt;0\)</span> is a small positive number.</p>
-<p><span class="math notranslate nohighlight">\(\begin{align*}
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
     f(a+h,b) &amp;\approx f(a,b) + h\frac{df}{dx}(a,b) + \frac{h^2\frac{d^2f}{dx^2}(a,b)}{2} \\ 
     f(a-h,b) &amp;\approx f(a,b) - h\frac{df}{dx}(a,b) + \frac{h^2\frac{d^2f}{dx^2}(a,b)}{2} \\ 
     \Rightarrow f(a+h,b)+f(a-h,b) &amp;\approx 2f(a,b) + h^2\frac{d^2f}{dx^2}(a,b) \\ 
     \Rightarrow \frac{d^2f}{dx^2}(a,b) &amp;\approx \frac{f(a+h,b)+f(a-h,b)-2f(a,b)}{h^2}
-\end{align*}\)</span></p>
+\end{align*}\]</div>
 </section>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
