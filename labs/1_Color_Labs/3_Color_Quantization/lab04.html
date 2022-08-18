@@ -703,7 +703,7 @@ title="Print to PDF"
 </ul>
 <p><font size="5"> Programming Skills </font></p>
 <ul class="simple">
-<li><p>Multi-dimensional array manipulation</p></li>
+<li><p>Data visualization</p></li>
 <li><p>Functions</p></li>
 </ul>
 <p><font size="5"> Embedded Systems </font></p>
@@ -718,7 +718,6 @@ title="Print to PDF"
 <li><p>Breadboard</p></li>
 <li><p>USB connector</p></li>
 <li><p>NeoPixels</p></li>
-<li><p>Level shifter</p></li>
 </ul>
 <h3 style="background-color:lightblue"> Write your name and email below: </h3>
 <p><strong>Name:</strong> me</p>
@@ -826,30 +825,21 @@ title="Print to PDF"
 </section>
 <section id="using-a-specific-vector">
 <h2>Using a Specific Vector<a class="headerlink" href="#using-a-specific-vector" title="Permalink to this headline">#</a></h2>
-<p>As mentioned before, taking the magnitude or average of the colors doesn’t produce a well-grayscaled image for multiple reasons. So what do people normally do when trying to grayscale an image? Again, there are many methods that can be used, but one of the most common, and simplest, ways is to take the dot product of the image values and a specific vector that has the express purpose of manipulating the red, green, and blue values in an image to be gray. The specific vector you see most often is <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code>, however there are a few other vectors that produce properly grayscaled images, such as <code class="docutils literal notranslate"><span class="pre">[0.2126,</span> <span class="pre">0.7512,</span> <span class="pre">0.0722]</span></code>. Rounding these vectors to the tenth place is also used relatively often in coding, producing <code class="docutils literal notranslate"><span class="pre">[0.3,</span> <span class="pre">0.6,</span> <span class="pre">0.1]</span></code>.</p>
-<p>Try finding the grayscaled image using the dot product of the image values array and a specific vector.</p>
+<p>As mentioned before, taking the magnitude or average of the colors doesn’t produce a well-grayscaled image for multiple reasons. So what do people normally do when trying to grayscale an image? Again, there are many methods that can be used, but one of the most common, and simplest, ways is to take the dot product of the RGB vector at each pixel and a specific vector that has the express purpose of manipulating the red, green, and blue values in an image to be gray. The specific vector you see most often is <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code>; however there are a few other vectors that produce properly grayscaled images, such as <code class="docutils literal notranslate"><span class="pre">[0.2126,</span> <span class="pre">0.7512,</span> <span class="pre">0.0722]</span></code>. Rounding these vectors to the tenth place is also used relatively often in coding, producing <code class="docutils literal notranslate"><span class="pre">[0.3,</span> <span class="pre">0.6,</span> <span class="pre">0.1]</span></code>.</p>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
-<p>Take the dot product of the image array and <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code>.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-    <span class="k">return</span>  <span class="c1"># fill in here</span>
-
-<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
-<span class="n">new</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">new</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you compare the resulting grayscaled image to the other methods used, you can better see that the other methods aren’t producing the correct images. The correctly grayscaled image has more subdued tones and the colors blend together better. Besides this, the image also has more definition. The other methods produced images where the objects looked nearly flat or 2-dimensional even though they’re 3-dimensional objects, which most likely occurs due to a lack of proper blending.</p>
+<p><strong>Part 1:</strong> The averaging method in Exercise 2 is equivalent to grayscaling with what specific vector?</p>
+<p><strong>Part 2:</strong> Use the vector <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code> to grayscale the image of M&amp;M’s.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3><p>If you compare the resulting grayscaled image to the other methods used, you can better see that the other methods aren’t producing the correct images. The correctly grayscaled image has more subdued tones and the colors blend together better. Besides this, the image also has more definition. The other methods produced images where the objects looked nearly flat or 2-dimensional even though they’re 3-dimensional objects, which most likely occurs due to a lack of proper blending.</p>
 <p>Try playing around with the vector values to see what happens to the resulting image. For example, try making one value much larger or smaller than the other two, making all the values extremely large or small, etc. You can get some super weird looking images from doing this!</p>
 <p>Also take a look at what the grayscaled image of the HSV looks like for comparison and to see what the color intensities convert to a bit better.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span> 
+
+<span class="k">def</span> <span class="nf">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="c1"># use your answer from part 3</span>
+    <span class="k">return</span>
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
 <span class="n">new</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
@@ -899,7 +889,24 @@ The distance between the two colors <span class="math notranslate nohighlight">\
 <p>Choose your own palette of at least 4 colors and write a function that quantizes a color image to your palette based on the shortest Euclidean distance among the chosen colors.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 8 Part 1 Below </h3><p><strong>Part 2</strong></p>
 <p>Quantize your image again but this time based on the shortest Euclidean distance in a different color space, namely the CIE L*a*b* space. That is, transform the RGB vectors to L*a*b* vectors and then compute the distance between the two L*a*b* vectors. See the example below on how to convert from RGB to CIE L*a*b*.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 8 Part 2 Below </h3><p><strong>Part 3</strong></p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 8 Part 2 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
+<span class="n">lab</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">([[</span><span class="n">rgb</span><span class="p">]]</span> <span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2LAB</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">100</span><span class="o">/</span><span class="mi">255</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">128</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">128</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RGB </span><span class="si">{}</span><span class="s1"> ---&gt; L*a*b* </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span><span class="n">lab</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RGB [  0   0 255] ---&gt; L*a*b* [  32.15686275   79.         -108.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Part 3</strong></p>
 <p>Do you notice any differences in the two quantization methods? What if you add more or less colors to your palette?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 8 Part 3 Below </h3><p>There are methods for adaptive color quantization. Based on the image, the palette of colors changes. We won’t explore them for now, but here’s an example where the ‘best’ 15 colors are chosen</p>
 <div class="cell docutils container">
