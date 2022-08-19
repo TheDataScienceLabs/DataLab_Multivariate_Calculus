@@ -30,6 +30,7 @@ To get started with this course, click the next arrow at the bottom left of this
 
 To begin editing this lab, click on the download icon in the top right of the screen and download the *.ipynb* version of Lab 0. After this, open the JupyterLab application. This will bring you to a screen with files and a Table of Contents on the left side and a screen on the right side. If not already open, open the files directory by clicking on the folder icon in the top left corner. Open the *Downloads* file, double-click *lab_0.ipynb*, and follow the directions in this lab to begin.
 
-To turn in the labs, you will have to export the file as a PDF. To do this, navigate to *File*, *Save and Export Notebook as*, and then click on *PDF*. This will be further explained in class.
+To turn in the labs, you will have to export the file as a PDF and upload it to Gradescope. 
+<!-- To do this, navigate to *File*, *Save and Export Notebook as*, and then click on *PDF*. This will be further explained in class. -->
 
 If you have any questions or are experiencing any difficulties during these labs, please ask your TA for assistance. They are happy to help!
