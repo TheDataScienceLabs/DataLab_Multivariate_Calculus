@@ -532,6 +532,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taking-apart-your-circuit">
+   Taking Apart Your Circuit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
    <span style="color:green;">
     Reflection
@@ -672,6 +677,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taking-apart-your-circuit">
+   Taking Apart Your Circuit
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
@@ -928,7 +938,7 @@ Your output should look like</p>
 
 <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>         <span class="c1"># number of frames per second</span>
 <span class="n">time</span> <span class="o">=</span> <span class="mi">5</span>         <span class="c1"># length of video in seconds</span>
-<span class="n">percent_on</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># % of duty cycle</span>
+<span class="n">percent_on</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># % of duty cycle</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">% Duty Cycle&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">percent_on</span><span class="p">))</span>   
 
 <span class="c1"># set up axis for color</span>
@@ -937,7 +947,7 @@ Your output should look like</p>
 
 <span class="c1"># set up axis for time plot</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">time</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">],[</span><span class="s1">&#39;off&#39;</span><span class="p">,</span><span class="s1">&#39;on&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
 <span class="n">dc</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([],[])</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">time</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">fps</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
@@ -946,8 +956,14 @@ Your output should look like</p>
 <span class="c1"># define the frames of the animation</span>
 <span class="c1"># i is the frame number</span>
 <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="o">*</span><span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">fps</span> &lt; (percent_on/100*fps))])
-    <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span> <span class="p">[[</span><span class="n">color</span><span class="p">]]</span> <span class="p">)</span>                                   
+    <span class="c1"># conditional statement to pick the color (on/off)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">fps</span> &lt; (percent_on/100*fps)):
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># sets the image that will in the animation</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span> <span class="p">[[</span><span class="n">color</span><span class="p">]]</span> <span class="p">)</span>
+    <span class="c1"># defines the curve in the right plot                                   </span>
     <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">fps</span> &lt; int(percent_on/100*fps))*1 )
     <span class="n">dc</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">t</span><span class="p">[:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">im</span><span class="p">]</span>
@@ -1051,7 +1067,7 @@ Your output should look like</p>
 </section>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
-<p>Write a script called <code class="docutils literal notranslate"><span class="pre">neopixel_gradient.py</span></code> to recreate the gradient animation example from the beginning of Section 2 on the NeoPixels and run the cell below to print the code you wrote.</p>
+<p>Write a script called <code class="docutils literal notranslate"><span class="pre">neopixel_gradient.py</span></code> to recreate the first gradient animation example from the beginning of Section 2 on the NeoPixels and run the cell below to print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;neopixel_gradient.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -1105,6 +1121,14 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
 </div>
 <p>The trichromatic coefficents are the ratio of primaries needed to match a wavelength of light, so <span class="math notranslate nohighlight">\(r(\lambda)+g(\lambda)+b(\lambda)=1\)</span> for all <span class="math notranslate nohighlight">\(390 \leq \lambda \leq 700\)</span> nm. However, not every wavelength can be matched experimentally using these three primaries. In order for the participants to match the reference, sometimes it was necessary for them to add a primary amount to the reference itself. In these cases, the trichromatic coefficients can be negative.</p>
 </section>
+</section>
+<section id="taking-apart-your-circuit">
+<h2>Taking Apart Your Circuit<a class="headerlink" href="#taking-apart-your-circuit" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>In Thonny, remove any files stored on the Pico.</p></li>
+<li><p>Unplug the Pico from the computer.</p></li>
+<li><p>Carefully remove all wires and components.</p></li>
+</ol>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
