@@ -765,7 +765,7 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 <div>
 <img src="pictures/led.jpg" width="200"/>
 </div>
-<p>NeoPixels are a brand of individually addressable LEDs. From a single pin, you can individually control however many LEDs are connected on the strip whether it be a single LED, a few in a line, or more complex configurations. There are tons of projects out there people have built using NeoPixels, from lightsabers to music synchronized light shows. From left to right the pins are DIN, VDD, GND, DOUT. You will have to fan out the pins a bit so they fit firmly into the breadboard.</p>
+<p>NeoPixels are a brand of individually addressable LEDs. From a single pin, you can individually control however many LEDs are connected on the strip whether it be a single LED, a few in a line, or more complex configurations. There are tons of projects out there people have built using NeoPixels, from lightsabers to music synchronized light shows. <strong>From left to right the pins are DIN, VDD, GND, DOUT.</strong> You will have to fan out the pins a bit so they fit firmly into the breadboard.</p>
 </section>
 <section id="level-shifter">
 <h3>Level Shifter<a class="headerlink" href="#level-shifter" title="Permalink to this headline">#</a></h3>
@@ -781,13 +781,83 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 <li><p><strong>Do not connect your microcontroller to the computer while you are wiring things together</strong>. If you are uncertain about your wiring, ask for an instructor to check it.</p></li>
 <li><p>Use the following tables to wire each component</p></li>
 </ol>
-<br>    
-<!-- | pico        | NeoPixel |
-|------|------|
-| GP0(Pin1)  | Din    |
-| GND        | -      |
-| VBUS(pin40)| +      | -->
+<br>   
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pico</p></th>
+<th class="head"><p>Level shifter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>GND (low voltage side)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>LV1</p></td>
+</tr>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>LV2</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>LV3</p></td>
+</tr>
+<tr class="row-even"><td><p>GND</p></td>
+<td><p>LV4</p></td>
+</tr>
+<tr class="row-odd"><td><p>3V3(OUT)</p></td>
+<td><p>LV</p></td>
+</tr>
+<tr class="row-even"><td><p>VBUS</p></td>
+<td><p>HV</p></td>
+</tr>
+</tbody>
+</table>
 <br>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Level shifter</p></th>
+<th class="head"><p>NeoPixel</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GND (high voltage side)</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>HV</p></td>
+<td><p>VCC</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pico</p></th>
+<th class="head"><p>NeoPixel 1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GP0</p></td>
+<td><p>DIN</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>NeoPixel 1</p></th>
+<th class="head"><p>NeoPixel 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DOUT</p></td>
+<td><p>DIN</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>Data from the Pico goes into the DIN pin which we set as general purpose pin 0 (or GP0) but we could choose any other GP pin if desired.
+Power goes through VCC. GND is our common ground path between everything.
+DOUT moves data to the next pixel or is left floating if it’s the last link in a chain.</p>
 <p>Once you have it wired up correctly, connect your Pico to the computer with the USB cable. Download and save <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/neopixel.py">neopixel.py</a> to your Pico using Thonny then open the file <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/neoexample.py">neoexample.py</a> in Thonny. Click the green play button to run the script. In order to stop the script, you will need to hit the red <em>Stop</em> sign button.</p>
 </section>
 <section id="span-style-color-red-warm-up-span">
@@ -981,7 +1051,7 @@ Your output should look like</p>
 </section>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
-<p>Write a script to recreate the gradient animation example on the NeoPixels and run the cell below to print the code you wrote.</p>
+<p>Write a script called <code class="docutils literal notranslate"><span class="pre">neopixel_gradient.py</span></code> to recreate the gradient animation example from the beginning of Section 2 on the NeoPixels and run the cell below to print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;neopixel_gradient.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -992,7 +1062,7 @@ Your output should look like</p>
 </section>
 <section id="span-style-color-red-exercise-6-span">
 <h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
-<p>Find a colorful object around you or image online. Try to match the color of the object or a color in the image by adjusting the red, green, and blue channel values and display the matched color.</p>
+<p>Find and download a colorful image online. Try to match a color in the image by adjusting the red, green, and blue channel values and display the matched color using the <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> function as in Lab 1. Don’t choose black or white because that’s no fun. In a markdown cell, type the command <code class="docutils literal notranslate"><span class="pre">![img](my_image.jpg)</span></code> to display your chosen image and specify which color you want to match in the image.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="trichromatic-coefficients">
 <h3>Trichromatic Coefficients<a class="headerlink" href="#trichromatic-coefficients" title="Permalink to this headline">#</a></h3>
