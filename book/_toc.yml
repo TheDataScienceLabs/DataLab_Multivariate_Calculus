@@ -20,10 +20,9 @@ parts:
   - file: labs/2_Video_Labs/lab07.ipynb
   - file: labs/2_Video_Labs/lab08.ipynb
   - file: labs/2_Video_Labs/lab09.ipynb
-  - file: labs/2_Video_Labs/lab10.ipynb
 - caption: Green's Theorem
   chapters:
-  - file: labs/3_Greens_Theorem_Labs/lab11.ipynb
+  - file: labs/3_Greens_Theorem_Labs/lab10.ipynb
 - caption: Design a project of your own
   chapters:
   - file: labs/Final_Project/labfinal.ipynb
