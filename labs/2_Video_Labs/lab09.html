@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Week 11: Build a real-time Motion Detector" href="lab10.html" />
+    <link rel="next" title="Weeks 12-13: Build a Planimeter" href="../3_Greens_Theorem_Labs/lab10.html" />
     <link rel="prev" title="Week 9: Optical Flow" href="lab08.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -178,11 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
    Week 10: Motion Detection
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lab10.html">
-   Week 11: Build a real-time Motion Detector
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -191,7 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../3_Greens_Theorem_Labs/lab11.html">
+  <a class="reference internal" href="../3_Greens_Theorem_Labs/lab10.html">
    Weeks 12-13: Build a Planimeter
   </a>
  </li>
@@ -556,7 +551,6 @@ title="Print to PDF"
 <li><p>Breadboard</p></li>
 <li><p>USB connector</p></li>
 <li><p>Camera</p></li>
-<li><p>RGB color sensor (TCS3472)</p></li>
 </ul>
 <h3 style="background-color:lightblue"> Write your name and email below: </h3>
 <p><strong>Name:</strong> me</p>
@@ -603,16 +597,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here are all the serial devices detected:
-/dev/ttyS1 n/a
-/dev/ttyS0 PNP0501
-/dev/ttyACM0 USB VID:PID=2E8A:000A SER=E66118604B6E1821 LOCATION=3-1:1.0
-
-selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -629,10 +613,6 @@ selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "bf3128174f4745f898ac0cba60406f60", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,10 +624,6 @@ selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "40df9a93c0e54bb489b1461dbc808d4a", "version_major": 2, "version_minor": 0}
-</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,7 +647,8 @@ selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
 <p><strong>Part 1</strong></p>
 <p>With your camera set up, record a video of objects moving whether it be you, your neighbor, your hand, a pen, etc. Use Farneback’s algorithm and our visualization method to display the optical flow.</p>
 <p><strong>Part 2</strong></p>
-<p>Can you think of a (mathematical) rule to tell when an object enters the camera’s view? (<em>Hint: thresholding</em>)</p>
+<p>Can you think of a (mathematical) rule to tell when an object enters the camera’s view?</p>
+<p><em>Hint: Are there any values that would be high/low when there is motion?</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 1 Below </h3><h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 2 Below </h3><p>Now that you have analyzed a video obtained from using the camera, you will be analyzing the video in real time to detect motion. You can use any method to do this, whether it be Farneback’s algorithm to determine the differences between frames, your answer to Exercise 1 Part 2, or anything else you can think of.</p>
 </section>
 <section id="span-style-color-red-exercise-2-span">
@@ -721,10 +698,10 @@ selected port /dev/ttyACM0 as most likely to have a raspberry pi pico
             <p class="prev-next-title">Week 9: Optical Flow</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lab10.html" title="next page">
+    <a class='right-next' id="next-link" href="../3_Greens_Theorem_Labs/lab10.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Week 11: Build a real-time Motion Detector</p>
+        <p class="prev-next-title">Weeks 12-13: Build a Planimeter</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
