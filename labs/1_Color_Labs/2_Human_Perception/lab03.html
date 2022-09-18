@@ -739,7 +739,7 @@ title="Print to PDF"
 </section>
 <section id="span-style-color-red-exercise-2-span">
 <h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
-<p>For each of the three curves <span class="math notranslate nohighlight">\(Q_L(\lambda),Q_M(\lambda)\)</span>, and <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span>, fit the points of the graph with a polynomial so that the mean squared error is less than <span class="math notranslate nohighlight">\(0.002\)</span>. Plot the original data as a scatter plot and the interpolant as a line on the same graph.</p>
+<p>For each of the three curves <span class="math notranslate nohighlight">\(Q_L(\lambda),Q_M(\lambda)\)</span>, and <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span>, fit the points of the graph with a polynomial so that the mean squared error is less than <span class="math notranslate nohighlight">\(0.002\)</span>. The polynomial is called the <em>interpolant</em>. Plot the original data as a scatter plot and the interpolant as a line on the same graph. Given data points <span class="math notranslate nohighlight">\((x_1,y_1),(x_2,y_2), \dots, (x_n,y_n)\)</span> and interpolant <span class="math notranslate nohighlight">\(f\)</span>, the mean squared error is <span class="math notranslate nohighlight">\(\frac{1}{n}\sum_{i=1}^n (f(x_i)-y_i)^2\)</span>.</p>
 <p><em>Hint: Define a function that calculates the mean squared error for an interpolant and use a loop to find the degree of interpolant with low enough error.</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -771,26 +771,28 @@ This specific shade of blue, or more precisely, the way we perceive this shade o
 <p>When referring to the human visual system, the standard terminology is Red (R) for Long (L), Green (G) for Medium (M), and Blue (B) for Short (S).
 Hence, we write the sensor responses as a vector <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, where R,G, and B stand for the three cone types and the subscript S is for stimulus.
 We call <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> the <em>tristimulus vector</em> with respect to stimulus S.</p>
-<p>For a stimulus <span class="math notranslate nohighlight">\(S(\lambda)\)</span>, the tristimulus vector values are given by <span class="math notranslate nohighlight">\(
-    \begin{align*}
-        R_S &amp;= \int_{390}^{700} S(\lambda)Q_R(\lambda)d\lambda \\
-        G_S &amp;= \int_{390}^{700} S(\lambda)Q_G(\lambda)d\lambda \\
-        B_S &amp;= \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda \\
-    \end{align*}\)</span></p>
+<p>For a stimulus <span class="math notranslate nohighlight">\(S(\lambda)\)</span>, the tristimulus vector values are given by</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R_S &amp;= \int_{390}^{700} S(\lambda)Q_R(\lambda)d\lambda \\
+    G_S &amp;= \int_{390}^{700} S(\lambda)Q_G(\lambda)d\lambda \\
+    B_S &amp;= \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda \\
+\end{align*}\]</div>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
 <p>Not all values of <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> are possible. Give two such examples and explain your choices.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="linearity-of-sensor-responses">
 <h3>Linearity of Sensor Responses<a class="headerlink" href="#linearity-of-sensor-responses" title="Permalink to this headline">#</a></h3>
-<p>Suppose two stimuli <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span> and <span class="math notranslate nohighlight">\(S_2(\lambda)\)</span> yield sensor responses <span class="math notranslate nohighlight">\((R_1,G_1,B_1)\)</span> and <span class="math notranslate nohighlight">\((R_2,G_2,B_2)\)</span>, respectively. Then R sensor response to the stimulus <span class="math notranslate nohighlight">\(a S_1(\lambda) + b S_2(\lambda)\)</span> is <span class="math notranslate nohighlight">\(
-    \begin{align*}
-        R_S &amp;= \int_{390}^{700} [a S_1(\lambda) + b S_2(\lambda)] Q_R(\lambda)d\lambda \\ 
-        &amp;= \int_{390}^{700} [a S_1(\lambda)Q_R(\lambda) + b S_2(\lambda)Q_R(\lambda)] d\lambda \\ 
-        &amp;= \int_{390}^{700} a S_1(\lambda)d\lambda  + \int_{390}^{700} b S_2(\lambda) Q_R(\lambda)d\lambda \\ 
-        &amp;= a \int_{390}^{700} S_1(\lambda)d\lambda  + b \int_{390}^{700} S_2(\lambda) Q_R(\lambda)d\lambda \\ 
-        &amp;= a R_1 + b R_2.
-    \end{align*}\)</span></p>
+<p>Suppose two stimuli <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span> and <span class="math notranslate nohighlight">\(S_2(\lambda)\)</span> yield sensor responses <span class="math notranslate nohighlight">\((R_1,G_1,B_1)\)</span> and <span class="math notranslate nohighlight">\((R_2,G_2,B_2)\)</span>, respectively. Then R sensor response to the stimulus <span class="math notranslate nohighlight">\(a S_1(\lambda) + b S_2(\lambda)\)</span> is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    R_S &amp;= \int_{390}^{700} [a S_1(\lambda) + b S_2(\lambda)] Q_R(\lambda)d\lambda \\ 
+    &amp;= \int_{390}^{700} [a S_1(\lambda)Q_R(\lambda) + b S_2(\lambda)Q_R(\lambda)] d\lambda \\ 
+    &amp;= \int_{390}^{700} a S_1(\lambda)d\lambda  + \int_{390}^{700} b S_2(\lambda) Q_R(\lambda)d\lambda \\ 
+    &amp;= a \int_{390}^{700} S_1(\lambda)d\lambda  + b \int_{390}^{700} S_2(\lambda) Q_R(\lambda)d\lambda \\ 
+    &amp;= a R_1 + b R_2.
+\end{align*}\]</div>
 </section>
 <section id="span-style-color-red-exercise-4-span">
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
@@ -822,7 +824,7 @@ The <a class="reference external" href="https://haralick.org/DV/cie_2004_colorim
     S(\lambda) = \begin{cases}
         1, \quad 500-n \leq \lambda \leq 500+n \\ 
         0, \quad \text{ otherwise} 
-    \end{cases}\)</span>
+    \end{cases}.\)</span>
 What is the result when <span class="math notranslate nohighlight">\(n=20\)</span>? <span class="math notranslate nohighlight">\(n=2\)</span>? <span class="math notranslate nohighlight">\(n=0.2\)</span>? Does is look like the resulting vector is approaching any specific values?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="the-dirac-delta-function">
@@ -847,12 +849,13 @@ so the tristimus vector is simply <span class="math notranslate nohighlight">\((
 <section id="metamerism">
 <h3>Metamerism<a class="headerlink" href="#metamerism" title="Permalink to this headline">#</a></h3>
 <p>Two stimuli <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span> and <span class="math notranslate nohighlight">\(S_2(\lambda)\)</span> are said to be <em>metameric</em> if <span class="math notranslate nohighlight">\((R_1,G_1,B_1) = (R_2,G_2,B_2)\)</span>, i.e., the responses of two different stimuli are identical.</p>
-<p>Let’s simplify our model by approximating the integral values <span class="math notranslate nohighlight">\(R_S,G_S,B_S\)</span> by their left Riemann sums on the domain <span class="math notranslate nohighlight">\(390 \leq \lambda \leq 700\)</span> using a step length of <span class="math notranslate nohighlight">\(5\)</span>, so
-<span class="math notranslate nohighlight">\(\begin{align*}
+<p>Let’s simplify our model by approximating the integral values <span class="math notranslate nohighlight">\(R_S,G_S,B_S\)</span> by their left Riemann sums on the domain <span class="math notranslate nohighlight">\(390 \leq \lambda \leq 700\)</span> using a step length of <span class="math notranslate nohighlight">\(5\)</span>, so</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
     R_S = \int_{390}^{700} S(\lambda)Q_R(\lambda)d\lambda &amp; \approx 5[S(390)Q_R(390) + S(395)Q_R(395) + \cdots + S(695)Q_R(695) ] \\ 
     G_S = \int_{390}^{700} S(\lambda)Q_G(\lambda)d\lambda &amp; \approx 5[S(390)Q_G(390) + S(395)Q_G(395) + \cdots + S(695)Q_G(695) ] \\ 
     B_S = \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda &amp; \approx 5[S(390)Q_B(390) + S(395)Q_B(395) + \cdots + S(695)Q_B(695) ] \\ 
-\end{align*}.\)</span></p>
+\end{align*}\]</div>
 <p>We can rewrite these equations using matrix notation.
 <span class="math notranslate nohighlight">\( \begin{bmatrix}
         R_S \\ G_S \\ B_S
