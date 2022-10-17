@@ -1,6 +1,6 @@
 # About This Course
 ## The Data Science Labs on Multivariable Calculus
-**By Kindyl King and Mireille Boutin with Alden Bradford**
+**By Kindyl King and Mireille Boutin with Alden Bradford and Julia Long**
 
 Welcome to MA29000, The Data Science Labs on Multivariable Calculus! This is a one credit course to accompany Calculus 3, during which you will discover applications of multivariable calculus to data science. You will also practice programming in Python and using Arduino sensors and microprocessors to acquire data.
 
@@ -34,3 +34,7 @@ To turn in the labs, you will have to export the file as a PDF and upload it to 
 <!-- To do this, navigate to *File*, *Save and Export Notebook as*, and then click on *PDF*. This will be further explained in class. -->
 
 If you have any questions or are experiencing any difficulties during these labs, please ask your TA for assistance. They are happy to help!
+
+## Acknowledgements
+
+The development of this course was supported by Purdue’s College of Engineering Honors Program and Purdue's Department of Mathematics. We thank Prof. Alina Alexeenko, Prof. Eric Nauman , Prof.  Kristina Bross, Prof. Milind Kulkarni, and Prof. Uli Walther for their invaluable input and support. Thank you to Ben Manning for help making the camera work. 
