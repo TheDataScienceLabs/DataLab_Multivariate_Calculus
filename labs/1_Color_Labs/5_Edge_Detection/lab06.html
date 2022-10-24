@@ -634,7 +634,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>By plotting the grayscale values as a 1D function, we can see how the grayscale values change moving down the row from left to right. This function is a bit noisy, but we have seen previously how to smooth it out by taking a rolling average.</p>
+<p>By plotting the grayscale values as a 1D function, we can see how the grayscale values change moving down the row from left to right. This function is a bit noisy, but we can smooth it out by taking a rolling average as you may have done in the <a class="reference external" href="https://thedatasciencelabs.github.io/DSLab_Calculus/intro.html">previous Data Science Labs</a> with the PPG sensor and accelerometer data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rolling_centered_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -646,7 +646,7 @@ title="Print to PDF"
 <span class="nb">slice</span> <span class="o">=</span> <span class="n">gray_img</span><span class="p">[</span><span class="mi">280</span><span class="p">:</span><span class="mi">281</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">gray_img</span><span class="p">[</span><span class="mi">280</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span>
-<span class="n">smoothed</span> <span class="o">=</span> <span class="n">rolling_centered_average</span><span class="p">(</span><span class="n">gray_img</span><span class="p">[</span><span class="mi">280</span><span class="p">,:</span><span class="mi">300</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">smoothed</span> <span class="o">=</span> <span class="n">rolling_centered_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">first_deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">smoothed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
@@ -692,23 +692,15 @@ and direction <span class="math notranslate nohighlight">\(
 <h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
 <p><strong>Part 1</strong></p>
 <p>What are the physical interpretations for <span class="math notranslate nohighlight">\(|\nabla f|\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>?</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 1 Below </h3><p><strong>Part 2</strong></p>
-<p>Plot the magnitute of the gradient of an image.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 1 Below </h3><p><strong>Choose an image and apply a grayscaling method from Lab 4 on color quantization.</strong></p>
+<p><strong>Part 2</strong></p>
+<p>Plot the magnitute of the gradient of the grayscaled image.</p>
 <p><strong>Part 3</strong></p>
 <p>Pick a threshold for how large the gradient needs to be in order to detect an edge. Justify your choice.</p>
 <p><strong>Part 4</strong></p>
 <p>Plot the edge image so that edge pixels are white and non-edge pixels are black.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Parts 2-4 Below </h3><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
-
-<span class="c1"># fill in</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Part 5</strong></p>
-<p>Repeat Parts 2-4 using the symmetric difference formulas for partial derivatives.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 1 Parts 2-4 Below </h3><p><strong>Part 5</strong></p>
+<p>Repeat Parts 2-4 using the following symmetric difference formulas for partial derivatives:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
     \frac{df}{dx}(n\Delta x,m \Delta y) &amp;\approx \frac{f_d(n+1,m)-f_d(n-1,m)}{2\Delta x} \\
@@ -764,7 +756,7 @@ $<span class="math notranslate nohighlight">\(\left[\frac{d^2f}{dx^2}(a,b) \righ
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="span-style-color-red-exercise-4-span">
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
-<p>Take a photo with your phone or find an image online. Use the second order method to detect edges in the image. Compare the result to the other first-order edge detectors you implemented in a previous exercise.</p>
+<p>Use the second order method to detect edges in the image. In a couple sentences, compare your results with the first-order edge detectors from Exercise 1.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
