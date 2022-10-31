@@ -504,13 +504,6 @@ title="Print to PDF"
      Streaming video
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
-     <span style="color:red">
-      Exercise 7
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -521,9 +514,9 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
      <span style="color:red">
-      Exercise 8
+      Exercise 7
      </span>
     </a>
    </li>
@@ -651,13 +644,6 @@ title="Print to PDF"
      Streaming video
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
-     <span style="color:red">
-      Exercise 7
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -668,9 +654,9 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span">
+    <a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span">
      <span style="color:red">
-      Exercise 8
+      Exercise 7
      </span>
     </a>
    </li>
@@ -706,7 +692,7 @@ title="Print to PDF"
 <p><font size="5"> Programming Skills </font></p>
 <ul class="simple">
 <li><p>Using Software Documentation</p></li>
-<li><p>Open CV (cv2)</p></li>
+<li><p>OpenCV (cv2)</p></li>
 </ul>
 <p><font size="5"> Embedded Systems </font></p>
 <ul class="simple">
@@ -739,8 +725,8 @@ title="Print to PDF"
 <p>In this lab, we will be using a Python library called OpenCV (cv2). From the <a class="reference external" href="https://docs.opencv.org/4.x/d1/dfb/intro.html">official documentation</a>, “OpenCV is an open-source library that includes several hundreds of computer vision algorithms.” Today, we will mostly be using it to read and display modified video frames, and we will be doing the “vision” in computer vision manually with our own functions.</p>
 <p>Run the following cell to read in the video file. Using <code class="docutils literal notranslate"><span class="pre">vid.read()</span></code>, returns two values: the Boolean varible <code class="docutils literal notranslate"><span class="pre">success</span></code>, which is <code class="docutils literal notranslate"><span class="pre">True</span></code> if the frame was read without any errors, and <code class="docutils literal notranslate"><span class="pre">frame</span></code> which is as it sounds the image that is captured from the video. The camera hardware you will connect to your Pico can only return grayscale images, so we are converting each frame to grayscale using the function <code class="docutils literal notranslate"><span class="pre">cv2.cvtColor(frame,</span> <span class="pre">cv2.COLOR_BGR2GRAY)</span></code>. For speed in later computations, it is helpful to reduce the frame size. Here, we’ve scaled down each frame by a factor of 4.</p>
 <p>Running the cell will cause a separate window to pop up, displaying the smaller, grayscale video. After reading in the whole video, the separate window will close automatically; you can override this by pressing the “Q” key on your keyboard.</p>
-<p>Download the video file we’ll be using for this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/5_Motion_Tracking_Labs/test_vid.mov">test_vid.mov</a>. This is a video from Youtube showing bouncing ball. COPYRIGHTS???? It would be best to make our own.</p>
-<div class="cell docutils container">
+<p>Download the video file we’ll be using for this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/5_Motion_Tracking_Labs/test_vid.mov">test_vid.mov</a>. This is a video from Youtube showing a bouncing ball.</p>
+<!-- COPYRIGHTS???? It would be best to make our own. --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span> 
 <span class="n">height</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
@@ -756,7 +742,7 @@ title="Print to PDF"
     <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
     <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="n">new_size</span><span class="p">)</span>
     <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;frame&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
         <span class="k">break</span>
 <span class="n">vid</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
@@ -771,9 +757,9 @@ title="Print to PDF"
 </section>
 <section id="span-style-color-orange-2-modifying-videos-span">
 <h2><span style="color:orange;"> 2. Modifying Videos </span><a class="headerlink" href="#span-style-color-orange-2-modifying-videos-span" title="Permalink to this headline">#</a></h2>
-<p>Using editing apps, you can make many changes to a video. Next we will be making some of these common changes to the video you read in the previous section through coding. Using the OpenCV official documentation link that was provided at the beginning of this lab, look through the available modules and classes to determine how to complete the following labs.</p>
 <section id="span-style-color-red-exercise-2-span">
 <h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
+<p>Read the <a class="reference external" href="https://docs.opencv.org/2.4/modules/highgui/doc/user_interface.html?highlight=waitkey">documentation</a> for the <code class="docutils literal notranslate"><span class="pre">waitKey</span></code> function.</p>
 <p><strong>Part 1</strong></p>
 <p>Play the video slower than its original playback speed.</p>
 <p><strong>Part 2</strong></p>
@@ -801,7 +787,7 @@ title="Print to PDF"
 <p>This time, we will be recording our own videos using the Arducam HM01B0, which is a small camera that can be hooked up to the Pico.</p>
 <section id="wiring-instructions">
 <h3>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this headline">#</a></h3>
-<p>Please make sure your microcontroller is not plugged to the computer while you are wiring things together. Ask the instructor if you are unsure about your wiring.</p>
+<p>Please make sure your microcontroller is not plugged to the computer while you are wiring things together. Ask the instructor if you are unsure about your wiring. Use your jumper wires to make the following connections.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>HM01B0</p></th>
@@ -835,10 +821,13 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<p><img alt="img" src="../../_images/camera.jpg" /></p>
-<p><em>Wiring the Arducam HM01B0 camera</em></p>
-<p><img alt="img" src="../../_images/camerawiring.jpg" /></p>
-<p><em>Connections to the PICO on breadboard</em></p>
+<!-- ![img](camera.jpg)
+
+*Wiring the Arducam HM01B0 camera* 
+
+![img](camerawiring.jpg)
+
+*Connections to the PICO on breadboard* -->
 <p>After ensuring that the wiring is correct, hold down the BOOTSEL button on the Pico and plug it in. Download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/5_Motion_Tracking_Labs/arducam.uf2">arducam.uf2</a> and copy it onto the Pico’s drive, which should have popped up in your folders as an option. The Pico should automatically disconnect once the file has transferred, then its LED will start blinking rapidly.</p>
 <p>Once the Pico has been successfully connected, run the following cell to make sure we have detected the Pico successfully.</p>
 <div class="cell docutils container">
@@ -926,26 +915,33 @@ title="Print to PDF"
 </div>
 <p>When you are done, you will have to hit the <code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Kernel</span></code> button, which can found at the top of the screen (the stop symbol) or under Kernel.</p>
 </section>
-<section id="span-style-color-red-exercise-7-span">
-<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
-<p>Capture and save a video using the camera.</p>
-<h3 style="background-color:lightblue"> Write Answers to Exercise 7 Below </h3></section>
 </section>
 <section id="span-style-color-orange-4-modifying-your-own-video-span">
 <h2><span style="color:orange;"> 4. Modifying Your Own Video </span><a class="headerlink" href="#span-style-color-orange-4-modifying-your-own-video-span" title="Permalink to this headline">#</a></h2>
 <p>Now that you are able to capture your own video, you will try the same modifications you made on the prerecorded videos on the one you recorded.</p>
-<section id="span-style-color-red-exercise-8-span">
-<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#span-style-color-red-exercise-8-span" title="Permalink to this headline">#</a></h3>
+<section id="span-style-color-red-exercise-7-span">
+<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
 <p>Capture and save a video using the camera.</p>
-<p><strong>Part 1:</strong> Play the video slower than its original playback speed.</p>
-<p><strong>Part 2:</strong> Play the video faster than its original playback speed.</p>
-<p><strong>Part 3:</strong> Play the video backwards.</p>
-<p><strong>Part 4:</strong> Flip the video’s visuals over the y-axis.</p>
-<p><strong>Part 5:</strong> Flip the video’s visuals over the x-axis.</p>
-<p><strong>Part 6:</strong> Either trim the ends of the video or remove a section in the middle.</p>
-<p><strong>Part 7:</strong> Record a second video. Splice the two videos together.</p>
-<p><strong>Part 8:</strong> Look through the list for a function you haven’t used yet and try it out on either the prerecorded video or the one you recorded using the camera.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 8 Below </h3></section>
+<p><strong>Part 1:</strong> Either trim both ends of the video or remove a section in the middle.</p>
+<p><strong>Part 2:</strong> Record a second video. Splice the two videos together.</p>
+<p><strong>Part 3:</strong> Pick an editing function we haven’t mentioned (e.g., adding text, video filters, etc.) and try it out on either the prerecorded video or the one you recorded using the camera.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how to save a video</span>
+<span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter_fourcc</span><span class="p">(</span><span class="o">*</span><span class="s1">&#39;mp4v&#39;</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">()</span>
+<span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">capsize</span> <span class="o">=</span> <span class="c1"># (width,height) of the images added to in the video</span>
+<span class="n">success</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;my_video.mp4v&#39;</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="n">fps</span><span class="p">,</span> <span class="n">capsize</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">[]:</span> <span class="c1">#list of frames</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
