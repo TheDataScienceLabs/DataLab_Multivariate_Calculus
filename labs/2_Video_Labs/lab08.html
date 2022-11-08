@@ -757,7 +757,7 @@ That means in the last equation the velocity components <span class="math notran
     <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
         <span class="k">break</span>
-    <span class="n">prvs</span> <span class="o">=</span> <span class="nb">next</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="nb">next</span>
 
 <span class="n">vid</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
@@ -805,7 +805,7 @@ That means in the last equation the velocity components <span class="math notran
 
 <span class="n">ret</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
 <span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
-<span class="n">prvs</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="n">previous</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
 <span class="n">hsv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">frame1</span><span class="p">)</span>
 <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span> <span class="c1"># always at full saturation</span>
 
@@ -816,7 +816,7 @@ That means in the last equation the velocity components <span class="math notran
         <span class="k">break</span>
     <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
     <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
-    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">prvs</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
                     <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
                     <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
                     <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
@@ -837,7 +837,7 @@ That means in the last equation the velocity components <span class="math notran
     <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
     <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
         <span class="k">break</span>
-    <span class="n">prvs</span> <span class="o">=</span> <span class="nb">next</span>
+    <span class="n">previous</span> <span class="o">=</span> <span class="nb">next</span>
 
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
