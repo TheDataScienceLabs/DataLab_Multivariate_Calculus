@@ -659,9 +659,9 @@ title="Print to PDF"
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+import cv2
 </pre></div>
 </div>
 </div>
@@ -725,42 +725,42 @@ That means in the last equation the velocity components <span class="math notran
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p><em>answer here</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vid</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
-<span class="n">width</span>  <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span> 
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.25</span>
-<span class="n">new_size</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>vid = cv2.VideoCapture(&#39;test_vid.mov&#39;)
+height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+width  = vid.get(cv2.CAP_PROP_FRAME_WIDTH) 
+scale = 0.25
+new_size = (int(width*scale),int(height*scale))
 
-<span class="n">success</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="n">new_size</span><span class="p">)</span>
-<span class="n">previous</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+success, frame1 = vid.read()
+frame1 = cv2.resize(frame1,dsize=new_size)
+previous = cv2.cvtColor(frame1,cv2.COLOR_BGR2GRAY)
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">success</span><span class="p">,</span> <span class="n">frame2</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read frame. Exiting ...&quot;</span><span class="p">)</span>
-        <span class="k">break</span>
-    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="n">new_size</span><span class="p">)</span>
+while True:
+    success, frame2 = vid.read()
+    if not success:
+        print(&quot;Unable to read frame. Exiting ...&quot;)
+        break
+    next = cv2.cvtColor(frame2,cv2.COLOR_BGR2GRAY)
+    next = cv2.resize(next,dsize=new_size)
     
-    <span class="c1"># flow is a numpy 2 dimensional array and </span>
-    <span class="c1"># flow[i,j] = [dx/dt,dy/dt] for pixel (i,j)</span>
-    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-                    <span class="c1"># don&#39;t worry about these parameters for now</span>
-                    <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
-                    <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
-                    <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
-                    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
-                    <span class="n">poly_n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
-                    <span class="n">poly_sigma</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;next_frame&#39;</span><span class="p">,</span><span class="nb">next</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
-        <span class="k">break</span>
-    <span class="n">previous</span> <span class="o">=</span> <span class="nb">next</span>
+    # flow is a numpy 2 dimensional array and 
+    # flow[i,j] = [dx/dt,dy/dt] for pixel (i,j)
+    flow = cv2.calcOpticalFlowFarneback(previous,next, flow = None, 
+                    # don&#39;t worry about these parameters for now
+                    pyr_scale = 0.5, 
+                    levels = 3, 
+                    winsize = 10, 
+                    iterations = 3, 
+                    poly_n = 5, 
+                    poly_sigma = 1.1, flags = 0)
+    cv2.imshow(&#39;next_frame&#39;,next)
+    k = cv2.waitKey(30) &amp; 0xff
+    if k == ord(&#39;q&#39;): # press Q on keyboard to stop
+        break
+    previous = next
 
-<span class="n">vid</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+vid.release()
+cv2.destroyAllWindows()
 </pre></div>
 </div>
 </div>
@@ -779,13 +779,13 @@ That means in the last equation the velocity components <span class="math notran
 <p>Pick two frames to calculate <code class="docutils literal notranslate"><span class="pre">flow</span></code>. Use the matplotlib function <a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.quiver.html">quiver</a> to plot the vector field using arrows.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for a plotting a constant vector field</span>
-<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> 
-                   <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span> <span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-<span class="n">dxdt</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">dydt</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">dxdt</span><span class="p">,</span><span class="n">dydt</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># example for a plotting a constant vector field
+x,y = np.meshgrid(np.linspace(start=0, stop=10, num=10, endpoint=False), 
+                   np.linspace(start=0, stop=10, num=10 , endpoint=False))
+dxdt = 1
+dydt = 1
+plt.quiver(x,y,dxdt,dydt,color=&#39;b&#39;, units=&#39;xy&#39;, scale=1)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -798,49 +798,49 @@ That means in the last equation the velocity components <span class="math notran
 <p>Fill in the code below to compute the magnitude and direction of the velocity vectors at each pixel location. Now we can visualize how the vector field changes from frame to frame and in what direction the objects in the frame are moving.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">&#39;test_vid.mov&#39;</span><span class="p">)</span>
-<span class="n">height</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_HEIGHT</span><span class="p">)</span>
-<span class="n">width</span>  <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">CAP_PROP_FRAME_WIDTH</span><span class="p">)</span> 
-<span class="n">scale</span> <span class="o">=</span> <span class="mf">0.25</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cap = cv2.VideoCapture(&#39;test_vid.mov&#39;)
+height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+width  = cap.get(cv2.CAP_PROP_FRAME_WIDTH) 
+scale = 0.25
 
-<span class="n">ret</span><span class="p">,</span> <span class="n">frame1</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">frame1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
-<span class="n">previous</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame1</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-<span class="n">hsv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">frame1</span><span class="p">)</span>
-<span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span> <span class="c1"># always at full saturation</span>
+ret, frame1 = cap.read()
+frame1 = cv2.resize(frame1,dsize=(int(width*scale),int(height*scale)))
+previous = cv2.cvtColor(frame1,cv2.COLOR_BGR2GRAY)
+hsv = np.zeros_like(frame1)
+hsv[...,1] = 255 # always at full saturation
 
-<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="n">ret</span><span class="p">,</span> <span class="n">frame2</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">ret</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unable to read frame. Exiting ...&quot;</span><span class="p">)</span>
-        <span class="k">break</span>
-    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
-    <span class="nb">next</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="nb">next</span><span class="p">,</span><span class="n">dsize</span><span class="o">=</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">scale</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">height</span><span class="o">*</span><span class="n">scale</span><span class="p">)))</span>
-    <span class="n">flow</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcOpticalFlowFarneback</span><span class="p">(</span><span class="n">previous</span><span class="p">,</span><span class="nb">next</span><span class="p">,</span> <span class="n">flow</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
-                    <span class="n">pyr_scale</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> 
-                    <span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
-                    <span class="n">winsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> 
-                    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> 
-                    <span class="n">poly_n</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> 
-                    <span class="n">poly_sigma</span> <span class="o">=</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">flags</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+while True:
+    ret, frame2 = cap.read()
+    if not ret:
+        print(&quot;Unable to read frame. Exiting ...&quot;)
+        break
+    next = cv2.cvtColor(frame2,cv2.COLOR_BGR2GRAY)
+    next = cv2.resize(next,dsize=(int(width*scale),int(height*scale)))
+    flow = cv2.calcOpticalFlowFarneback(previous,next, flow = None, 
+                    pyr_scale = 0.5, 
+                    levels = 3, 
+                    winsize = 10, 
+                    iterations = 3, 
+                    poly_n = 5, 
+                    poly_sigma = 1.1, flags = 0)
 
-    <span class="c1"># compute magnitute and angle for each vector in flow</span>
-    <span class="c1"># mag and ang should have the same dimensions as the variable next </span>
-    <span class="n">mag</span> <span class="o">=</span> <span class="c1"># fill in</span>
-    <span class="n">ang</span> <span class="o">=</span> <span class="c1"># fill in</span>
+    # compute magnitute and angle for each vector in flow
+    # mag and ang should have the same dimensions as the variable next 
+    mag = # fill in
+    ang = # fill in
 
-    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ang</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># converts radians to degrees</span>
-    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">mag</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
-    <span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
+    hsv[...,0] = ang*180/np.pi # converts radians to degrees
+    hsv[...,2] = cv2.normalize(mag,None,0,255,cv2.NORM_MINMAX)
+    rgb = cv2.cvtColor(hsv,cv2.COLOR_HSV2BGR)
 
-    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;frame2&#39;</span><span class="p">,</span><span class="n">rgb</span><span class="p">)</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
-    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">):</span> <span class="c1"># press Q on keyboard to stop</span>
-        <span class="k">break</span>
-    <span class="n">previous</span> <span class="o">=</span> <span class="nb">next</span>
+    cv2.imshow(&#39;frame2&#39;,rgb)
+    k = cv2.waitKey(30) &amp; 0xff
+    if k == ord(&#39;q&#39;): # press Q on keyboard to stop
+        break
+    previous = next
 
-<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+cap.release()
+cv2.destroyAllWindows()
 </pre></div>
 </div>
 </div>

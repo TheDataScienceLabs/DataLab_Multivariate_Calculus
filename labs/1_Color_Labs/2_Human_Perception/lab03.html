@@ -710,8 +710,8 @@ title="Print to PDF"
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
 </pre></div>
 </div>
 </div>
@@ -727,11 +727,11 @@ title="Print to PDF"
 <p>Plot <span class="math notranslate nohighlight">\(Q_L(\lambda),Q_M(\lambda)\)</span>, and <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span> all on one graph. See <a class="reference external" href="https://matplotlib.org/3.5.0/tutorials/introductory/usage.html#sphx-glr-tutorials-introductory-usage-py">matplotlib’s documentation</a> on how to add a legend to your plot. The <span class="math notranslate nohighlight">\(x\)</span>-axis label should be wavelength in nanometers. The <span class="math notranslate nohighlight">\(y\)</span>-axis label should be spectral sensitivity. Download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/2_Human_Perception/cone_responses.csv">cone_responses.csv</a> for the data.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;cone_responses.csv&#39;</span><span class="p">,</span>   <span class="c1"># name of the file</span>
-                      <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span>         <span class="c1"># numbers in the file are separated by commas</span>
-                      <span class="n">filling_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>      <span class="c1"># set missing values to zero</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = np.genfromtxt(&#39;cone_responses.csv&#39;,   # name of the file
+                      delimiter=&#39;,&#39;,         # numbers in the file are separated by commas
+                      filling_values=0)      # set missing values to zero
 
-<span class="c1"># fill in</span>
+# fill in
 </pre></div>
 </div>
 </div>
@@ -743,22 +743,22 @@ title="Print to PDF"
 <p><em>Hint: Define a function that calculates the mean squared error for an interpolant and use a loop to find the degree of interpolant with low enough error.</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example on how to fit a quadratic polynomial to the test data x and y</span>
-<span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">Polynomial</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># example on how to fit a quadratic polynomial to the test data x and y
+from numpy.polynomial import Polynomial
 
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">11.0</span><span class="p">])</span>
-<span class="n">example_interpolant</span> <span class="o">=</span> <span class="n">Polynomial</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span><span class="n">example_interpolant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">15</span><span class="p">)))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+x = np.array([1.0,2.0,3.0])
+y = np.array([-1.3,3.2,11.0])
+example_interpolant = Polynomial.fit(x,y, deg=2)
+plt.scatter(x,y)
+plt.plot(np.linspace(0,4,15),example_interpolant(np.linspace(0,4,15)))
+plt.show()
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fill in </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># fill in 
 </pre></div>
 </div>
 </div>
@@ -812,12 +812,12 @@ in two ways:</p>
 <p>For the symbolic integration, see the example below using <code class="docutils literal notranslate"><span class="pre">Polynomial.integ</span></code>.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># symbolic integration example</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">])</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">11.0</span><span class="p">])</span>
-<span class="n">example_interpolant</span> <span class="o">=</span> <span class="n">Polynomial</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">example_interpolant</span><span class="p">)</span> <span class="c1"># suppose we want to integrate the example_interpolant</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Polynomial</span><span class="o">.</span><span class="n">integ</span><span class="p">(</span><span class="n">example_interpolant</span><span class="p">))</span> <span class="c1"># Polynomial.integ() returns the antiderivative of the polynomial it is given</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># symbolic integration example
+x = np.array([1.0,2.0,3.0])
+y = np.array([-1.3,3.2,11.0])
+example_interpolant = Polynomial.fit(x,y, deg=2)
+print(example_interpolant) # suppose we want to integrate the example_interpolant
+print(Polynomial.integ(example_interpolant)) # Polynomial.integ() returns the antiderivative of the polynomial it is given
 </pre></div>
 </div>
 </div>
@@ -924,19 +924,19 @@ The idea is</p>
 <p>Fill in the code below to implement gradient descent for <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> to find a metamer for the D65 illuminant. Plot the spectrum of the D65 illuminant and the metamer you’ve found. What is the value of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> when the gradient descent algorithm terminates?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 8 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="c1"># fill in</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def gradient(x):
+    # fill in
     
 
-<span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">eta</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">d65</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># our starting place is a vector of all zeros</span>
-    <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">1e-8</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span>
+def gradient_descent(eta):
+    x = np.zeros((len(d65)-1)) # our starting place is a vector of all zeros
+    while np.linalg.norm(gradient(x)) &gt; 1e-8:
+        x -= eta*gradient(x)
+    return x
 
-<span class="n">metamer</span> <span class="o">=</span> <span class="n">gradient_descent</span><span class="p">(</span><span class="n">eta</span><span class="o">=</span><span class="mf">.001</span><span class="p">)</span>
+metamer = gradient_descent(eta=.001)
 
-<span class="c1"># plot</span>
+# plot
 </pre></div>
 </div>
 </div>

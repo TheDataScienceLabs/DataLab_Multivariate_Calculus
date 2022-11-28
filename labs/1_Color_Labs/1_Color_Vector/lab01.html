@@ -675,9 +675,9 @@ title="Print to PDF"
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
+%matplotlib inline
 </pre></div>
 </div>
 </div>
@@ -688,17 +688,17 @@ title="Print to PDF"
 <p>Colors in Python can be specified by a red, green, and blue channel value. Each number is an integer (usually between 0-255) that represents the intensity of red, blue, and green light that is mixed together to produce the resulting color. To display the color, we can use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> function. The input to this function is a multi-dimensional array that contains information about the size of the image and the color of each pixel. Let’s print just one red pixel. That means our image is size <span class="math notranslate nohighlight">\(1 \times 1\)</span> and the color we’ve chosen is the vector <span class="math notranslate nohighlight">\([255,0,0]\)</span>. In the following code cell, the variable <code class="docutils literal notranslate"><span class="pre">img</span></code> has shape <span class="math notranslate nohighlight">\((1,1,3)\)</span>; the first two dimensions give the number of rows and the number of columns of pixels. The third dimension is 3, which tells us that <code class="docutils literal notranslate"><span class="pre">img</span></code> is a <span class="math notranslate nohighlight">\(1 \times 1\)</span> array where each entry is a length 3 array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">red</span> <span class="o">=</span> <span class="mi">255</span>
-<span class="n">green</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">red</span><span class="p">,</span><span class="n">green</span><span class="p">,</span><span class="n">blue</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>red = 255
+green = 0
+blue = 0
+color = np.array([red,green,blue])
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># change array from shape (3,) to (1,1,3) which the right dimension required by plt.show()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+img = color.reshape((1,1,3))  # change array from shape (3,) to (1,1,3) which the right dimension required by plt.show()
+print(img.shape)
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.imshow(img)
+plt.axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -707,14 +707,14 @@ title="Print to PDF"
 <p>So, for example, in order to create an image consisting of two side-by-side squares, a red one on the left and a green one on the right, we can use the following code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a picture with two pixels on one row</span>
-<span class="n">red</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># RGB value for red</span>
-<span class="n">green</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># RGB value for green</span>
-<span class="n">img</span> <span class="o">=</span> <span class="p">[[</span><span class="n">red</span><span class="p">,</span><span class="n">green</span><span class="p">]]</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a picture with two pixels on one row
+red = [255,0,0]    # RGB value for red
+green = [0,255,0]  # RGB value for green
+img = [[red,green]]   
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.imshow(img)
+plt.axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -722,17 +722,17 @@ title="Print to PDF"
 <p>Similarly when we use a  <span class="math notranslate nohighlight">\(2 \times 2 \times 3\)</span> array as the the input of <code class="docutils literal notranslate"><span class="pre">imshow()</span></code>, we can get 4 pixels of the colors we want.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a picture with four pixels spread evenly among two row</span>
-<span class="n">red</span>     <span class="o">=</span>    <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># RGB value for red</span>
-<span class="n">green</span>   <span class="o">=</span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># RGB value for green</span>
-<span class="n">blue</span>    <span class="o">=</span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>      <span class="c1"># RGB value for blue</span>
-<span class="n">white</span>   <span class="o">=</span>    <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>  <span class="c1"># RGB value for white</span>
-<span class="n">img</span> <span class="o">=</span> <span class="p">[[</span><span class="n">red</span><span class="p">,</span><span class="n">green</span><span class="p">],[</span><span class="n">blue</span><span class="p">,</span><span class="n">white</span><span class="p">]]</span>
-<span class="c1">#      [first row],[second row] </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># create a picture with four pixels spread evenly among two row
+red     =    [255,0,0]      # RGB value for red
+green   =    [0,255,0]      # RGB value for green
+blue    =    [0,0,255]      # RGB value for blue
+white   =    [255,255,255]  # RGB value for white
+img = [[red,green],[blue,white]]
+#      [first row],[second row] 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.imshow(img)
+plt.axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -740,15 +740,15 @@ title="Print to PDF"
 <p>We can use <code class="docutils literal notranslate"><span class="pre">np.random.randin</span></code> to help us generate a <span class="math notranslate nohighlight">\(M \times N \times 3\)</span> matrix with a random value for each element.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a random 2 * 2 * 3 array with each value being between 0 and 256</span>
-<span class="n">img_2_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of the array: &quot;</span><span class="p">,</span><span class="n">img_2_2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The array looks like: &quot;</span><span class="p">,</span><span class="n">img_2_2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># generate a random 2 * 2 * 3 array with each value being between 0 and 256
+img_2_2 = np.random.randint(low = 0, high = 256, size = (2, 2, 3))
+print(&quot;Shape of the array: &quot;,img_2_2.shape,&quot;\n&quot;)
+print(&quot;The array looks like: &quot;,img_2_2)
 
-<span class="c1"># use a 2 * 2 * 3 array to create a 2 * 2  image</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2_2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+# use a 2 * 2 * 3 array to create a 2 * 2  image
+plt.imshow(img_2_2)
+plt.axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -770,11 +770,11 @@ title="Print to PDF"
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p>Let’s display a larger image. We can create a <span class="math notranslate nohighlight">\(M \times N \times 3\)</span> array where each pixel is a random color. Let’s set M and N equal to 100.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">larger_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">high</span> <span class="o">=</span> <span class="mi">256</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>larger_img = np.random.randint(low = 0, high = 256, size = (100, 100, 3))
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">larger_img</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.imshow(larger_img)
+plt.axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -789,11 +789,11 @@ Numpy’s functions are vectorized, meaning they are optimized to do computation
 Python has a module <code class="docutils literal notranslate"><span class="pre">timeit</span></code> that allows us to compare CPU (central processing unit) times for different pieces of code to run. For example, let’s see how long it takes to add two numbers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">myfunc</span><span class="p">():</span>
-    <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
-    <span class="k">return</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def myfunc():
+    1 + 2
+    return
 
-<span class="o">%</span><span class="k">timeit</span> myfunc()
+%timeit myfunc()
 </pre></div>
 </div>
 </div>
@@ -812,11 +812,11 @@ Python has a module <code class="docutils literal notranslate"><span class="pre"
 <p>Write a function with a parameter <span class="math notranslate nohighlight">\(n\)</span> to manually compute a randomly generated <span class="math notranslate nohighlight">\(n\times n\)</span> matrix multiplied by a randomly-generated <span class="math notranslate nohighlight">\(n\times 1\)</span> vector. Compare the CPU time for your function vs the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator. How do the times differ when <span class="math notranslate nohighlight">\(n\)</span> is large?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s an example of matrix vector multiplication</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
-              <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">A</span> <span class="o">@</span> <span class="n">b</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># here&#39;s an example of matrix vector multiplication
+A = np.array([[1,2],
+              [3,4]])
+b = np.array([1,2])
+A @ b
 </pre></div>
 </div>
 </div>
@@ -833,20 +833,20 @@ Python has a module <code class="docutils literal notranslate"><span class="pre"
 <p><strong>Part 2:</strong> In a few sentences, describe the similarities and differences between the two functions and report which function is faster (with evidence).</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">8</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
-                <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">img</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def f1():
+    img = np.ones((9,9,3))
+    for i in range(9):
+        for j in range(9):
+            if i == 0 or i == 8 or j == 0 or j == 8:
+                img[i,j] = [0,255,255]
+            else:
+                img[i,j] = [255,255,0]
+    return img
 
-<span class="k">def</span> <span class="nf">f2</span><span class="p">():</span>
-    <span class="n">img</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">img</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">img</span>
+def f2():
+    img = [0,255,255] * np.ones((9,9,1))
+    img[1:-1,1:-1] = [255,255,0] * np.ones((7,7,1))
+    return img
 </pre></div>
 </div>
 </div>
@@ -864,29 +864,29 @@ Dithering is the process of adding patterns in an image to create the visual eff
 <p>Suppose that we can only use the colors red and yellow. We can create the illusion of orange by displaying red and yellow pixels in a large checkerboard pattern.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import matplotlib.pyplot as plt
 
-<span class="n">palette</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 0: red</span>
-                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 1: green</span>
-                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="c1"># index 2: blue</span>
-                    <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="c1"># index 3: white</span>
-                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 4: black</span>
-                    <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span>   <span class="mi">0</span><span class="p">]</span>  <span class="c1"># index 5: yellow</span>
-                    <span class="p">])</span>
+palette = np.array([[255,   0,   0], # index 0: red
+                    [  0, 255,   0], # index 1: green
+                    [  0,   0, 255], # index 2: blue
+                    [255, 255, 255], # index 3: white
+                    [  0,   0,   0], # index 4: black
+                    [255, 255,   0]  # index 5: yellow
+                    ])
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>     <span class="c1"># make the pattern using the index of the color           </span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span>               <span class="c1"># 0=red, 5=yellow</span>
-    <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>   <span class="p">])</span>
+pattern = np.array([     # make the pattern using the index of the color           
+    [0,5],               # 0=red, 5=yellow
+    [5,0]   ])
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">pattern</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">))])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))
+ax[0].imshow(palette[pattern])
+ax[0].axis(&#39;off&#39;)            
+ax[1].imshow(palette[np.tile(pattern, (2,2))])
+ax[1].axis(&#39;off&#39;)
+ax[2].imshow(palette[np.tile(pattern, (50,50))])
+ax[2].axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -902,24 +902,24 @@ Sandboxes are a place for you to experiment with the code you've seen so far. An
 <p><span style="color:green;"><left> Try out some other patterns with different colors.  </left></span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">palette</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">150</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 0: dimmer red</span>
-                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span>   <span class="mi">0</span><span class="p">],</span> <span class="c1"># index 1: dimmer green</span>
-                    <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">]</span>  <span class="c1"># index 2: blue</span>
-                    <span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>palette = np.array([[150,   0,   0], # index 0: dimmer red
+                    [  0, 100,   0], # index 1: dimmer green
+                    [  0,   0, 255]  # index 2: blue
+                    ])
 
-<span class="n">pattern</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>     <span class="c1"># make the pattern using the index of the color       </span>
-    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>              
-    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
-    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>   <span class="p">])</span>
+pattern = np.array([     # make the pattern using the index of the color       
+    [0,1,2],              
+    [1,2,0],
+    [2,0,1]   ])
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">pattern</span><span class="p">])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">50</span><span class="p">))])</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))
+ax[0].imshow(palette[pattern])
+ax[0].axis(&#39;off&#39;)            
+ax[1].imshow(palette[np.tile(pattern, (2,2))])
+ax[1].axis(&#39;off&#39;)
+ax[2].imshow(palette[np.tile(pattern, (50,50))])
+ax[2].axis(&#39;off&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>

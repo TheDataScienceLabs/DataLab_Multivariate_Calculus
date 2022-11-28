@@ -457,31 +457,31 @@ title="Print to PDF"
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import time
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">serial</span>
-<span class="kn">from</span> <span class="nn">serial.tools</span> <span class="kn">import</span> <span class="n">list_ports</span>
+import matplotlib.pyplot as plt
+import numpy as np
+import serial
+from serial.tools import list_ports
 
-<span class="n">PICO_HWID</span> <span class="o">=</span> <span class="s2">&quot;2E8A&quot;</span>
-
-
-<span class="k">def</span> <span class="nf">get_pico_port</span><span class="p">():</span>
-    <span class="n">pico_ports</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">list_ports</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="n">PICO_HWID</span><span class="p">))</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pico_ports</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
-            <span class="s2">&quot;No Raspberry Pi Pico was detected. Check to make sure it is plugged in, and that no other programs are accessing it&quot;</span>
-        <span class="p">)</span>
-    <span class="k">return</span> <span class="n">pico_ports</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device</span>
+PICO_HWID = &quot;2E8A&quot;
 
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Here are all the serial devices detected:&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">port</span> <span class="ow">in</span> <span class="n">list_ports</span><span class="o">.</span><span class="n">comports</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">port</span><span class="o">.</span><span class="n">device</span><span class="p">,</span> <span class="n">port</span><span class="o">.</span><span class="n">hwid</span><span class="p">)</span>
+def get_pico_port():
+    pico_ports = list(list_ports.grep(PICO_HWID))
+    if len(pico_ports) == 0:
+        raise Exception(
+            &quot;No Raspberry Pi Pico was detected. Check to make sure it is plugged in, and that no other programs are accessing it&quot;
+        )
+    return pico_ports[0].device
 
-<span class="n">port</span> <span class="o">=</span> <span class="n">get_pico_port</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">selected port </span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s2"> as most likely to have a raspberry pi pico&quot;</span><span class="p">)</span>
+
+print(&quot;Here are all the serial devices detected:&quot;)
+for port in list_ports.comports():
+    print(port.device, port.hwid)
+
+port = get_pico_port()
+print(f&quot;\nselected port {port} as most likely to have a raspberry pi pico&quot;)
 </pre></div>
 </div>
 </div>
@@ -490,16 +490,16 @@ title="Print to PDF"
 <h1>Try capturing a still image<a class="headerlink" href="#try-capturing-a-still-image" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buffer</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">96</span> <span class="o">*</span> <span class="mi">96</span><span class="p">)</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">96</span><span class="p">,</span> <span class="mi">96</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buffer = bytearray(96 * 96)
+img = np.zeros(shape=(96, 96), dtype=&quot;uint8&quot;)
 
-<span class="k">with</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x55\xAA</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">s</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
-    <span class="n">img</span><span class="o">.</span><span class="n">flat</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">buffer</span>
+with serial.Serial(port, timeout=1) as s:
+    s.read_until(b&quot;\x55\xAA&quot;)
+    s.readinto(buffer)
+    img.flat[::-1] = buffer
 
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.imshow(img, cmap=&quot;gray&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -510,27 +510,27 @@ title="Print to PDF"
 <p>For reasons I do not understand, Matplotlib refuses to draw any widget-based figures until every cell has finished running.  So, you will have to run the cells one by one to see the animation happen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> widget
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%matplotlib widget
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">render</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">block</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+fig, ax = plt.subplots()
+render = ax.imshow(img, cmap=&#39;gray&#39;)
+plt.show(block=False)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
-        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-            <span class="n">s</span><span class="o">.</span><span class="n">read_until</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x55\xAA</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">s</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span>
-            <span class="n">img</span><span class="o">.</span><span class="n">flat</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">buffer</span>
-            <span class="n">render</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-            <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>try:
+    with serial.Serial(port, timeout=1) as s:
+        while True:
+            s.read_until(b&quot;\x55\xAA&quot;)
+            s.readinto(buffer)
+            img.flat[::-1] = buffer
+            render.set_data(img)
+            fig.canvas.draw()
+except KeyboardInterrupt:
+    pass
 </pre></div>
 </div>
 </div>
