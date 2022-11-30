@@ -899,11 +899,12 @@ Differentiating both sides of <span class="math notranslate nohighlight">\(x^2 +
 <p>Watch this short <a class="reference external" href="https://www.youtube.com/shorts/kdxPEZnv-U0">animation</a> on how to trace an area with a polar planimeter. In the video, the stationary pivot is at point A, the tracer is at point B, and the “elbow” is at point C.</p>
 <p>We begin by imposing a coordinate system. Place the stationary pivot at the origin and the tracer at a point <span class="math notranslate nohighlight">\((x, y)\)</span>. The “elbow” will be constrained to be at <span class="math notranslate nohighlight">\((a, b)\)</span>, a point <span class="math notranslate nohighlight">\(R\)</span> units from the origin and <span class="math notranslate nohighlight">\(L\)</span> units from <span class="math notranslate nohighlight">\((x, y)\)</span>. In this way, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p>We place the measuring wheel a distance <span class="math notranslate nohighlight">\(\ell\)</span> from the elbow, along the tracer arm. Let <span class="math notranslate nohighlight">\(S\)</span> denote the distance from the wheel to the origin, and <span class="math notranslate nohighlight">\(Z\)</span> the distance from the tracer to the origin. Let <span class="math notranslate nohighlight">\(c=x-a\)</span>, and <span class="math notranslate nohighlight">\(d=y-b\)</span>. Then we can summarize many of the relationships succinctly:</p>
-<p>\begin{aligned}
-a^2+b^2&amp;=R^2\
-c^2+d^2&amp;=L^2\
-x^2+y^2&amp;=z^2
-\end{aligned}</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a^2+b^2&amp;=R^2\\
+c^2+d^2&amp;=L^2\\
+x^2+y^2&amp;=Z^2
+\end{align*}\]</div>
 <p>The most straightforward way to decompose the motions of the arm are by rotations at the pivots. For this reason, we define a few angles: <span class="math notranslate nohighlight">\(\theta\)</span> the angle from the elbow to the origin, <span class="math notranslate nohighlight">\(\phi\)</span> the exterior angle between the two arms, and <span class="math notranslate nohighlight">\(\psi\)</span> the angle between the tracer arm and a line extending from the origin, at the position of the wheel. All this is summarized in <a class="reference external" href="https://www.geogebra.org/calculator/btjmzmam">the following diagram</a>:</p>
 <p><img alt="a diagram of the geometry described above" src="../../_images/polar_derivation.png" /></p>
 <p>Let <span class="math notranslate nohighlight">\(w\)</span> denote the amount the wheel moves. Clearly <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \phi}=\ell\)</span>. Furthermore, since the wheel only picks up the component of its motion perpendicular to the rod, <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \theta} = S\cos\psi\)</span>. The chain rule allows us to write the change in <span class="math notranslate nohighlight">\(w\)</span> in terms of its component parts,</p>
