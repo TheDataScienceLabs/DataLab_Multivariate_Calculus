@@ -985,6 +985,10 @@ w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial 
 <h2><span style="color:orange;"> 4. Building a Polar Planimeter </span><a class="headerlink" href="#span-style-color-orange-4-building-a-polar-planimeter-span" title="Permalink to this headline">#</a></h2>
 <p>The planimeter you will be using includes a potentiometer, a button, a capacitor, and an OLED display screen. The potentiometer will be used for receiving values that you will then have to mathematically convert into displacement. The button will be used so that you can reset the screen’s values without restarting the program. The OLED display screen will be used to display the potentiometer’s output values.</p>
 <p><img alt="img" src="../../_images/planimeter.jpg" /> <img alt="img" src="../../_images/planimeter_top.jpg" /> <img alt="img" src="../../_images/planimeter_side.jpg" /></p>
+<p><strong>The Botton</strong></p>
+<p>You have been provided a button. It is a very common type, more precisely called a tactile switch. It has four legs, but opposite pairs of them are connected internally, so there are only two electrical connections to be made. Have a look at the <a class="reference external" href="https://github.com/TheDataScienceLabs/DSLab_Calculus/blob/main/book/labs/4_measure_tall_things/b_build_an_inclinometer/TL1105.pdf">data sheet</a> for the TL1105 tactile switch, which shows a schematic of how the legs are connected. One side of the button will be connected to a ground pin of the Pico and the other side to a GP pin.</p>
+<p><strong>Instructions</strong></p>
+<p>Assemble the 3D-printed parts with the wooden dowels separately and place the potentiometer into the elbow piece. Ask the instructor for a wrench tool to secure the potentiometer in place. Then, follow the wiring instructions.</p>
 </section>
 <section id="wiring-instructions">
 <h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this headline">#</a></h2>
@@ -996,14 +1000,24 @@ w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial 
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Wiper</p></td>
+<tr class="row-even"><td><p>outermost tab</p></td>
 <td><p>GP28</p></td>
 </tr>
-<tr class="row-odd"><td><p>One pole</p></td>
+</tbody>
+</table>
+</br>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potentiometer</p></th>
+<th class="head"><p>OLED</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>middle tab</p></td>
 <td><p>GND</p></td>
 </tr>
-<tr class="row-even"><td><p>Other pole</p></td>
-<td><p>3V3(OUT)</p></td>
+<tr class="row-odd"><td><p>innermost tab</p></td>
+<td><p>VCC</p></td>
 </tr>
 </tbody>
 </table>
