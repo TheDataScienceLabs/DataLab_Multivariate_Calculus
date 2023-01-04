@@ -720,11 +720,11 @@ title="Print to PDF"
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-import cv2
-%matplotlib inline
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -737,14 +737,14 @@ import cv2
 <p>Let’s try some different methods to produce new images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># function to show original and grayscaled images
-def showimage(img, gray_img = [[0]]):
-    fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 6))
-    ax[0].imshow(np.array(img,dtype=np.uint8))
-    ax[0].axis(&#39;off&#39;)   
-    ax[1].imshow(np.array(gray_img), cmap=&#39;gray&#39;, vmin=0, vmax=255)
-    ax[1].axis(&#39;off&#39;)            
-    plt.show()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to show original and grayscaled images</span>
+<span class="k">def</span> <span class="nf">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">gray_img</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]]):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>   
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">gray_img</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -759,13 +759,13 @@ def showimage(img, gray_img = [[0]]):
 <p>Download the picture we’ll be using for this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/3_Color_Quantization/mnms.jpg">mnms.jpg</a>.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>img = Image.open(&#39;mnms.jpg&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
 
-def magnitude_method(img):
-    img = np.array(img, dtype=&#39;float64&#39;) # we have to change the datatype so the calculations are with floating point numbers
-    pass
+<span class="k">def</span> <span class="nf">magnitude_method</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span> <span class="c1"># we have to change the datatype so the calculations are with floating point numbers</span>
+    <span class="k">pass</span>
 
-showimage(img,magnitude_method(img))
+<span class="n">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">magnitude_method</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -778,11 +778,11 @@ showimage(img,magnitude_method(img))
 <p>However, HSV is actually the closest scheme to how humans perceive color, in comparison to RGB and CMYK (cyan, magenta, yellow, key; another color scheme). Hue is the portion of the model and is expressed as a number from 0 to 360 degrees, with primary colors falling in certain degree ranges. Saturation describes the amount of gray in a color and ranges from 0 to 100%, where the closer it gets to 0%, the more gray a color is. Value, also called brightness in some softwares (HSB), describes the intensity of a color and is also defined from 0 to 100%, with 0% being black/the darkest and 100% being white/the brightest, meaning it reveals the most color. The Python Image Library (PIL) uses 8-bit integers to represent hue, saturation, and value, so each channel ranges between 0-255.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>img_rgb = Image.open(&#39;mnms.jpg&#39;)
-showimage(img_rgb,magnitude_method(img_rgb)) # original image vs RGB magnitude
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
+<span class="n">showimage</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">,</span><span class="n">magnitude_method</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">))</span> <span class="c1"># original image vs RGB magnitude</span>
 
-img_hsv = img.convert(&#39;HSV&#39;)
-showimage(img,magnitude_method(img_hsv)) # original image vs HSV magnitude
+<span class="n">img_hsv</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;HSV&#39;</span><span class="p">)</span>
+<span class="n">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">magnitude_method</span><span class="p">(</span><span class="n">img_hsv</span><span class="p">))</span> <span class="c1"># original image vs HSV magnitude</span>
 </pre></div>
 </div>
 </div>
@@ -819,15 +819,15 @@ Try playing around with the vector values to see what happens to the resulting i
 Uniform quantization is a simple type of quantization where the quantization levels are equally spaced. Here’s how the uniform quantization function looks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>num_levels=10
-x = np.linspace(0,255,num_levels+1)
-y = np.linspace(0,255,num_levels)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_levels</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">num_levels</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">num_levels</span><span class="p">)</span>
   
-plt.step(x, np.append(y,y[-1]), where=&#39;post&#39;)
-plt.xlabel(&#39;Grayscale Value&#39;)
-plt.ylabel(&#39;Quantized Value&#39;)
-plt.title(&#39;Uniform Quantization in 1D&#39;)
-plt.show()
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Grayscale Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Quantized Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uniform Quantization in 1D&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -852,12 +852,12 @@ The distance between the two colors <span class="math notranslate nohighlight">\
 <p>Quantize your image from Part 1 again but this time based on the shortest Euclidean distance in the CIE L*a*b* space. That is, transform the RGB vectors to L*a*b* vectors and then compute the distance between the two L*a*b* vectors. See the example below on how to convert from RGB to CIE L*a*b*.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>rgb = np.array([0,0,255])
-lab = cv2.cvtColor( np.uint8([[rgb]] ), cv2.COLOR_RGB2LAB)[0][0].astype(float)
-lab[0] *= 100/255
-lab[1] -= 128
-lab[2] -= 128
-print(&#39;RGB {} ---&gt; L*a*b* {}&#39;.format(rgb,lab))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
+<span class="n">lab</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">([[</span><span class="n">rgb</span><span class="p">]]</span> <span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2LAB</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="mi">100</span><span class="o">/</span><span class="mi">255</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">128</span>
+<span class="n">lab</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">128</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RGB </span><span class="si">{}</span><span class="s1"> ---&gt; L*a*b* </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rgb</span><span class="p">,</span><span class="n">lab</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -867,15 +867,15 @@ print(&#39;RGB {} ---&gt; L*a*b* {}&#39;.format(rgb,lab))
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 3 Below </h3><p>There are methods for adaptive color quantization, which means that the palette of colors changes based on the image. We won’t explore them for now, but here’s an example where the ‘best’ 15 colors are chosen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>img = Image.open(&#39;mnms.jpg&#39;)
-quant_img = img.quantize(colors=15)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
+<span class="n">quant_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 
-fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 6))
-ax[0].imshow(img)
-ax[0].axis(&#39;off&#39;)            
-ax[1].imshow(quant_img)
-ax[1].axis(&#39;off&#39;)
-plt.show()
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>            
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">quant_img</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>

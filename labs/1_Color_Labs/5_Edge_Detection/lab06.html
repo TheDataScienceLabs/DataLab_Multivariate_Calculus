@@ -606,9 +606,9 @@ title="Print to PDF"
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 </pre></div>
 </div>
 </div>
@@ -620,16 +620,16 @@ from PIL import Image
 <p>Download the image we’ll be using in this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/5_Edge_Detection/gray_italy.jpg">gray_italy.jpg</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.patches as patches
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
 
-gray_img = np.array(Image.open(&#39;gray_italy.jpg&#39;))[:300,:500]
+<span class="n">gray_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;gray_italy.jpg&#39;</span><span class="p">))[:</span><span class="mi">300</span><span class="p">,:</span><span class="mi">500</span><span class="p">]</span>
 
-fig, ax = plt.subplots(figsize=(12,6))
-ax.imshow(gray_img, cmap=&#39;gray&#39;)
-rect = patches.Rectangle((0, 280), 300, 1, linewidth=0.5, edgecolor=&#39;r&#39;, facecolor=&#39;none&#39;)
-ax.add_patch(rect)
-ax.axis(&#39;off&#39;)
-plt.show()
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gray_img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">280</span><span class="p">),</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">rect</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -637,34 +637,34 @@ plt.show()
 <p>By plotting the grayscale values as a 1D function, we can see how the grayscale values change moving down the row from left to right. This function is a bit noisy, but we can smooth it out by taking a rolling average as you may have done in the <a class="reference external" href="https://thedatasciencelabs.github.io/DSLab_Calculus/intro.html">previous Data Science Labs</a> with the PPG sensor and accelerometer data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def rolling_centered_average(x, n):
-    out = np.full_like(x, np.nan)
-    out[(n - 1) // 2 : -(n // 2)] = np.convolve(x, np.ones(n), mode=&quot;valid&quot;) / n
-    return out
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rolling_centered_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span> <span class="p">:</span> <span class="o">-</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="k">return</span> <span class="n">out</span>
 
-gray_img = np.array(Image.open(&#39;gray_italy.jpg&#39;))
-slice = gray_img[280:281,:300]
+<span class="n">gray_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;gray_italy.jpg&#39;</span><span class="p">))</span>
+<span class="nb">slice</span> <span class="o">=</span> <span class="n">gray_img</span><span class="p">[</span><span class="mi">280</span><span class="p">:</span><span class="mi">281</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span>
 
-x = gray_img[280,:300]
-smoothed = rolling_centered_average(x,3)
-first_deriv = np.convolve(smoothed[1:-1], np.array([1,-1]), mode=&quot;valid&quot;)
+<span class="n">x</span> <span class="o">=</span> <span class="n">gray_img</span><span class="p">[</span><span class="mi">280</span><span class="p">,:</span><span class="mi">300</span><span class="p">]</span>
+<span class="n">smoothed</span> <span class="o">=</span> <span class="n">rolling_centered_average</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">first_deriv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">smoothed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
 
-fig, ax = plt.subplots(nrows=3, ncols=1, figsize=(24, 8),gridspec_kw={&#39;hspace&#39;: 0.5})
-ax[0].imshow(np.tile(slice,(20,1)), cmap=&#39;gray&#39;)
-ax[0].axis(&#39;off&#39;)     
-ax[0].set_title(&#39;Piece of Italy Image Stretched Vertically&#39;)  
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span><span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;hspace&#39;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="nb">slice</span><span class="p">,(</span><span class="mi">20</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>     
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Piece of Italy Image Stretched Vertically&#39;</span><span class="p">)</span>  
 
-ax[1].plot(np.arange(0,300),x)
-ax[1].plot(np.arange(1,299), smoothed[1:-1])
-ax[1].set_xlabel(&#39;Column&#39;)
-ax[1].set_xlim(0,300)
-ax[1].set_title(&#39;Grayscale Values in Row 280&#39;)
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">),</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">299</span><span class="p">),</span> <span class="n">smoothed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Grayscale Values in Row 280&#39;</span><span class="p">)</span>
 
-ax[2].plot(np.arange(2,299),first_deriv)
-ax[2].set_xlabel(&#39;Column&#39;)
-ax[2].set_xlim(0,300)
-ax[2].set_title(&#39;First Derivative&#39;)
-plt.show()
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">299</span><span class="p">),</span><span class="n">first_deriv</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Column&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;First Derivative&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
