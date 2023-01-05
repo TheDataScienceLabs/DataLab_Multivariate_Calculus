@@ -672,7 +672,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="week-7-color-quantization">
 <h1>Week 7: Color Quantization<a class="headerlink" href="#week-7-color-quantization" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 4 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -745,6 +745,9 @@ title="Print to PDF"
 <h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
 <p>What happens if we replace the RGB vector for a pixel with the scaled norm of that vector? That means we need to calculate the magnitude of the vector <span class="math notranslate nohighlight">\((R,G,B)\)</span> and then rescale so that the grayscale values are between 0-255. Fill in the function that finds this new kind of grayscale image. Display the result.</p>
 <p>Download the picture we’ll be using for this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/3_Color_Quantization/mnms.jpg">mnms.jpg</a>.</p>
+<blockquote>
+<div><p>Notice that in the cell below, we need to change the array data type to floating point to do all of our computations, and in the cell above defining the function <code class="docutils literal notranslate"><span class="pre">showimage</span></code>, we need the array we display as an image to have a different data type, namely uint8. This step is necessary in order to use imshow. Computations using 8-bit integers are very different than using floating point numbers, so be careful!</p>
+</div></blockquote>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
@@ -837,7 +840,7 @@ The distance between the two colors <span class="math notranslate nohighlight">\
 <p>Choose your own palette of at least 4 colors and write a function that quantizes a color image (of your chosing) to your palette based on the shortest Euclidean distance among the chosen colors. For example, if the palette of four colors is (0,0,10), (41,200,0), (36,0,85), and (40,40,40), then to quantize a pixel in the original image with RGB values (1,1,9) compute the 4 distances between (1,1,9) and (0,0,10); (1,1,9) and (41,200,0); etc. Replace the original value (1,1,9) with the color (0,0,10) from the palette since that color is the shortest distance from the original color.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 1 Below </h3><p><strong>Part 2</strong></p>
 <p>We’ve introduced quite a few color spaces like RGB, HSV, and CMYK. Similarly, another color space named the CIE L*a*b* space is an important color space in color science and is widely accepted to model human perception of color as accurately as possible.</p>
-<p>Quantize your image from Part 1 again but this time based on the shortest Euclidean distance in the CIE L*a*b* space. That is, transform the RGB vectors to L*a*b* vectors and then compute the distance between the two L*a*b* vectors. See the example below on how to convert from RGB to CIE L*a*b*.</p>
+<p>Quantize your image from Part 1 again but this time based on the shortest Euclidean distance in the CIE L*a*b* space. At each pixel location, you will select the original RGB color from the palatte with the closest Euclidean distance in the L*a*b* space. That is, transform the RGB vector at the pixel location to an L*a*b* vector and each palatte color to  L*a*b*; then compute the distance between the L*a*b* vectors. Your image in Part 1 and Part 2 should contain the same 4 colors but it is likely that some parts be shaded differently. See the example below on how to convert from RGB to CIE L*a*b*.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">])</span>
@@ -850,9 +853,7 @@ The distance between the two colors <span class="math notranslate nohighlight">\
 </div>
 </div>
 </div>
-<p><strong>Part 3</strong></p>
-<p>Do you notice any differences in the two quantization methods? What if you add more or less colors to your palette?</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 3 Below </h3><p>There are methods for adaptive color quantization, which means that the palette of colors changes based on the image. We won’t explore them for now, but here’s an example where the ‘best’ 15 colors are chosen.</p>
+<p>There are methods for adaptive color quantization, which means that the palette of colors changes based on the image. We won’t explore them for now, but here’s an example where the ‘best’ 15 colors are chosen.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
@@ -884,7 +885,7 @@ Write a script that displays Purdue Old Gold (RGB = (206, 184, 136)) on the NeoP
 <p>It doesn’t look quite right. That’s because according to Weber’s Law we need to adjust the brightness levels for the NeoPixel to be logarithmic. This process is called <em>gamma correction</em>. The new, gamma-corrected RGB values are <span class="math notranslate nohighlight">\(
     R_{new} = 255(R/255)^\gamma, \quad G_{new} = 255(G/255)^\gamma, \quad B_{new} = 255(B/255)^\gamma.\)</span>
 Typically, <span class="math notranslate nohighlight">\(\gamma=2.2\)</span> for cameras and scanners, but the best gamma value depends on the hardware.</p>
-<p>Gamma correct the Purdue Old Gold RGB values for different values <span class="math notranslate nohighlight">\(1 \leq \gamma \leq 10\)</span> and show these colors on the NeoPixels. What does Purdue gold look like now? Report your findings.</p>
+<p>Gamma correct the Purdue Old Gold RGB values for different values <span class="math notranslate nohighlight">\(1 \leq \gamma \leq 10\)</span> and show these colors on the NeoPixels. What does Purdue Old Gold look like now? Report your findings. What gamma value produces the closest color to Purdue Old Gold?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
