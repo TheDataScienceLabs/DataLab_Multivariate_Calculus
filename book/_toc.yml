@@ -23,7 +23,4 @@ parts:
 - caption: Green's Theorem
   chapters:
   - file: labs/3_Greens_Theorem_Labs/lab10.ipynb
-- caption: Design a project of your own
-  chapters:
-  - file: labs/Final_Project/labfinal.ipynb
   
