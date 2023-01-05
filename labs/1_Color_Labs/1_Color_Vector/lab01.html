@@ -630,7 +630,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="week-2-color-as-a-vector">
 <h1>Week 2: Color as a Vector<a class="headerlink" href="#week-2-color-as-a-vector" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 1 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -681,7 +681,7 @@ title="Print to PDF"
 <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">red</span><span class="p">,</span><span class="n">green</span><span class="p">,</span><span class="n">blue</span><span class="p">])</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># change array from shape (3,) to (1,1,3) which the right dimension required by plt.show()</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>  <span class="c1"># reshaping the array from size (3,) to (1,1,3) which is the dimension required by plt.show()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
@@ -710,7 +710,7 @@ title="Print to PDF"
 <p>Similarly when we use a  <span class="math notranslate nohighlight">\(2 \times 2 \times 3\)</span> array as the the input of <code class="docutils literal notranslate"><span class="pre">imshow()</span></code>, we can get 4 pixels of the colors we want.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a picture with four pixels spread evenly among two row</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a picture with four pixels on two rows</span>
 <span class="n">red</span>     <span class="o">=</span>    <span class="p">[</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># RGB value for red</span>
 <span class="n">green</span>   <span class="o">=</span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>      <span class="c1"># RGB value for green</span>
 <span class="n">blue</span>    <span class="o">=</span>    <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>      <span class="c1"># RGB value for blue</span>
@@ -733,7 +733,6 @@ title="Print to PDF"
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape of the array: &quot;</span><span class="p">,</span><span class="n">img_2_2</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The array looks like: &quot;</span><span class="p">,</span><span class="n">img_2_2</span><span class="p">)</span>
 
-<span class="c1"># use a 2 * 2 * 3 array to create a 2 * 2  image</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_2_2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -786,30 +785,25 @@ Python has a module <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 </div>
-<p><strong>Warning:</strong> Make sure there are no print statements or plotting functions called within the function you want to time. Since <code class="docutils literal notranslate"><span class="pre">timeit</span></code> calls your function over a million times, you do not want to be printing over a million lines!</p>
+<p><strong>Warning:</strong> Make sure there are <strong>no print statements</strong> or plotting functions called <strong>within the function</strong> you want to time. Since <code class="docutils literal notranslate"><span class="pre">timeit</span></code> calls your function thousands of times, you do not want to be printing that many lines!</p>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
-<p>Write a function to manually compute the dot product between two vectors. Compare the CPU time for your function vs numpy’s dot function.</p>
+<p>Write a function to manually compute the dot product between two vectors of length <span class="math notranslate nohighlight">\(n\)</span>. Compare the CPU time for your function vs numpy’s dot function.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="span-style-color-red-exercise-4-span">
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
-<p>Write a function to manually compute the cross product between two vectors. Compare the CPU time for your function vs numpy’s cross function.</p>
+<p>Write a function to manually compute the cross product between two 3-dimensional vectors. Compare the CPU time for your function vs numpy’s cross function.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
 <section id="span-style-color-red-exercise-5-span">
 <h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this headline">#</a></h3>
 <p>Write a function with a parameter <span class="math notranslate nohighlight">\(n\)</span> to manually compute a randomly generated <span class="math notranslate nohighlight">\(n\times n\)</span> matrix multiplied by a randomly-generated <span class="math notranslate nohighlight">\(n\times 1\)</span> vector. Compare the CPU time for your function vs the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator. How do the times differ when <span class="math notranslate nohighlight">\(n\)</span> is large?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s an example of matrix vector multiplication</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># here&#39;s an example of matrix vector multiplication using the @ operator</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">A</span> <span class="o">@</span> <span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5, 11])
 </pre></div>
 </div>
 </div>
@@ -819,6 +813,7 @@ Python has a module <code class="docutils literal notranslate"><span class="pre"
 <h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
 <p><strong>Part 1:</strong> Display the outputs of functions <code class="docutils literal notranslate"><span class="pre">f1</span></code> and <code class="docutils literal notranslate"><span class="pre">f2</span></code> defined in the cell below.</p>
 <p><strong>Part 2:</strong> In a few sentences, describe the similarities and differences between the two functions and report which function is faster (with evidence).</p>
+<p><em>Hint: If you haven’t seen negative indexing before, check out <a class="reference external" href="https://thedatasciencelabs.github.io/DSLab_Calculus/labs/1_intro_to_notebooks/lab1.html#span-style-color-orange-8-numpy-arrays-span">this page</a>.</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">():</span>
