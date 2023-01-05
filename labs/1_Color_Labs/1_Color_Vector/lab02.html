@@ -686,7 +686,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="weeks-3-4-creating-color-with-leds">
 <h1>Weeks 3 &amp; 4: Creating Color with LEDs<a class="headerlink" href="#weeks-3-4-creating-color-with-leds" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 2 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -764,6 +764,7 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 <li><p><strong>Do not connect your microcontroller to the computer while you are wiring things together</strong>. If you are uncertain about your wiring, ask for an instructor to check it.</p></li>
 <li><p>Use the following tables to wire each component</p></li>
 </ol>
+<p>You’ll notice that quite a few things are connected to ground (GND) from the low voltage side of the level shifter and each NeoPixel we use must be connected to HV and GND on the level shifter. Make use of the power rails (the long strips on the outer edge of the breadboard labeles with + and -) to simplify the connections.</p>
 <br>   
 <table class="colwidths-auto table">
 <thead>
@@ -816,23 +817,24 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 <thead>
 <tr class="row-odd"><th class="head"><p>Pico</p></th>
 <th class="head"><p>NeoPixel 1</p></th>
+<th class="head"><p>NeoPixel 2</p></th>
+<th class="head"><p>NeoPixel 3</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>GP0</p></td>
 <td><p>DIN</p></td>
+<td><p></p></td>
+<td><p></p></td>
 </tr>
-</tbody>
-</table>
-<br>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>NeoPixel 1</p></th>
-<th class="head"><p>NeoPixel 2</p></th>
+<tr class="row-odd"><td><p></p></td>
+<td><p>DOUT</p></td>
+<td><p>DIN</p></td>
+<td><p></p></td>
 </tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>DOUT</p></td>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>DOUT</p></td>
 <td><p>DIN</p></td>
 </tr>
 </tbody>
@@ -952,7 +954,7 @@ Your output should look like</p>
 </section>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
-<p><strong>Part 1:</strong> Write a script called <code class="docutils literal notranslate"><span class="pre">pico_flash.py</span></code> that flashes the Pico’s onboard LED with a 30% duty cycle where a cycle is 1 second long. Run the cell below the print the code you wrote.</p>
+<p><strong>Part 1:</strong> Write a script called <code class="docutils literal notranslate"><span class="pre">pico_flash.py</span></code> that flashes the Pico’s <strong>onboard LED</strong> with a 30% duty cycle where a cycle is 1 second long. Run the cell below the print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Part 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;pico_flash.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -960,7 +962,7 @@ Your output should look like</p>
 </div>
 </div>
 </div>
-<p><strong>Part 2:</strong> Write a script called <code class="docutils literal notranslate"><span class="pre">green_flash.py</span></code> that flashes green on the NeoPixel with a 10% duty cycle where a cycle is 1 second long. Run the cell below the print the code you wrote.</p>
+<p><strong>Part 2:</strong> Write a script called <code class="docutils literal notranslate"><span class="pre">green_flash.py</span></code> that flashes the color green on the connected NeoPixels with a 10% duty cycle where a cycle is 1 second long. Run the cell below the print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Part 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;green_flash.py&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
@@ -1103,6 +1105,7 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
 <li><p>Unplug the Pico from the computer.</p></li>
 <li><p>Carefully remove all wires and components.</p></li>
 </ol>
+<p>You should follow these steps everytime we use hardware in future labs.</p>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
