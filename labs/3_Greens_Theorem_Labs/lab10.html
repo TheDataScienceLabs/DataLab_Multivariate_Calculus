@@ -528,13 +528,6 @@ title="Print to PDF"
      </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-10-span">
-     <span style="color:red">
-      Exercise 10
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -694,13 +687,6 @@ title="Print to PDF"
      </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-10-span">
-     <span style="color:red">
-      Exercise 10
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -723,7 +709,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="weeks-13-14-build-a-planimeter">
 <h1>Weeks 13 &amp; 14: Build a Planimeter<a class="headerlink" href="#weeks-13-14-build-a-planimeter" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 10 </font> <br>
-<font size="3"> Last updated Nov 28, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -885,7 +871,7 @@ Differentiating both sides of <span class="math notranslate nohighlight">\(x^2 +
 <h2><span style="color:orange;"> 4. The Math Behind a Polar Planimeter </span><a class="headerlink" href="#span-style-color-orange-4-the-math-behind-a-polar-planimeter-span" title="Permalink to this headline">#</a></h2>
 <p>Watch this short <a class="reference external" href="https://www.youtube.com/shorts/kdxPEZnv-U0">animation</a> on how to trace an area with a polar planimeter. In the video, the stationary pivot is at point A, the tracer is at point B, and the “elbow” is at point C.</p>
 <p>We begin by imposing a coordinate system. Place the stationary pivot at the origin and the tracer at a point <span class="math notranslate nohighlight">\((x, y)\)</span>. The “elbow” will be constrained to be at <span class="math notranslate nohighlight">\((a, b)\)</span>, a point <span class="math notranslate nohighlight">\(R\)</span> units from the origin and <span class="math notranslate nohighlight">\(L\)</span> units from <span class="math notranslate nohighlight">\((x, y)\)</span>. In this way, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>We place the measuring wheel a distance <span class="math notranslate nohighlight">\(\ell\)</span> from the elbow, along the tracer arm. Let <span class="math notranslate nohighlight">\(S\)</span> denote the distance from the wheel to the origin, and <span class="math notranslate nohighlight">\(Z\)</span> the distance from the tracer to the origin. Let <span class="math notranslate nohighlight">\(c=x-a\)</span>, and <span class="math notranslate nohighlight">\(d=y-b\)</span>. Then we can summarize many of the relationships succinctly:</p>
+<p>We place the measuring wheel a distance <span class="math notranslate nohighlight">\(\ell\)</span> from the elbow, along the tracer arm. Note that in the video the wheel is behind the elbow and in the diagram below the wheel is infront of the elbow. Let <span class="math notranslate nohighlight">\(S\)</span> denote the distance from the wheel to the origin, and <span class="math notranslate nohighlight">\(Z\)</span> the distance from the tracer to the origin. Let <span class="math notranslate nohighlight">\(c=x-a\)</span>, and <span class="math notranslate nohighlight">\(d=y-b\)</span>. Then we can summarize many of the relationships succinctly:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 a^2+b^2&amp;=R^2\\
@@ -972,10 +958,10 @@ w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial 
 <h2><span style="color:orange;"> 4. Building a Polar Planimeter </span><a class="headerlink" href="#span-style-color-orange-4-building-a-polar-planimeter-span" title="Permalink to this headline">#</a></h2>
 <p>The planimeter you will be using includes a potentiometer, a button, a capacitor, and an OLED display screen. The potentiometer will be used for receiving values that you will then have to mathematically convert into displacement. The button will be used so that you can reset the screen’s values without restarting the program. The OLED display screen will be used to display the potentiometer’s output values.</p>
 <p><img alt="img" src="../../_images/planimeter.jpg" /> <img alt="img" src="../../_images/planimeter_top.jpg" /> <img alt="img" src="../../_images/planimeter_side.jpg" /></p>
-<p><strong>The Botton</strong></p>
+<p><strong>The Button</strong></p>
 <p>You have been provided a button. It is a very common type, more precisely called a tactile switch. It has four legs, but opposite pairs of them are connected internally, so there are only two electrical connections to be made. Have a look at the <a class="reference external" href="https://github.com/TheDataScienceLabs/DSLab_Calculus/blob/main/book/labs/4_measure_tall_things/b_build_an_inclinometer/TL1105.pdf">data sheet</a> for the TL1105 tactile switch, which shows a schematic of how the legs are connected. One side of the button will be connected to a ground pin of the Pico and the other side to a GP pin.</p>
 <p><strong>Instructions</strong></p>
-<p>Assemble the 3D-printed parts with the wooden dowels separately and place the potentiometer into the elbow piece. Ask the instructor for a wrench tool to secure the potentiometer in place. Then, follow the wiring instructions.</p>
+<p>Assemble the 3D-printed parts with the wooden dowels separately and place the potentiometer into the elbow piece. Secure the potentiometer in place. Then, follow the wiring instructions.</p>
 </section>
 <section id="wiring-instructions">
 <h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this headline">#</a></h2>
@@ -1073,10 +1059,6 @@ w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial 
 <h3><span style="color:red"> Exercise 9 </span><a class="headerlink" href="#span-style-color-red-exercise-9-span" title="Permalink to this headline">#</a></h3>
 <p>Print out a map to calculate area of Indiana or some other state/country with a well known land area. Use your planimeter to measure the area. How close are your calculations? Keep in mind the scale of the map you print.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 9 Below </h3></section>
-<section id="span-style-color-red-exercise-10-span">
-<h3><span style="color:red"> Exercise 10 </span><a class="headerlink" href="#span-style-color-red-exercise-10-span" title="Permalink to this headline">#</a></h3>
-<p>Choose 3 functions and calculate their integrals from one point to another. These functions must be somewhat complicated and cannot include the function that was used in the printout.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 10 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
