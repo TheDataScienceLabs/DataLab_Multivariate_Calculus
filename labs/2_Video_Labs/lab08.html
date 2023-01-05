@@ -767,7 +767,7 @@ That means in the last equation the velocity components <span class="math notran
 <p>Pick two frames to calculate <code class="docutils literal notranslate"><span class="pre">flow</span></code>. Use the matplotlib function <a class="reference external" href="https://matplotlib.org/3.5.0/api/_as_gen/matplotlib.pyplot.quiver.html">quiver</a> to plot the vector field using arrows.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for a plotting a constant vector field</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for a plotting a constant vector field where each vector is &lt;1,1&gt;</span>
 <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> 
                    <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">10</span> <span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 <span class="n">dxdt</span> <span class="o">=</span> <span class="mi">1</span>
@@ -816,8 +816,9 @@ That means in the last equation the velocity components <span class="math notran
     <span class="c1"># mag and ang should have the same dimensions as the variable next </span>
     <span class="n">mag</span> <span class="o">=</span> <span class="c1"># fill in</span>
     <span class="n">ang</span> <span class="o">=</span> <span class="c1"># fill in</span>
+    <span class="c1"># ang needs to be between 0 and 2pi</span>
 
-    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ang</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="c1"># converts radians to degrees</span>
+    <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">ang</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1"># convert radians to degrees then divide by 2</span>
     <span class="n">hsv</span><span class="p">[</span><span class="o">...</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">mag</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
     <span class="n">rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_HSV2BGR</span><span class="p">)</span>
 
@@ -837,10 +838,10 @@ That means in the last equation the velocity components <span class="math notran
 </section>
 <section id="span-style-color-orange-2-repeat-with-your-own-video-span">
 <h2><span style="color:orange;"> 2. Repeat with Your Own Video </span><a class="headerlink" href="#span-style-color-orange-2-repeat-with-your-own-video-span" title="Permalink to this headline">#</a></h2>
-<p>As you did in the previous lab, you will be repeating some of exercises again with your own recorded video. You may use the video you recorded last time, or you can record a new one. When making this decision, take into account what is being done in the lab and consider if the video you have will produce good results.</p>
+<p>As you did in the previous lab, you will be repeating some of exercises again with your own recorded video. When recording your video, take into account what is being done in the lab and consider if the video you have will produce good results.</p>
 <section id="span-style-color-red-exercise-6-span">
 <h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
-<p>Record a video with at least one moving object and save it. Pick two frames to calculate flow and plot the associated vector field.</p>
+<p>Save a few seconds worth of frames from the video feed. There needs to be at least one moving object. Pick two frames to calculate flow and plot the associated vector field.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="span-style-color-red-exercise-7-span">
 <h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
