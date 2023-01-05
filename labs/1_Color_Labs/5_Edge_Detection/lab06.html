@@ -449,13 +449,6 @@ title="Print to PDF"
      </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
-     <span style="color:red">
-      Exercise 4
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -535,13 +528,6 @@ title="Print to PDF"
      </span>
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span">
-     <span style="color:red">
-      Exercise 4
-     </span>
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -564,7 +550,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="week-9-edge-detection-in-images">
 <h1>Week 9: Edge Detection in Images<a class="headerlink" href="#week-9-edge-detection-in-images" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 6 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -682,7 +668,7 @@ and direction <span class="math notranslate nohighlight">\(
 <p>What are the physical interpretations for <span class="math notranslate nohighlight">\(|\nabla f|\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Part 1 Below </h3><p><strong>Choose an image and apply a grayscaling method from Lab 4 on color quantization.</strong></p>
 <p><strong>Part 2</strong></p>
-<p>Plot the magnitute of the gradient of the grayscaled image.</p>
+<p>At each point of the the grayscaled image, compute the scalar value <span class="math notranslate nohighlight">\(|\nabla f|\)</span>. Plot the new grayscale image containing the magnitute of the gradient of the original grayscaled image.</p>
 <p><strong>Part 3</strong></p>
 <p>Pick a threshold for how large the gradient needs to be in order to detect an edge. Justify your choice.</p>
 <p><strong>Part 4</strong></p>
@@ -723,6 +709,7 @@ To approximate the second derivative <span class="math notranslate nohighlight">
 <br><section id="span-style-color-red-exercise-2-span">
 <h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
 <p>Finish the derivation of the estimation of <span class="math notranslate nohighlight">\(g''(a)\)</span>. Your estimation should only depend on function values of <span class="math notranslate nohighlight">\(g\)</span>.</p>
+<p>Write your answer using LaTeX showing your steps. Remember that you can double-click on the cells above to see how to format equations in LaTeX.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p>Going back to the 2-dimensional case, the Taylor series of the funtion <span class="math notranslate nohighlight">\(f(x,y)\)</span> at the point <span class="math notranslate nohighlight">\((a,b)\)</span> is $<span class="math notranslate nohighlight">\(
     f(x,y) = f(a,b) + (x-a)\frac{df}{dx}(a,b) + (y-b)\frac{df}{dy}(a,b) + 
         \frac{(x-a)^2\frac{d^2f}{dx^2}(a,b) + 2(x-a)(y-b)\frac{d^2f}{dxdy}(a,b) + (y-b)^2\frac{d^2f}{dy^2}(a,b)}{1 \cdot 2} + \cdots\)</span>$</p>
@@ -741,11 +728,8 @@ $<span class="math notranslate nohighlight">\(\left[\frac{d^2f}{dx^2}(a,b) \righ
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
 <p>Derive the estimations of <span class="math notranslate nohighlight">\(\frac{d^2f}{dy^2}\)</span> and <span class="math notranslate nohighlight">\(\frac{d^2f}{dxdy}\)</span>. Your estimations should only depend on function values of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Write your answer using LaTeX showing your steps. Remember that you can double-click on the cells above to see how to format equations in LaTeX.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
-<section id="span-style-color-red-exercise-4-span">
-<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this headline">#</a></h3>
-<p>Use the second order method to detect edges in the image. In a couple sentences, compare your results with the first-order edge detectors from Exercise 1.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
