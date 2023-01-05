@@ -670,7 +670,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="week-10-acquiring-and-manipulating-videos">
 <h1>Week 10: Acquiring and Manipulating Videos<a class="headerlink" href="#week-10-acquiring-and-manipulating-videos" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 7 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -740,6 +740,7 @@ title="Print to PDF"
 </div>
 <section id="span-style-color-red-exercise-1-span">
 <h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
+<p>In the cell above, we scale down the orginal video frames by a factor of 4 by defining <code class="docutils literal notranslate"><span class="pre">new_size</span></code> and using <code class="docutils literal notranslate"><span class="pre">cv2.resize()</span></code>.</p>
 <p>Open and watch the above video again, this time scaled down each frame by a factor of 8. How much less CPU time does it take to play the video, compared to when you only scaled it down by a factor 4?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
 </section>
@@ -763,6 +764,7 @@ title="Print to PDF"
 <p>Flip the video’s visuals over the y-axis.</p>
 <p><strong>Part 2</strong></p>
 <p>Flip the video’s visuals over the x-axis.</p>
+<p><em>Hint: There are many ways to do this, but you can look into NumPy or OpenCV’s flip function.</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Part 1 Below </h3><h3 style="background-color:lightblue"> Write Answers for Exercise 4 Part 2 Below </h3><p>Being able to extract specific frames from a video is a useful skill. It can be used, for example, to trim the ends of the video or to remove a section in the middle.</p>
 </section>
 <section id="span-style-color-red-exercise-5-span">
@@ -869,7 +871,7 @@ title="Print to PDF"
 </section>
 <section id="span-style-color-red-exercise-6-span">
 <h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this headline">#</a></h3>
-<p>Use the camera to acquire an image of yourself with your hand up, and an image of yourself with your hands down. Use these two frames (you are welcome to use more than 2 frames if desired) to create a video of yourself moving your hands up and down.</p>
+<p>Use the camera to acquire an image of yourself with your hand up, and an image of yourself with your hands down. Use these two frames (you are welcome to use more than 2 frames if desired) to create a video of yourself moving your hands up and down that lasts a few seconds.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="streaming-video">
 <h3>Streaming video<a class="headerlink" href="#streaming-video" title="Permalink to this headline">#</a></h3>
@@ -909,27 +911,11 @@ title="Print to PDF"
 <p>Now that you are able to capture your own video, you will try the same modifications you made on the prerecorded videos on the one you recorded.</p>
 <section id="span-style-color-red-exercise-7-span">
 <h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this headline">#</a></h3>
-<p>Capture and save a video using the camera.</p>
+<p>Capture and save a list of frames using the camera.</p>
 <p><strong>Part 1:</strong> Either trim both ends of the video or remove a section in the middle.</p>
-<p><strong>Part 2:</strong> Record a second video. Splice the two videos together.</p>
-<p><strong>Part 3:</strong> Pick an editing function we haven’t mentioned (e.g., adding text, video filters, etc.) and try it out on either the prerecorded video or the one you recorded using the camera.</p>
-<h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how to save a video</span>
-<span class="n">fourcc</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter_fourcc</span><span class="p">(</span><span class="o">*</span><span class="s1">&#39;mp4v&#39;</span><span class="p">)</span>
-<span class="n">out</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoWriter</span><span class="p">()</span>
-<span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">capsize</span> <span class="o">=</span> <span class="c1"># (width,height) of the images added to in the video</span>
-<span class="n">success</span> <span class="o">=</span> <span class="n">out</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;my_video.mp4v&#39;</span><span class="p">,</span> <span class="n">fourcc</span><span class="p">,</span> <span class="n">fps</span><span class="p">,</span> <span class="n">capsize</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">success</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="p">[]:</span> <span class="c1">#list of frames</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-<span class="n">out</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<p><strong>Part 2:</strong> Save another list of frames from a second video. Splice the two videos together so that one plays after the other.</p>
+<p><strong>Part 3:</strong> Pick an editing function we haven’t mentioned (e.g., adding text, video filters, etc.) and try it out on either the prerecorded video or the ones you recorded using the camera.</p>
+<h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
 <h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
