@@ -664,7 +664,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="weeks-5-6-human-perception-of-color">
 <h1>Weeks 5 &amp; 6: Human Perception of Color<a class="headerlink" href="#weeks-5-6-human-perception-of-color" title="Permalink to this headline">#</a></h1>
 <p><font size="6"> Laboratory 3 </font> <br>
-<font size="3"> Last updated August 17, 2022 </font></p>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
 <h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
@@ -768,7 +768,7 @@ We call <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> the 
     B_S &amp;= \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda \\
 \end{align*}\]</div>
 <p>The spectral power distrubution tells us how much each wavelength of visible light is present in the stimulus.
-Usually the spectral power distrubution is normalized so the maximum value is 1.</p>
+Usually the spectral power distribution is normalized so the maximum value is 1.</p>
 <section id="span-style-color-red-exercise-3-span">
 <h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this headline">#</a></h3>
 <p>Not all values of <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> are possible. Give two such examples and explain your choices.</p>
@@ -888,15 +888,20 @@ Then,
 f(\vec{x}) = || A\vec{x}-\vec{b} ||^2,
 \)</span>
 where <span class="math notranslate nohighlight">\(\vec{b}\)</span> is the tristimulus vector with respect to <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span>.</p>
-<p>Recall that for a vector <span class="math notranslate nohighlight">\(\vec{v}=&lt;v_1,v_2,\dots,v_n&gt;\)</span>, the norm of the vector is <span class="math notranslate nohighlight">\(||\vec{v}|| = \sqrt{v_1^2 + v_2^2 + \cdots v_n^2}\)</span>.
+<blockquote>
+<div><p>Recall that for a vector <span class="math notranslate nohighlight">\(\vec{v}=&lt;v_1,v_2,\dots,v_n&gt;\)</span>, the norm of the vector is <span class="math notranslate nohighlight">\(||\vec{v}|| = \sqrt{v_1^2 + v_2^2 + \cdots v_n^2}\)</span>.
 The function <span class="math notranslate nohighlight">\(f\)</span> represents the distance squared between the two vectors <span class="math notranslate nohighlight">\(A\vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{b}\)</span>.</p>
+</div></blockquote>
 <p>Now, if <span class="math notranslate nohighlight">\(f(\vec{x})=0\)</span>, then that means the stimulus described by <span class="math notranslate nohighlight">\(\vec{x}\)</span> has the same tristimulus vector as <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span>.
 Since <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> is never negative, we will find a way the minimize <span class="math notranslate nohighlight">\(f(\vec{x})\)</span>.
 The algorithm we will use to minimize <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> is called gradient descent. The gradient of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> is
 <span class="math notranslate nohighlight">\(
 \nabla f(\vec{x}) = 2 A^T (A\vec{x}-\vec{b}).
-\)</span>
-The gradient tells us the direction of steepest descent of the function when we are at <span class="math notranslate nohighlight">\(\vec{x}\)</span>.
+\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A^T\)</span> is the transpose of the matrix <span class="math notranslate nohighlight">\(A\)</span>. The transpose of a matrix is gotten by switching the row and column indices of <span class="math notranslate nohighlight">\(A\)</span> so that the first column of <span class="math notranslate nohighlight">\(A\)</span> becomes the first row of <span class="math notranslate nohighlight">\(A^T\)</span>, the second column of <span class="math notranslate nohighlight">\(A\)</span> becomes the second row of <span class="math notranslate nohighlight">\(A^T\)</span> and so on. NumPy has a <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.T.html">function</a> to compute the transpose.</p>
+</div></blockquote>
+<p>The gradient tells us the direction of steepest descent of the function when we are at <span class="math notranslate nohighlight">\(\vec{x}\)</span>.
 The idea is</p>
 <ul class="simple">
 <li><p>pick a starting vector <span class="math notranslate nohighlight">\(\vec{x}_0\)</span></p></li>
@@ -917,7 +922,7 @@ The idea is</p>
     
 
 <span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">eta</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">d65</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># our starting place is a vector of all zeros</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">d65</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># our starting place is a vector of all zeros, you need to define d65 (see Exercise 5)</span>
     <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">1e-8</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span>
