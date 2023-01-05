@@ -1,24 +1,4 @@
 """a simple script to read numbers off a potentiometer in the planimeter
-Wire up the circuit like so:
-
-Pico | 0.1 uF capacitor
-GP28 | one leg
-GND  | the other
-
-Pico     | Potentiometer
-GP28     | wiper
-GND      | one pole
-3V3(OUT) | other pole
-
-Pico | Button
-GP16 | one pin
-GND  | other pin
-
-Pico     | OLED
-GP4      | SDA
-GP5      | SCL
-3V3(OUT) | VCC
-GND      | GND
 """
 
 from machine import Pin, I2C, ADC
