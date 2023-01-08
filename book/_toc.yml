@@ -23,6 +23,6 @@ parts:
 - caption: Green's Theorem
   chapters:
   - file: labs/3_Greens_Theorem_Labs/lab10.ipynb
- - caption: Supplementary material
+- caption: Supplementary material
   chapters:
   - file: labs/extra/breadboard_LED.ipynb
