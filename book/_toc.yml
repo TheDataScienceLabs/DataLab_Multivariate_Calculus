@@ -24,4 +24,5 @@ parts:
   chapters:
   - file: labs/3_Greens_Theorem_Labs/lab10.ipynb
  - caption: Supplementary material
-  chapters: Lighting an LED on a breadboard
+  chapters:
+  - file: labs/extra/breadboard_LED.ipynb
