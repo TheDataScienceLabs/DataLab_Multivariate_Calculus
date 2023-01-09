@@ -23,11 +23,18 @@ You are reading an interactive Notebook written in the Jupyter language. Jupyter
 
 The application that is used to make these Notebooks is JupyterLab, which is what you'll be using to interact with and edit the labs. 
 
-To get started with this course, click the next arrow at the bottom left of this page to get to Laboratory 1. Throughout the lab, you will be asked to perform some exercises. You will write your answers directly in the Notebook. In other words, you will need to edit the lab file. In order to edit the lab, we recommend downloading the file and opening it in JupyterLab.
+To access the first lab, you will need to click the "next" arrow at the bottom of this page. Throughout the lab, you will be asked to perform some exercises. You will be writing your answers directly in the Notebook. In other words, you will be editing the lab file. In order to edit the lab, you will need to download the file and open it in JupyterLab.
 
-To begin editing this lab, click on the download icon in the top right of the screen and download the *.ipynb* version of Lab 0. After this, open the JupyterLab application. This will bring you to a screen with files and a Table of Contents on the left side and a screen on the right side. If not already open, open the files directory by clicking on the folder icon in the top left corner. Open the *Downloads* file, double-click *lab_0.ipynb*, and follow the directions in this lab to begin.
+To download a lab,  click on the download icon in the top right of the screen and download the *.ipynb* file. 
+
+Then to edit the lab, open the JupyterLab application. This will bring you to a screen with files and a Table of Contents on the left side and a screen on the right side. If not already open, open the files directory by clicking on the folder icon in the top left corner. Open the *Downloads* file and double-click the corresponding *.ipynb* file. The lab will then open and you will be able to edit it. 
 
 To turn in the labs, you will have to export the file as a PDF and upload it to Gradescope. 
+
+Now you are ready to start the Week 1 Lab (Introduction). Click the "next" arrow at the bottom of this page to navigate to it.
+
+<!--To begin editing this lab, click on the download icon in the top right of the screen and download the *.ipynb* version of Lab 0. After this, open the JupyterLab application. This will bring you to a screen with files and a Table of Contents on the left side and a screen on the right side. If not already open, open the files directory by clicking on the folder icon in the top left corner. Open the *Downloads* file, double-click *lab_0.ipynb*, and follow the directions in this lab to begin. -->
+
 <!-- To do this, navigate to *File*, *Save and Export Notebook as*, and then click on *PDF*. This will be further explained in class. -->
 
 If you have any questions or are experiencing any difficulties during these labs, please ask your TA for assistance. They are happy to help!
