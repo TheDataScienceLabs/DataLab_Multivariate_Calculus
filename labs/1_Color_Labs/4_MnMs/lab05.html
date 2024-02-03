@@ -1,48 +1,60 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Week 8: Detect the Color of M&amp;Ms &#8212; The Data Science Labs on Multivariable Calculus</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,56 +62,98 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/1_Color_Labs/4_MnMs/lab05';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Week 9: Edge Detection in Images" href="../5_Edge_Detection/lab06.html" />
     <link rel="prev" title="Week 7: Color Quantization" href="../3_Color_Quantization/lab04.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">The Data Science Labs on Multivariable Calculus</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Data Science Labs on Multivariable Calculus</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -108,479 +162,255 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Intro
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../0_Introduction/lab0.html">
-   Week 1: Introduction
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../0_Introduction/lab0.html">Week 1: Introduction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Color and Grayscale
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Color and Grayscale</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Vector/lab01.html">
-   Week 2: Color as a Vector
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../1_Color_Vector/lab02.html">
-   Weeks 3 &amp; 4: Creating Color with LEDs
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../2_Human_Perception/lab03.html">
-   Weeks 5 &amp; 6: Human Perception of Color
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../3_Color_Quantization/lab04.html">
-   Week 7: Color Quantization
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Week 8: Detect the Color of M&amp;Ms
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../5_Edge_Detection/lab06.html">
-   Week 9: Edge Detection in Images
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Vector/lab01.html">Week 2: Color as a Vector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Vector/lab02.html">Weeks 3 &amp; 4: Creating Color with LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Human_Perception/lab03.html">Weeks 5 &amp; 6: Human Perception of Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Color_Quantization/lab04.html">Week 7: Color Quantization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Week 8: Detect the Color of M&amp;Ms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Edge_Detection/lab06.html">Week 9: Edge Detection in Images</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Video
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../2_Video_Labs/lab07.html">
-   Week 10: Acquiring and Manipulating Videos
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../2_Video_Labs/lab08.html">
-   Week 11: Optical Flow
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../2_Video_Labs/lab09.html">
-   Week 12: Motion Detection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_Video_Labs/lab07.html">Week 10: Acquiring and Manipulating Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_Video_Labs/lab08.html">Week 11: Optical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../2_Video_Labs/lab09.html">Week 12: Motion Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Green's Theorem
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Green's Theorem</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../3_Greens_Theorem_Labs/lab10.html">
-   Weeks 13 &amp; 14: Build a Planimeter
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../../3_Greens_Theorem_Labs/lab10.html">Weeks 13 &amp; 14: Build a Planimeter</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/TheDataScienceLabs/DataLab_Multivariate_Calculus/main?urlpath=tree/book/labs/1_Color_Labs/4_MnMs/lab05.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../../../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/1_Color_Labs/4_MnMs/lab05.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/labs/1_Color_Labs/4_MnMs/lab05.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/1_Color_Labs/4_MnMs/lab05.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../../../_sources/labs/1_Color_Labs/4_MnMs/lab05.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
-   <span style="color:orange;">
-    00. Content
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
-   <span style="color:orange;">
-    0. Required Hardware
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span">
-   <span style="color:orange;">
-    1. RGB Color Sensors
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-the-screen-span">
-   <span style="color:orange;">
-    2. The Screen
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i2c">
-   I2C
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
-     <span style="color:red">
-      Exercise 1
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-framebuffer">
-   The framebuffer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-make-an-m-m-sorter-span">
-   <span style="color:orange;">
-    2. Make an M&amp;M Sorter
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wiring-instructions">
-   Wiring Instructions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
-     <span style="color:red">
-      Exercise 2
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
-   <span style="color:green">
-    Reflection
-   </span>
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Week 8: Detect the Color of M&Ms</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-00-content-span">
-   <span style="color:orange;">
-    00. Content
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span">
-   <span style="color:orange;">
-    0. Required Hardware
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span">
-   <span style="color:orange;">
-    1. RGB Color Sensors
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-the-screen-span">
-   <span style="color:orange;">
-    2. The Screen
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i2c">
-   I2C
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span">
-     <span style="color:red">
-      Exercise 1
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-framebuffer">
-   The framebuffer
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-orange-2-make-an-m-m-sorter-span">
-   <span style="color:orange;">
-    2. Make an M&amp;M Sorter
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wiring-instructions">
-   Wiring Instructions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span">
-     <span style="color:red">
-      Exercise 2
-     </span>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#span-style-color-green-reflection-span">
-   <span style="color:green">
-    Reflection
-   </span>
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Week 8: Detect the Color of M&Ms</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span"><span style="color:orange;"> 1. RGB Color Sensors </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-the-screen-span"><span style="color:orange;"> 2. The Screen </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c">I2C</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-framebuffer">The framebuffer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-make-an-m-m-sorter-span"><span style="color:orange;"> 2. Make an M&amp;M Sorter </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-instructions">Wiring Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="week-8-detect-the-color-of-m-ms">
-<h1>Week 8: Detect the Color of M&amp;Ms<a class="headerlink" href="#week-8-detect-the-color-of-m-ms" title="Permalink to this headline">#</a></h1>
+<h1>Week 8: Detect the Color of M&amp;Ms<a class="headerlink" href="#week-8-detect-the-color-of-m-ms" title="Permalink to this heading">#</a></h1>
 <p><font size="6"> Laboratory 5 </font> <br>
 <font size="3"> Last updated Jan 5, 2023 </font></p>
 <section id="span-style-color-orange-00-content-span">
-<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this heading">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
 <ul class="simple">
 <li><p>3 dimensional vectors</p></li>
@@ -596,7 +426,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="span-style-color-orange-0-required-hardware-span">
-<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Raspberry Pi Pico</p></li>
 <li><p>Breadboard</p></li>
@@ -610,42 +440,42 @@ title="Print to PDF"
 <p><strong>Groupmate(s):</strong></p>
 </section>
 <section id="span-style-color-orange-1-rgb-color-sensors-span">
-<h2><span style="color:orange;"> 1. RGB Color Sensors </span><a class="headerlink" href="#span-style-color-orange-1-rgb-color-sensors-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:orange;"> 1. RGB Color Sensors </span><a class="headerlink" href="#span-style-color-orange-1-rgb-color-sensors-span" title="Permalink to this heading">#</a></h2>
 <p>We’ve done a lot of theoretical work about color from learning about tristiulus vectors and metamers, but now let’s investigate a use for the RGB color space. The TCS3472 sensor we will be using can detect color and returns an RGB value. The sensor contains an infrared (IR) blocking filter for increased accuracy. IR light is light that has wavelengths of 800-1000 nm; it is invisible to us since humans only percieve wavelengths in the 400-700 nm range. If you want to learn more about this sensor, download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/4_MnMs/TCS34725.pdf">TCS34725.pdf</a>.</p>
 </section>
 <section id="span-style-color-orange-2-the-screen-span">
-<h2><span style="color:orange;"> 2. The Screen </span><a class="headerlink" href="#span-style-color-orange-2-the-screen-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:orange;"> 2. The Screen </span><a class="headerlink" href="#span-style-color-orange-2-the-screen-span" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="i2c">
-<h2>I2C<a class="headerlink" href="#i2c" title="Permalink to this headline">#</a></h2>
+<h2>I2C<a class="headerlink" href="#i2c" title="Permalink to this heading">#</a></h2>
 <p>Usually a modern electronic device will consist of a microcontroller (such as the Raspberry Pi Pico) and several peripherals. Peripherals are what we call any component the microcontroller is “in charge” of. The two main peripherals we will be using in our inclinometer are a screen and an accelerometer. You might call the button a peripheral, but usually the word peripheral refers to components which do something on their own, while communicating with the microcontroller.</p>
 <p>One of the most popular ways for a microcontroller to communicate with a peripheral is using a protocol called the Inter-Integrated-Circuit protocol. Its name is usually abbreviated, either as IIC, I²C, or simply I2C. These are pronounced as “eye-eye-see”, “eye-squared-see” or “eye-two-see” respectively. I2C uses two wires, one called Serial Clock (abbreviated as SCL) and the other called Serial Data (abbreviated SDA). One of the brilliant things about I2C is that every I2C peripheral has its own identification number, so when a message is sent using the I2C protocol it can have a label saying “who it is for”. That means you can have several different peripherals all connected to the same two wires – potentially connecting dozens of peripherals to a microcontroller using only two wires (assuming none of the devices share an identification number). Since many devices are sharing the same connection an I2C connection is called a “bus”, from the Latin Omnibus which means “for everyone”. I2C is an example of a serial communication protocol, because bits of data are sent one after another (in a series) over relatively few wires, instead of all-at-once over relatively many wires. You have already heard of, and used, another serial bus protocol – the so-called Universal Serial Bus, usually abbreviated as USB.</p>
 <p>The Raspberry Pi Pico has two I2C busses, numbered 0 and 1. You can see which pins they are connected to on the Pico’s <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/pictures/pico_datasheet.png">datasheet</a>; for example, to use I2C bus number 0, you can use any of the GP pins labeled as I2C0 SCL and I2C0 SDA. You might choose GP pins 20 and 21, or 12 and 13, or 4 and 5 for a few examples. When you set up an I2C bus, you will have to choose a frequency for it to use. This is a fairly straightforward decision. The valid choices of frequency are 100,000; 400,000; 1,000,000; 1,700,000; and 3,400,000 Hertz. If you use a higher frequency then your system will run faster and consume more power. Higher frequencies might not work, depending on several factors such as how long your wires are and how much electromagnetic interference they experience. Also, some peripherals are not compatible with higher frequencies. In a situation like ours, where we are not particularly concerned with power consumption, it makes sense to choose the highest frequency possible so that your system runs faster.</p>
 <section id="span-style-color-red-exercise-1-span">
-<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this headline">#</a></h3>
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this heading">#</a></h3>
 <p>Referencing the Pico’s datasheet, answer:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>how many pairs of GP pins use I2C bus number 0?</p></li>
 <li><p>how many pairs of GP pins use I2C bus number 1?</p></li>
 </ol>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3></section>
 </section>
 <section id="the-framebuffer">
-<h2>The framebuffer<a class="headerlink" href="#the-framebuffer" title="Permalink to this headline">#</a></h2>
+<h2>The framebuffer<a class="headerlink" href="#the-framebuffer" title="Permalink to this heading">#</a></h2>
 <p>On the hardware side, we interact with the OLED display using I2C. In software, the interface we will use is one of the interfaces built into Micropython: the frame buffer interface.</p>
 <p>It’s called a frame buffer because when interacting with it, you make most of your changes in an array called a buffer, stored on the Pico. We only send data to the display when we call the function show(), as a complete frame ready to display. This way, we are using the I2C bus as little as possible, freeing up time for other peripherals to use the I2C bus.</p>
 <p>The documentation for the frame buffer interface is <a class="reference external" href="https://docs.micropython.org/en/latest/library/framebuf.html">part of the Micropython documentation</a>. There you will find functions for drawing lines, rectangles, and text, as well as a function for writing to individual pixels.</p>
 </section>
 <section id="span-style-color-orange-2-make-an-m-m-sorter-span">
-<h2><span style="color:orange;"> 2. Make an M&amp;M Sorter </span><a class="headerlink" href="#span-style-color-orange-2-make-an-m-m-sorter-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:orange;"> 2. Make an M&amp;M Sorter </span><a class="headerlink" href="#span-style-color-orange-2-make-an-m-m-sorter-span" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="wiring-instructions">
-<h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this headline">#</a></h2>
+<h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this heading">#</a></h2>
 <p>Please make sure your microcontroller is not plugged to the computer while you are wiring things together. Ask the instructor if you are unsure about your wiring.</p>
 <p><img alt="img" src="../../../_images/sensor_screen_pico.jpg" /></p>
 <p>Pictured from left to right is the RGB color sensor, the OLED display, and the Pico.</p>
 <p>Use jumper wires to make the following connections.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>OLED</p></th>
 <th class="head"><p>Pico</p></th>
@@ -667,7 +497,7 @@ title="Print to PDF"
 </tbody>
 </table>
 <br>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>TCS34725</p></th>
 <th class="head"><p>OLED</p></th>
@@ -689,7 +519,7 @@ title="Print to PDF"
 </tbody>
 </table>
 </br>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>TCS34725</p></th>
 <th class="head"><p>Pico</p></th>
@@ -708,7 +538,7 @@ are stored on the Pico.</p>
 <p>Before you run the example file
 <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/4_MnMs/example.py">example.py</a> you will need to change the code based on the I2C bus and GP pin you chose for the sensor’s LED while wiring. The first line of the function <code class="docutils literal notranslate"><span class="pre">main</span></code> sets up the I2C bus according to whichever specific SCL and SDA pins you are using – remember to use the number labeled with GP on the datasheet, and set the id according to whether you are using I2C bus 0 or 1.</p>
 <section id="span-style-color-red-exercise-2-span">
-<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this headline">#</a></h3>
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this heading">#</a></h3>
 <p>It’s been debated whether different color M&amp;Ms taste different. Whether this is a physocological phenomenon or not, let’s say you have a friend who is color blind who wants to test this theory themselves, but it’s a challenge to sort red from green from brown M&amp;Ms. To solve this critial problem, your goal is to create an M&amp;M sorter using your Pico and the TCS3472 color sensor. Connect the color sensor and an OLED display to your Pico. When you hold up an M&amp;M to the sensor, the screen should display the name of the color of the M&amp;M. To display the name of the color, you will have to play around with the color detection a bit to see what values generally are detected for each color. As a suggestion, it’ll be easier to read and manipulate your code if you make use of modules. Remember that NumPy is not part of MicroPython.</p>
 <p><em>Hint:</em>  One method is to use the distance between the RGB vector output and “target” colors to detect red, blue, etc.</p>
 <p><strong>Part 1</strong></p>
@@ -718,7 +548,7 @@ are stored on the Pico.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Part 2 Below </h3></section>
 </section>
 <section id="span-style-color-green-reflection-span">
-<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this headline">#</a></h2>
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this heading">#</a></h2>
 <p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
 2. What are some things you learned today? <br>
 3. Are there any topics that could use more clarification? <br>
@@ -738,7 +568,7 @@ are stored on the Pico.</p>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./labs/1_Color_Labs/4_MnMs"
         },
         predefinedOutput: true
@@ -746,50 +576,116 @@ are stored on the Pico.</p>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../3_Color_Quantization/lab04.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Week 7: Color Quantization</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../3_Color_Quantization/lab04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 7: Color Quantization</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../5_Edge_Detection/lab06.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../5_Edge_Detection/lab06.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Week 9: Edge Detection in Images</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-rgb-color-sensors-span"><span style="color:orange;"> 1. RGB Color Sensors </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-the-screen-span"><span style="color:orange;"> 2. The Screen </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c">I2C</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-framebuffer">The framebuffer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-make-an-m-m-sorter-span"><span style="color:orange;"> 2. Make an M&amp;M Sorter </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-instructions">Wiring Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The author of the book<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The author of the book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
