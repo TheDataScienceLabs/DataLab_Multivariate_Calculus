@@ -539,8 +539,8 @@ Usually the spectral power distribution is normalized so the maximum value is 1.
 \[\begin{align*}
     R_S &amp;= \int_{390}^{700} [a S_1(\lambda) + b S_2(\lambda)] Q_R(\lambda)d\lambda \\ 
     &amp;= \int_{390}^{700} [a S_1(\lambda)Q_R(\lambda) + b S_2(\lambda)Q_R(\lambda)] d\lambda \\ 
-    &amp;= \int_{390}^{700} a S_1(\lambda)d\lambda  + \int_{390}^{700} b S_2(\lambda) Q_R(\lambda)d\lambda \\ 
-    &amp;= a \int_{390}^{700} S_1(\lambda)d\lambda  + b \int_{390}^{700} S_2(\lambda) Q_R(\lambda)d\lambda \\ 
+    &amp;= \int_{390}^{700} a S_1(\lambda) Q_R(\lambda)d\lambda  + \int_{390}^{700} b S_2(\lambda) Q_R(\lambda)d\lambda \\ 
+    &amp;= a \int_{390}^{700} S_1(\lambda) Q_R(\lambda)d\lambda  + b \int_{390}^{700} S_2(\lambda) Q_R(\lambda)d\lambda \\ 
     &amp;= a R_1 + b R_2.
 \end{align*}\]</div>
 </section>
@@ -548,15 +548,16 @@ Usually the spectral power distribution is normalized so the maximum value is 1.
 <h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this heading">#</a></h3>
 <p>Calculate the tristimulus vector with respect to the stimulus <span class="math notranslate nohighlight">\(
     S(\lambda) = \begin{cases}
-        1, 450 \leq \lambda \leq 650 \\ 
-        0, \text{ otherwise} 
+        1,   450 \leq \lambda \leq 650 \\ 
+        0,   \text{ otherwise} 
     \end{cases}\)</span>
 in two ways:</p>
 <ol class="arabic simple">
 <li><p>Using the trapezoidal rule to estimate <span class="math notranslate nohighlight">\(R_S,G_S,B_S\)</span></p></li>
 <li><p>Using your polynomial interpolants of <span class="math notranslate nohighlight">\(Q_R,Q_G,\)</span> and <span class="math notranslate nohighlight">\(Q_B\)</span> to integrate symbolically</p></li>
 </ol>
-<p>For the symbolic integration, see the example below using <code class="docutils literal notranslate"><span class="pre">Polynomial.integ</span></code>.</p>
+<p>The bounds of the integral and trapezoidal sum will be 450 to 650 because that is where S(\lambda) is 1.
+For the symbolic integration, see the example below using <code class="docutils literal notranslate"><span class="pre">Polynomial.integ</span></code>.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># symbolic integration example</span>
@@ -576,7 +577,7 @@ in two ways:</p>
 The spectrum of the CIE D65 illuminant can be downloaded from <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/2_Human_Perception/d65_spectrum.txt">here</a>.</p>
 <p>Calculate the tristimulus vector where the stimulus <span class="math notranslate nohighlight">\(S(\lambda)\)</span> is the D65 illuminant in two ways:</p>
 <ol class="arabic simple">
-<li><p>Using the trapezoidal rule to estimate the three integrals</p></li>
+<li><p>Using the trapezoidal rule to estimate the three integrals (bounds are 390 to 700 because S(\lambda) has non zero values in this range)</p></li>
 <li><p>Approximating the spectral power distribution of the illuminant with a high enough degree polynomial and using your polynomial interpolants of <span class="math notranslate nohighlight">\(Q_R,Q_G,\)</span> and <span class="math notranslate nohighlight">\(Q_B\)</span> to integrate symbolically. Justify your choice of a “high enough degree polynomial” for the D65 illuminant.</p></li>
 </ol>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3></section>
