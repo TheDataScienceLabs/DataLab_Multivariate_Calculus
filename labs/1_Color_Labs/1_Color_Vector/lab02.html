@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Weeks 3 &amp; 4: Creating Color with LEDs &#8212; The Data Science Labs on Multivariable Calculus</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/1_Color_Labs/1_Color_Vector/lab02';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../intro.html">
   
@@ -154,7 +154,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Data Science Labs on Multivariable Calculus</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -342,10 +353,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -353,14 +364,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -381,30 +392,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-re-introduction-to-hardware-span"><span style="color:orange;"> 1. (Re)Introduction to Hardware </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-introduction-to-hardware"><span style="color:orange;"> 1. (Re)Introduction to Hardware </span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raspberry-pi-pico">Raspberry Pi Pico</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breadboard">Breadboard</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neopixels-ws2812">NeoPixels (WS2812)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#level-shifter">Level Shifter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-everything">Connecting Everything</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-warm-up-span"><span style="color:red"> Warm Up </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up"><span style="color:red"> Warm Up </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duty-cycle">Duty Cycle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-color-matching-exercises-span"><span style="color:orange;"> 2. Color Matching Exercises </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-matching-exercises"><span style="color:orange;"> 2. Color Matching Exercises </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trichromatic-coefficients">Trichromatic Coefficients</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-apart-your-circuit">Taking Apart Your Circuit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green;"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green;"> Reflection </span></a></li>
 </ul>
             </nav>
         </div>
@@ -414,14 +425,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weeks-3-4-creating-color-with-leds">
-<h1>Weeks 3 &amp; 4: Creating Color with LEDs<a class="headerlink" href="#weeks-3-4-creating-color-with-leds" title="Permalink to this heading">#</a></h1>
+<h1>Weeks 3 &amp; 4: Creating Color with LEDs<a class="headerlink" href="#weeks-3-4-creating-color-with-leds" title="Link to this heading">#</a></h1>
 <p><font size="6"> Laboratory 2 </font> <br>
 <font size="3"> Last updated Jan 5, 2023 </font></p>
-<section id="span-style-color-orange-00-content-span">
-<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this heading">#</a></h2>
+<section id="content">
+<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#content" title="Link to this heading">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
 <ul class="simple">
 <li><p>3 dimensional vectors</p></li>
@@ -439,8 +450,8 @@ document.write(`
 <li><p>Thonny and MicroPython</p></li>
 </ul>
 </section>
-<section id="span-style-color-orange-0-required-hardware-span">
-<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this heading">#</a></h2>
+<section id="required-hardware">
+<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#required-hardware" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Microcontroller: Raspberry Pi Pico</p></li>
 <li><p>Breadboard</p></li>
@@ -453,18 +464,18 @@ document.write(`
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="span-style-color-orange-1-re-introduction-to-hardware-span">
-<h2><span style="color:orange;"> 1. (Re)Introduction to Hardware </span><a class="headerlink" href="#span-style-color-orange-1-re-introduction-to-hardware-span" title="Permalink to this heading">#</a></h2>
+<section id="re-introduction-to-hardware">
+<h2><span style="color:orange;"> 1. (Re)Introduction to Hardware </span><a class="headerlink" href="#re-introduction-to-hardware" title="Link to this heading">#</a></h2>
 <section id="raspberry-pi-pico">
-<h3>Raspberry Pi Pico<a class="headerlink" href="#raspberry-pi-pico" title="Permalink to this heading">#</a></h3>
+<h3>Raspberry Pi Pico<a class="headerlink" href="#raspberry-pi-pico" title="Link to this heading">#</a></h3>
 <p><img alt="img" src="../../../_images/pico.jpg" /></p>
 <p>We will be displaying color using LEDs and a microcontroller. A microcontroller is a very small general purpose computer good at communicating with electronic sensors. The specific microcontroller we will use is called the Raspberry Pi Pico. The Raspberry Pi Pico runs a different version of Python called Micropython. Micropython is designed specifically for microcontrollers. It does not have many of the modules you are used to, like numpy, since the Pico does not have enough memory or processing power to make good use of them. Instead, it has libraries for interfacing with hardware, like the machine library we will use to control the pins on the Pico. Also, the time library in Micropython supports millisecond and microsecond sleep functions, which can count out much more precise units of time than you can in normal Python.</p>
 <p>We will be using Thonny to run code on the Pico and manage files on the Pico itself.</p>
@@ -474,24 +485,24 @@ The full datasheet for the Pico can be found <a class="reference external" href=
 <p><img alt="img" src="../../../_images/pico_datasheet.png" /></p>
 </section>
 <section id="breadboard">
-<h3>Breadboard<a class="headerlink" href="#breadboard" title="Permalink to this heading">#</a></h3>
+<h3>Breadboard<a class="headerlink" href="#breadboard" title="Link to this heading">#</a></h3>
 <p><img alt="img" src="../../../_images/breadboard.jpg" /></p>
 <p>The name “breadboard” comes from the old days of electronics when people would prototype their projects by nailing them to a cutting board. With a modern breadboard, you don’t need nails.
 By inserting the entire Pico into your bread board, we can easily connect electrical wires to each of the pins of the Pico.
 Plug the Pico into the breadboard so that the USB plug is at the end of the breadboard.</p>
 </section>
 <section id="neopixels-ws2812">
-<h3>NeoPixels (WS2812)<a class="headerlink" href="#neopixels-ws2812" title="Permalink to this heading">#</a></h3>
+<h3>NeoPixels (WS2812)<a class="headerlink" href="#neopixels-ws2812" title="Link to this heading">#</a></h3>
 <p><img alt="img" src="../../../_images/led.jpg" /></p>
 <p>NeoPixels are a brand of individually addressable LEDs. From a single pin, you can individually control however many LEDs are connected on the strip whether it be a single LED, a few in a line, or more complex configurations. There are tons of projects out there people have built using NeoPixels, from lightsabers to music synchronized light shows. <strong>From left to right the pins are DIN, VDD, GND, DOUT</strong> with GND (ground) being the longest pin. You will have to fan out the pins a bit so they fit firmly into the breadboard.</p>
 </section>
 <section id="level-shifter">
-<h3>Level Shifter<a class="headerlink" href="#level-shifter" title="Permalink to this heading">#</a></h3>
+<h3>Level Shifter<a class="headerlink" href="#level-shifter" title="Link to this heading">#</a></h3>
 <p><img alt="img" src="../../../_images/level_shifter.jpg" /></p>
 <p>The Raspberry Pi Pico runs all its circuits at 3.3 volts, while the NeoPixels runs at 5 volts. Luckily, we do have 5 volts available for it (the USB standard includes a 5 volt pin) so we can drive the LEDs as long as the Pico is connected to a computer. The level shifter is in charge of translating between the voltage levels, which is why it has a low voltage side connected to 3V3, and a high voltage side connected to VBUS (which refers to the USB cable). We only need to do level shifting to two pins, and it is good practice to connect pins you are not using to ground.</p>
 </section>
 <section id="connecting-everything">
-<h3>Connecting Everything<a class="headerlink" href="#connecting-everything" title="Permalink to this heading">#</a></h3>
+<h3>Connecting Everything<a class="headerlink" href="#connecting-everything" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Make sure you have a bread board, Pico, LEDs, a level shifter, and some wires.</p></li>
 <li><p><strong>Do not connect your microcontroller to the computer while you are wiring things together</strong>. If you are uncertain about your wiring, ask for an instructor to check it.</p></li>
@@ -499,7 +510,7 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 </ol>
 <p>You’ll notice that quite a few things are connected to ground (GND) from the low voltage side of the level shifter and each NeoPixel we use must be connected to HV and GND on the level shifter. Make use of the power rails (the long strips on the outer edge of the breadboard labeles with + and -) to simplify the connections.</p>
 <br>   
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Pico</p></th>
 <th class="head"><p>Level shifter</p></th>
@@ -529,8 +540,9 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 </tr>
 </tbody>
 </table>
+</div>
 <br>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Level shifter</p></th>
 <th class="head"><p>NeoPixel</p></th>
@@ -545,8 +557,9 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 </tr>
 </tbody>
 </table>
+</div>
 <br>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Pico</p></th>
 <th class="head"><p>NeoPixel 1</p></th>
@@ -572,14 +585,15 @@ Plug the Pico into the breadboard so that the USB plug is at the end of the brea
 </tr>
 </tbody>
 </table>
+</div>
 <br>
 <p>Data from the Pico goes into the DIN pin which we set as general purpose pin 0 (or GP0) but we could choose any other GP pin if desired.
 Power goes through VDD. GND is our common ground path between everything.
 DOUT moves data to the next pixel or is left floating if it’s the last link in a chain.</p>
 <p>Once you have it wired up correctly, connect your Pico to the computer with the USB cable. Download and save <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/neopixel.py">neopixel.py</a> to your Pico using Thonny then open the file <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/neoexample.py">neoexample.py</a> in Thonny. Click the green play button to run the script. In order to stop the script, you will need to hit the red stop sign button.</p>
 </section>
-<section id="span-style-color-red-warm-up-span">
-<h3><span style="color:red"> Warm Up </span><a class="headerlink" href="#span-style-color-red-warm-up-span" title="Permalink to this heading">#</a></h3>
+<section id="warm-up">
+<h3><span style="color:red"> Warm Up </span><a class="headerlink" href="#warm-up" title="Link to this heading">#</a></h3>
 <p><em>Note: Warm Ups aren’t graded but may be good practice for later exercises!</em></p>
 <p>Modify the cell below to print the values in the list <code class="docutils literal notranslate"><span class="pre">[&quot;mango&quot;,</span> <span class="pre">&quot;strawberry&quot;,</span> <span class="pre">&quot;peach&quot;]</span></code> over and over again for 1 second. The line <code class="docutils literal notranslate"><span class="pre">time.sleep(0.1)</span></code> causes execution to stop for 0.1 seconds before continuing in the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop. It is not necessary to use the <code class="docutils literal notranslate"><span class="pre">sleep()</span></code> function, but it reduces the length of the output.
 Your output should look like</p>
@@ -597,7 +611,7 @@ Your output should look like</p>
 </div>
 <h3 style="background-color:lightblue"> Write Answers for the Warm Up Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="nb">list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#fill in with the 3 values</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
@@ -612,8 +626,8 @@ Your output should look like</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-1-span">
-<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-1">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>Create a file called <code class="docutils literal notranslate"><span class="pre">color_loop.py</span></code> that when run on the Pico makes all of the connected NeoPixels display a color of your choosing and then loops through a sequence of 3 different colors for 10 seconds. Make sure you save the python file in the same folder as this notebook. Once you have finished the task, run the cell below to print the contents of <code class="docutils literal notranslate"><span class="pre">color_loop.py</span></code>.</p>
 <p><em>Hint:</em> Try the Warm Up activity and reference <code class="docutils literal notranslate"><span class="pre">neoexample.py</span></code> on how to show colors on the LED.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
@@ -624,19 +638,19 @@ Your output should look like</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-2-span">
-<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-2">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>In a few sentences describe how the color coordinates displayed here in a Jupyter notebook compare to the color coordinates of the NeoPixels. For example, does red look the same on the NeoPixel as it does in the Jupyter notebook.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3></section>
 <section id="duty-cycle">
-<h3>Duty Cycle<a class="headerlink" href="#duty-cycle" title="Permalink to this heading">#</a></h3>
+<h3>Duty Cycle<a class="headerlink" href="#duty-cycle" title="Link to this heading">#</a></h3>
 <p>So how do the NeoPixels work? The NeoPixels use something called pulse-width modulation to display different colors, which means that the LEDs within the NeoPixel are actually switching on and off at a very fast pace (about 400 times per second). Since these pulses of light alternate on and off so quickly, we only see a uniform brightness. The time between pulses determines the intensity of the color. For a half-strength red (127,0,0), the LEDs are still switching from off to full red (255,0,0), but the LED is on for an equal amount of time that it is off.</p>
 <p><img alt="img" src="../../../_images/dutycycle.png" /></p>
 <p>The length of a cycle in the NeoPixel is about 2.5 ms. To further interpret the graphs above (from <a class="reference external" href="https://learn.adafruit.com/led-tricks-gamma-correction?view=all">here</a>), let’s pretend that the length of a cycle is 1 second. We can simulate a 50% duty cycle by creating an animation with the library Matplotlib. It may pop up with an error message but if you give it some time to load, the interactive animation should appear. Once it pops up, play around with the buttons and watch what happens.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> notebook
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
 
 <span class="c1"># set up plotting parameters</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -663,7 +677,7 @@ Your output should look like</p>
 
 <span class="c1"># define the frames of the animation</span>
 <span class="c1"># i is the frame number</span>
-<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
     <span class="c1"># conditional statement to pick the color (on/off)</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">%</span><span class="k">fps</span> &lt; (percent_on/100*fps)):
         <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
@@ -685,8 +699,8 @@ Your output should look like</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-3-span">
-<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-3">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p><strong>Part 1:</strong> Write a script called <code class="docutils literal notranslate"><span class="pre">pico_flash.py</span></code> that flashes the Pico’s <strong>onboard LED</strong> with a 30% duty cycle where a cycle is 1 second long. Run the cell below the print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Part 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -706,13 +720,13 @@ Your output should look like</p>
 <p>You can also create a function to generate a random color and show it on Neopixel. The code is provided in the provided code folder call the <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/1_Color_Vector/random_colors.py">random_colors.py</a>. Take a look at the code and feel free to try running it!</p>
 </section>
 </section>
-<section id="span-style-color-orange-2-color-matching-exercises-span">
-<h2><span style="color:orange;"> 2. Color Matching Exercises </span><a class="headerlink" href="#span-style-color-orange-2-color-matching-exercises-span" title="Permalink to this heading">#</a></h2>
+<section id="color-matching-exercises">
+<h2><span style="color:orange;"> 2. Color Matching Exercises </span><a class="headerlink" href="#color-matching-exercises" title="Link to this heading">#</a></h2>
 <p>Let’s see the effects of changing the red, green, and blue channel values by creating a short animation. Let’s fix the red and green channel values at 120 and we will vary the blue value from 0 to 255 stepping by 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> notebook
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -724,7 +738,7 @@ Your output should look like</p>
 <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="p">)</span> 
 <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>                                                    <span class="c1"># number of frames per second</span>
 
-<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span><span class="mi">120</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>                           <span class="c1"># define the color as a function of i</span>
     <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span> <span class="p">[[</span><span class="n">color</span><span class="p">]]</span> <span class="p">)</span>                               <span class="c1"># display the color</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;RGB Values : </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">color</span><span class="p">)))</span>         <span class="c1"># update the title with the RGB values</span>
@@ -736,14 +750,14 @@ Your output should look like</p>
 </div>
 </div>
 </div>
-<section id="span-style-color-red-exercise-4-span">
-<h3><span style="color:red"> Exercise 4</span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-4">
+<h3><span style="color:red"> Exercise 4</span><a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>If we think about RGB values being in a 3D cube with R on the <span class="math notranslate nohighlight">\(x\)</span>-axis, G on the <span class="math notranslate nohighlight">\(y\)</span>-axis, and B on the <span class="math notranslate nohighlight">\(z\)</span>-axis, then the gradient animation follows what kind of path?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3><h3 style="color:green;"><left> Sandbox </left></h3>
 <p><span style="color:green;"><left> Make your own movie of colors. Fix different red, green, and blue values and see what happens.</left></span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">animation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">animation</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.dpi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -755,7 +769,7 @@ Your output should look like</p>
 <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span> 
 <span class="n">fps</span> <span class="o">=</span> <span class="mi">30</span>                                    <span class="c1"># number of frames per second</span>
 
-<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
     <span class="n">color</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">red</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">255</span><span class="p">):</span>
         <span class="n">row</span>  <span class="o">=</span> <span class="p">[]</span>
@@ -773,8 +787,8 @@ Your output should look like</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-5-span">
-<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-5">
+<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
 <p>Write a script called <code class="docutils literal notranslate"><span class="pre">neopixel_gradient.py</span></code> to recreate the first gradient animation example from the beginning of Section 2 on the NeoPixels and run the cell below to print the code you wrote.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,12 +798,12 @@ Your output should look like</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-6-span">
-<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-6">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#exercise-6" title="Link to this heading">#</a></h3>
 <p>Find and download a colorful image online. Try to match a color in the image by adjusting the red, green, and blue channel values and display the matched color using the <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> function as in Lab 1. Don’t choose black or white because that’s no fun. In a markdown cell, type the command <code class="docutils literal notranslate"><span class="pre">![img](my_image.jpg)</span></code> to display your chosen image and specify which color you want to match in the image.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="trichromatic-coefficients">
-<h3>Trichromatic Coefficients<a class="headerlink" href="#trichromatic-coefficients" title="Permalink to this heading">#</a></h3>
+<h3>Trichromatic Coefficients<a class="headerlink" href="#trichromatic-coefficients" title="Link to this heading">#</a></h3>
 <p>Some of the most influential color matching experiments were done in the 1920’s by W.D. Wright and J. Guild, and their methodology was similar to the exercise you just completed
 <a class="reference external" href="https://iopscience.iop.org/article/10.1088/1475-4878/30/4/301/meta?casa_token=zjfAyCvyOBcAAAAA:zajVm7GdwsTn1MwpnpXUvlOIAF6Xu1RWpnTgFbJcV846Eu0GDiHJPX44VwgA12tCVsZo-4I6u5oslN2b0JQ">[ref1]</a>
 <a class="reference external" href="https://royalsocietypublishing.org/doi/abs/10.1098/rsta.1932.0005">[ref2]</a>.
@@ -831,7 +845,7 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
 </section>
 </section>
 <section id="taking-apart-your-circuit">
-<h2>Taking Apart Your Circuit<a class="headerlink" href="#taking-apart-your-circuit" title="Permalink to this heading">#</a></h2>
+<h2>Taking Apart Your Circuit<a class="headerlink" href="#taking-apart-your-circuit" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>In Thonny, remove any files stored on the Pico.</p></li>
 <li><p>Disconnect the Pico under the Run menu in Thonny.</p></li>
@@ -840,8 +854,8 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
 </ol>
 <p>You should follow these steps everytime we use hardware in future labs.</p>
 </section>
-<section id="span-style-color-green-reflection-span">
-<h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this heading">#</a></h2>
+<section id="reflection">
+<h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
 <p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
 2. What are some things you learned today? <br>
 3. Are there any topics that could use more clarification? <br>
@@ -876,7 +890,7 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -906,36 +920,37 @@ Naturally, this led to three functions - <span class="math notranslate nohighlig
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-re-introduction-to-hardware-span"><span style="color:orange;"> 1. (Re)Introduction to Hardware </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#re-introduction-to-hardware"><span style="color:orange;"> 1. (Re)Introduction to Hardware </span></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#raspberry-pi-pico">Raspberry Pi Pico</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#breadboard">Breadboard</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neopixels-ws2812">NeoPixels (WS2812)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#level-shifter">Level Shifter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-everything">Connecting Everything</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-warm-up-span"><span style="color:red"> Warm Up </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#warm-up"><span style="color:red"> Warm Up </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#duty-cycle">Duty Cycle</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-color-matching-exercises-span"><span style="color:orange;"> 2. Color Matching Exercises </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#color-matching-exercises"><span style="color:orange;"> 2. Color Matching Exercises </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trichromatic-coefficients">Trichromatic Coefficients</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#taking-apart-your-circuit">Taking Apart Your Circuit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green;"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green;"> Reflection </span></a></li>
 </ul>
   </nav></div>
 
@@ -973,6 +988,12 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <p>
+This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+
+</div>
   </div>
   
 </div>
@@ -984,8 +1005,8 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

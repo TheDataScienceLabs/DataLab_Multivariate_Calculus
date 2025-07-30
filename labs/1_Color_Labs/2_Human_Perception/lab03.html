@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Weeks 5 &amp; 6: Human Perception of Color &#8212; The Data Science Labs on Multivariable Calculus</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/1_Color_Labs/2_Human_Perception/lab03';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../intro.html">
   
@@ -154,7 +154,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Data Science Labs on Multivariable Calculus</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -342,10 +353,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -353,14 +364,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -381,27 +392,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-what-is-color-span"><span style="color:orange;"> 1. What is Color? </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-color"><span style="color:orange;"> 1. What is Color? </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-trichromatic-sensor-model-span"><span style="color:orange;"> 2. Trichromatic Sensor Model </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trichromatic-sensor-model"><span style="color:orange;"> 2. Trichromatic Sensor Model </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-sensor-responses">Linearity of Sensor Responses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dirac-delta-function">The Dirac Delta Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7"><span style="color:red"> Exercise 7 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metamerism">Metamerism</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span"><span style="color:red"> Exercise 8 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span"><span style="color:red"> Exercise 9 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8"><span style="color:red"> Exercise 8 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9"><span style="color:red"> Exercise 9 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green;"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green;"> Reflection </span></a></li>
 </ul>
             </nav>
         </div>
@@ -411,14 +422,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="weeks-5-6-human-perception-of-color">
-<h1>Weeks 5 &amp; 6: Human Perception of Color<a class="headerlink" href="#weeks-5-6-human-perception-of-color" title="Permalink to this heading">#</a></h1>
+<h1>Weeks 5 &amp; 6: Human Perception of Color<a class="headerlink" href="#weeks-5-6-human-perception-of-color" title="Link to this heading">#</a></h1>
 <p><font size="6"> Laboratory 3 </font> <br>
 <font size="3"> Last updated Jan 5, 2023 </font></p>
-<section id="span-style-color-orange-00-content-span">
-<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this heading">#</a></h2>
+<section id="content">
+<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#content" title="Link to this heading">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
 <ul class="simple">
 <li><p>3 dimensional vectors</p></li>
@@ -440,8 +451,8 @@ document.write(`
 <li><p>N/A</p></li>
 </ul>
 </section>
-<section id="span-style-color-orange-0-required-hardware-span">
-<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this heading">#</a></h2>
+<section id="required-hardware">
+<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#required-hardware" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>N/A</p></li>
 </ul>
@@ -450,20 +461,20 @@ document.write(`
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="span-style-color-orange-1-what-is-color-span">
-<h2><span style="color:orange;"> 1. What is Color? </span><a class="headerlink" href="#span-style-color-orange-1-what-is-color-span" title="Permalink to this heading">#</a></h2>
+<section id="what-is-color">
+<h2><span style="color:orange;"> 1. What is Color? </span><a class="headerlink" href="#what-is-color" title="Link to this heading">#</a></h2>
 <p>You may be wondering why we have been describing color with only 3 values. Why not 2 or 4? The reason is rooted in the anatomy of our eyes. There are three different types of receptors in the human eye called cones or cone cells. One cone type is more sensitive to longer wavelengths (560 nm), another to medium wavelengths (530 nm), and the other to short wavelengths (420 nm). This biological stucture of the eye is the basis of the trichromatic theory of color and allows us to describe color in terms of vector spaces.</p>
 <p>In a trichromatic model, the sensor, such as your eye or a camera, is charactrized by three spectral response functions. The experiments by Wright and Guild indirectly measured these response functions for the human visual system. Eventually, in the 2000’s, Stockman, Sharpe and Fach <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0042698900000213">[ref1]</a><a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0042698998002259">[ref2]</a> measured the actual cone spectral sensitivity. Their experiemental values are in the file <em>cone_responses.csv</em>. The file extension csv stands for comma-separated values. If you open the csv file, you will see commas separating 4 values in each row. The first column is wavelength <span class="math notranslate nohighlight">\(\lambda\)</span> in nanometers. The second column is the spectral sensitivity <span class="math notranslate nohighlight">\(Q_L(\lambda)\)</span> of the L-cones. The third column is the spectral sensitivity <span class="math notranslate nohighlight">\(Q_M(\lambda)\)</span> of M-cones. The fourth column is the spectral sensitivity <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span> of S-cones.</p>
 <p>In the following exercise you will fill in code to plot the three functions. Note that there are no values of <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span> available after <span class="math notranslate nohighlight">\(\lambda=\)</span> 615 nm from the experimental data, but we can effectively set those missing values to zero.</p>
-<section id="span-style-color-red-exercise-1-span">
-<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-1">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>Plot <span class="math notranslate nohighlight">\(Q_L(\lambda),Q_M(\lambda)\)</span>, and <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span> all on one graph. See <a class="reference external" href="https://matplotlib.org/3.5.0/tutorials/introductory/usage.html#sphx-glr-tutorials-introductory-usage-py">matplotlib’s documentation</a> on how to add a legend to your plot. The <span class="math notranslate nohighlight">\(x\)</span>-axis label should be wavelength in nanometers. The <span class="math notranslate nohighlight">\(y\)</span>-axis label should be spectral sensitivity. Download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/2_Human_Perception/cone_responses.csv">cone_responses.csv</a> for the data.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 1 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -477,14 +488,14 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-2-span">
-<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-2">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>For each of the three curves <span class="math notranslate nohighlight">\(Q_L(\lambda),Q_M(\lambda)\)</span>, and <span class="math notranslate nohighlight">\(Q_S(\lambda)\)</span>, fit the points of the graph with a polynomial so that the mean squared error is less than <span class="math notranslate nohighlight">\(0.002\)</span>. The polynomial is called the <em>interpolant</em>. Plot the original data as a scatter plot and the interpolant as a line on the same graph. Given data points <span class="math notranslate nohighlight">\((x_1,y_1),(x_2,y_2), \dots, (x_n,y_n)\)</span> and interpolant <span class="math notranslate nohighlight">\(f\)</span>, the mean squared error is <span class="math notranslate nohighlight">\(\frac{1}{n}\sum_{i=1}^n (f(x_i)-y_i)^2\)</span>.</p>
 <p><em>Hint: Define a function that calculates the mean squared error for an interpolant and use a loop to find the degree of interpolant with low enough error.</em></p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example on how to fit a quadratic polynomial to the test data x and y</span>
-<span class="kn">from</span> <span class="nn">numpy.polynomial</span> <span class="kn">import</span> <span class="n">Polynomial</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.polynomial</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polynomial</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.3</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="mf">11.0</span><span class="p">])</span>
@@ -512,8 +523,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="span-style-color-orange-2-trichromatic-sensor-model-span">
-<h2><span style="color:orange;"> 2. Trichromatic Sensor Model </span><a class="headerlink" href="#span-style-color-orange-2-trichromatic-sensor-model-span" title="Permalink to this heading">#</a></h2>
+<section id="trichromatic-sensor-model">
+<h2><span style="color:orange;"> 2. Trichromatic Sensor Model </span><a class="headerlink" href="#trichromatic-sensor-model" title="Link to this heading">#</a></h2>
 <p>The polynomials you obtained approximate the sensitivity of each type of cone to a different wavelength. A given type of cone cell reacts to a large spectrum of wavelengths, but in different amounts for different frequencies. For example, the S-cones react a lot more at 430 nm (the peak of their corresponding curve on the graph) than to 400 nm. So if the human eye is seeing the color blue at a wavelength of, say, 453 nm, then the S-cones have a high response, while the L and M cells have a small response.
 This specific shade of blue, or more precisely, the way we perceive this shade of blue, can thus be recorded using three numbers, namely the responses of the three types of cells.</p>
 <p>When referring to the human visual system, the standard terminology is Red (R) for Long (L), Green (G) for Medium (M), and Blue (B) for Short (S).
@@ -528,12 +539,12 @@ We call <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> the 
 \end{align*}\]</div>
 <p>The spectral power distrubution tells us how much each wavelength of visible light is present in the stimulus.
 Usually the spectral power distribution is normalized so the maximum value is 1.</p>
-<section id="span-style-color-red-exercise-3-span">
-<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-3">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p>Not all values of <span class="math notranslate nohighlight">\((R_S,G_S,B_S)\)</span> are possible. Give two such examples and explain your choices.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3></section>
 <section id="linearity-of-sensor-responses">
-<h3>Linearity of Sensor Responses<a class="headerlink" href="#linearity-of-sensor-responses" title="Permalink to this heading">#</a></h3>
+<h3>Linearity of Sensor Responses<a class="headerlink" href="#linearity-of-sensor-responses" title="Link to this heading">#</a></h3>
 <p>Suppose two stimuli <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span> and <span class="math notranslate nohighlight">\(S_2(\lambda)\)</span> yield sensor responses <span class="math notranslate nohighlight">\((R_1,G_1,B_1)\)</span> and <span class="math notranslate nohighlight">\((R_2,G_2,B_2)\)</span>, respectively. Then R sensor response to the stimulus <span class="math notranslate nohighlight">\(a S_1(\lambda) + b S_2(\lambda)\)</span> is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
@@ -544,8 +555,8 @@ Usually the spectral power distribution is normalized so the maximum value is 1.
     &amp;= a R_1 + b R_2.
 \end{align*}\]</div>
 </section>
-<section id="span-style-color-red-exercise-4-span">
-<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-4">
+<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>Calculate the tristimulus vector with respect to the stimulus <span class="math notranslate nohighlight">\(
     S(\lambda) = \begin{cases}
         1,   450 \leq \lambda \leq 650 \\ 
@@ -571,8 +582,8 @@ For the symbolic integration, see the example below using <code class="docutils 
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-5-span">
-<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-5">
+<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
 <p>In real life, many types of light contain a continuous range of frequencies in different amounts. For example, a red light will emit a range of frequencies in the red area of the frequency spectrum, as well as potentially small amounts of other frequencies as well. The International Commission on Illumination (CIE) provides standardization of light, illuminants, and color.
 The spectrum of the CIE D65 illuminant can be downloaded from <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/2_Human_Perception/d65_spectrum.txt">here</a>.</p>
 <p>Calculate the tristimulus vector where the stimulus <span class="math notranslate nohighlight">\(S(\lambda)\)</span> is the D65 illuminant in two ways:</p>
@@ -581,8 +592,8 @@ The spectrum of the CIE D65 illuminant can be downloaded from <a class="referenc
 <li><p>Approximating the spectral power distribution of the illuminant with a high enough degree polynomial and using your polynomial interpolants of <span class="math notranslate nohighlight">\(Q_R,Q_G,\)</span> and <span class="math notranslate nohighlight">\(Q_B\)</span> to integrate symbolically. Justify your choice of a “high enough degree polynomial” for the D65 illuminant.</p></li>
 </ol>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3></section>
-<section id="span-style-color-red-exercise-6-span">
-<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-6">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#exercise-6" title="Link to this heading">#</a></h3>
 <p>Write a function depending on <span class="math notranslate nohighlight">\(n\)</span> that calculates the tristimulus vector with respect to the stimulus <span class="math notranslate nohighlight">\(
     S(\lambda) = \begin{cases}
         1, \quad 500-n \leq \lambda \leq 500+n \\ 
@@ -591,10 +602,10 @@ The spectrum of the CIE D65 illuminant can be downloaded from <a class="referenc
 What is the result when <span class="math notranslate nohighlight">\(n=20\)</span>? <span class="math notranslate nohighlight">\(n=2\)</span>? <span class="math notranslate nohighlight">\(n=0.2\)</span>? Does is look like the resulting vector is approaching any specific values?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Below </h3></section>
 <section id="the-dirac-delta-function">
-<h3>The Dirac Delta Function<a class="headerlink" href="#the-dirac-delta-function" title="Permalink to this heading">#</a></h3>
+<h3>The Dirac Delta Function<a class="headerlink" href="#the-dirac-delta-function" title="Link to this heading">#</a></h3>
 </section>
-<section id="span-style-color-red-exercise-7-span">
-<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-7">
+<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#exercise-7" title="Link to this heading">#</a></h3>
 <p>On a single graph, plot the function
 <span class="math notranslate nohighlight">\(f(x) = \begin{cases}
     \frac{1}{\Delta}, \quad -\Delta \leq x \leq \Delta \\ 
@@ -610,15 +621,14 @@ We can write the monochromatic stimulus as <span class="math notranslate nohighl
 so the tristimus vector is simply <span class="math notranslate nohighlight">\((Q_R(453), Q_G(453), Q_B(453))\)</span>.</p>
 </section>
 <section id="metamerism">
-<h3>Metamerism<a class="headerlink" href="#metamerism" title="Permalink to this heading">#</a></h3>
+<h3>Metamerism<a class="headerlink" href="#metamerism" title="Link to this heading">#</a></h3>
 <p>Two stimuli <span class="math notranslate nohighlight">\(S_1(\lambda)\)</span> and <span class="math notranslate nohighlight">\(S_2(\lambda)\)</span> are said to be <em>metameric</em> if <span class="math notranslate nohighlight">\((R_1,G_1,B_1) = (R_2,G_2,B_2)\)</span>, i.e., the responses of two different stimuli are identical.</p>
-<p>Let’s simplify our model by approximating the integral values <span class="math notranslate nohighlight">\(R_S,G_S,B_S\)</span> by their left Riemann sums on the domain <span class="math notranslate nohighlight">\(390 \leq \lambda \leq 700\)</span> using a step length of <span class="math notranslate nohighlight">\(5\)</span>, so</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-    R_S = \int_{390}^{700} S(\lambda)Q_R(\lambda)d\lambda &amp; \approx 5[S(390)Q_R(390) + S(395)Q_R(395) + \cdots + S(695)Q_R(695) ] \\ 
-    G_S = \int_{390}^{700} S(\lambda)Q_G(\lambda)d\lambda &amp; \approx 5[S(390)Q_G(390) + S(395)Q_G(395) + \cdots + S(695)Q_G(695) ] \\ 
-    B_S = \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda &amp; \approx 5[S(390)Q_B(390) + S(395)Q_B(395) + \cdots + S(695)Q_B(695) ] \\ 
-\end{align*}\]</div>
+<p>Let’s simplify our model by approximating the integral values <span class="math notranslate nohighlight">\(R_S,G_S,B_S\)</span> by their left Riemann sums on the domain <span class="math notranslate nohighlight">\(390 \leq \lambda \leq 700\)</span> using a step length of <span class="math notranslate nohighlight">\(5\)</span>, so
+\begin{align*}
+R_S = \int_{390}^{700} S(\lambda)Q_R(\lambda)d\lambda &amp; \approx 5[S(390)Q_R(390) + S(395)Q_R(395) + \cdots + S(695)Q_R(695) ] \
+G_S = \int_{390}^{700} S(\lambda)Q_G(\lambda)d\lambda &amp; \approx 5[S(390)Q_G(390) + S(395)Q_G(395) + \cdots + S(695)Q_G(695) ] \
+B_S = \int_{390}^{700} S(\lambda)Q_B(\lambda)d\lambda &amp; \approx 5[S(390)Q_B(390) + S(395)Q_B(395) + \cdots + S(695)Q_B(695) ] \
+\end{align*}.</p>
 <p>We can rewrite these equations using matrix notation.
 <span class="math notranslate nohighlight">\( \begin{bmatrix}
         R_S \\ G_S \\ B_S
@@ -672,16 +682,16 @@ The idea is</p>
 <p>At each iteration of the algorithm, we will calculate the gradient at the current point and then take a small step in the negative direction of the gradient and continue until the norm of the gradient is very small.</p>
 <p>There are a few parameters we need to choose beforehand like how much to move in the direction of the negative gradient and how small the norm of the gradient needs to be in order for the algorithm to stop. These are already included in the pseudocode.</p>
 </section>
-<section id="span-style-color-red-exercise-8-span">
-<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#span-style-color-red-exercise-8-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-8">
+<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#exercise-8" title="Link to this heading">#</a></h3>
 <p>Fill in the code below to implement gradient descent for <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> to find a metamer for the D65 illuminant. Plot the spectrum of the D65 illuminant and the metamer you’ve found. What is the value of <span class="math notranslate nohighlight">\(f(\vec{x})\)</span> when the gradient descent algorithm terminates?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 8 Below </h3><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># fill in</span>
     
 
-<span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">eta</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gradient_descent</span><span class="p">(</span><span class="n">eta</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">d65</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># our starting place is a vector of all zeros, you need to define d65 (see Exercise 5)</span>
     <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mf">1e-8</span><span class="p">:</span>
         <span class="n">x</span> <span class="o">-=</span> <span class="n">eta</span><span class="o">*</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -695,8 +705,8 @@ The idea is</p>
 </div>
 </div>
 </section>
-<section id="span-style-color-red-exercise-9-span">
-<h3><span style="color:red"> Exercise 9 </span><a class="headerlink" href="#span-style-color-red-exercise-9-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-9">
+<h3><span style="color:red"> Exercise 9 </span><a class="headerlink" href="#exercise-9" title="Link to this heading">#</a></h3>
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> be the function that takes as input a visual stimulus <span class="math notranslate nohighlight">\(S(\lambda)\)</span> and returns the tristimulus vector of <span class="math notranslate nohighlight">\(S(\lambda)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>.</p>
 <p>Determine if the follow statements are true or false and justify your answer.</p>
 <ol class="arabic simple">
@@ -705,8 +715,8 @@ The idea is</p>
 </ol>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 9 Below </h3></section>
 </section>
-<section id="span-style-color-green-reflection-span">
-<h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this heading">#</a></h2>
+<section id="reflection">
+<h2><span style="color:green;"> Reflection </span><a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
 <p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
 2. What are some things you learned today? <br>
 3. Are there any topics that could use more clarification? <br>
@@ -741,7 +751,7 @@ The idea is</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -771,33 +781,34 @@ The idea is</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-what-is-color-span"><span style="color:orange;"> 1. What is Color? </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-color"><span style="color:orange;"> 1. What is Color? </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-trichromatic-sensor-model-span"><span style="color:orange;"> 2. Trichromatic Sensor Model </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trichromatic-sensor-model"><span style="color:orange;"> 2. Trichromatic Sensor Model </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-sensor-responses">Linearity of Sensor Responses</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dirac-delta-function">The Dirac Delta Function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7"><span style="color:red"> Exercise 7 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metamerism">Metamerism</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span"><span style="color:red"> Exercise 8 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span"><span style="color:red"> Exercise 9 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8"><span style="color:red"> Exercise 8 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9"><span style="color:red"> Exercise 9 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green;"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green;"> Reflection </span></a></li>
 </ul>
   </nav></div>
 
@@ -835,6 +846,12 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <p>
+This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+
+</div>
   </div>
   
 </div>
@@ -846,8 +863,8 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

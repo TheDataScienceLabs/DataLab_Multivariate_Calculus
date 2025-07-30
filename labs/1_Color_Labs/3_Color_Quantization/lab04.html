@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Week 7: Color Quantization &#8212; The Data Science Labs on Multivariable Calculus</title>
   
@@ -15,53 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'labs/1_Color_Labs/3_Color_Quantization/lab04';</script>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../intro.html">
   
@@ -154,7 +154,18 @@ const thebe_selector_output = ".output, .cell_output"
     <p class="title logo__title">The Data Science Labs on Multivariable Calculus</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -201,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -210,14 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -342,10 +353,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -353,14 +364,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -381,33 +392,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-grayscale-desaturation-span"><span style="color:orange;"> 1. Grayscale/Desaturation </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grayscale-desaturation"><span style="color:orange;"> 1. Grayscale/Desaturation </span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude">Magnitude</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-versus-hsv">RGB Versus HSV</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging">Averaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-specific-vector">Using a Specific Vector</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-quantization-span"><span style="color:orange;"> 2. Quantization </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization"><span style="color:orange;"> 2. Quantization </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-3-gamma-correction-span"><span style="color:orange;"> 3. Gamma Correction </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-correction"><span style="color:orange;"> 3. Gamma Correction </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7"><span style="color:red"> Exercise 7</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green"> Reflection </span></a></li>
 </ul>
             </nav>
         </div>
@@ -417,14 +428,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="week-7-color-quantization">
-<h1>Week 7: Color Quantization<a class="headerlink" href="#week-7-color-quantization" title="Permalink to this heading">#</a></h1>
+<h1>Week 7: Color Quantization<a class="headerlink" href="#week-7-color-quantization" title="Link to this heading">#</a></h1>
 <p><font size="6"> Laboratory 4 </font> <br>
 <font size="3"> Last updated Jan 5, 2023 </font></p>
-<section id="span-style-color-orange-00-content-span">
-<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#span-style-color-orange-00-content-span" title="Permalink to this heading">#</a></h2>
+<section id="content">
+<h2><span style="color:orange;"> 00. Content </span><a class="headerlink" href="#content" title="Link to this heading">#</a></h2>
 <p><font size="5"> Mathematics </font></p>
 <ul class="simple">
 <li><p>3 dimensional vectors</p></li>
@@ -444,8 +455,8 @@ document.write(`
 <li><p>Thonny and MicroPython</p></li>
 </ul>
 </section>
-<section id="span-style-color-orange-0-required-hardware-span">
-<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-orange-0-required-hardware-span" title="Permalink to this heading">#</a></h2>
+<section id="required-hardware">
+<h2><span style="color:orange;"> 0. Required Hardware </span><a class="headerlink" href="#required-hardware" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Microcontroller: Raspberry Pi Pico</p></li>
 <li><p>Breadboard</p></li>
@@ -458,25 +469,25 @@ document.write(`
 <p><strong>Email:</strong> me &#64;purdue.edu</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="kn">import</span> <span class="nn">cv2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="span-style-color-orange-1-grayscale-desaturation-span">
-<h2><span style="color:orange;"> 1. Grayscale/Desaturation </span><a class="headerlink" href="#span-style-color-orange-1-grayscale-desaturation-span" title="Permalink to this heading">#</a></h2>
+<section id="grayscale-desaturation">
+<h2><span style="color:orange;"> 1. Grayscale/Desaturation </span><a class="headerlink" href="#grayscale-desaturation" title="Link to this heading">#</a></h2>
 <p>“Grayscaling” an image, also called desaturation, is when all the color in the image is transformed to appear as a shade of gray without apparent color. Specifically, these shades represent the intensity information of the light. This can be done for a variety of reasons, from taking up less storage space to aesthetics.</p>
 <p>When coding this transformation, there are a multitude of different methods that can be used, many of which involve calculus principles. However, some of the mathematics that may be assumed to work don’t produce accurate results. Even if the resulting image looks like its been grayscaled, some of the darks or lights might be too pronounced, or the shadows might be outlined, causing the blending to look awkward.</p>
 <p>Let’s try some different methods to produce new images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># function to show original and grayscaled images</span>
-<span class="k">def</span> <span class="nf">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">gray_img</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]]):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">showimage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">gray_img</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]]):</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
     <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>   
@@ -489,10 +500,10 @@ document.write(`
 </div>
 </section>
 <section id="magnitude">
-<h2>Magnitude<a class="headerlink" href="#magnitude" title="Permalink to this heading">#</a></h2>
+<h2>Magnitude<a class="headerlink" href="#magnitude" title="Link to this heading">#</a></h2>
 <p>One of the methods that may be assumed to work is calculating the length, or magnitude of the image array. The magnitude of a vector can be used to find the unit vector, which has a length of 1. Similarly, grayscaling works by transforming the pixels so they only represent the intensity/brightness information of the light. Intensity is shown in an image through blacks, whites, and grays, which results in the image looking to be shades of these three “colors.” By taking the magnitude and applying it to the original image array values, it can be reasoned that the resultant values would only represent a portion of the image’s characteristics.</p>
-<section id="span-style-color-red-exercise-1-span">
-<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-1">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>What happens if we replace the RGB vector for a pixel with the scaled norm of that vector? That means we need to calculate the magnitude of the vector <span class="math notranslate nohighlight">\((R,G,B)\)</span> and then rescale so that the grayscale values are between 0-255. Fill in the function that finds this new kind of grayscale image. Display the result.</p>
 <p>Download the picture we’ll be using for this lab: <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/1_Color_Labs/3_Color_Quantization/mnms.jpg">mnms.jpg</a>.</p>
 <blockquote>
@@ -502,7 +513,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;mnms.jpg&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">magnitude_method</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">magnitude_method</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">)</span> <span class="c1"># we have to change the datatype so the calculations are with floating point numbers</span>
     <span class="k">pass</span>
 
@@ -514,7 +525,7 @@ document.write(`
 <p>At first glance, this might seem like a perfectly reasonable solution, since everything is grayed over and the highlights and shadows match the original picture. However, some of colors are actually completely off, such as the red and green colors being almost indistinguishable and blue colors being too light. These issues might seem minimal, with some of them not even being noticeable until compared with a more proper solution (which will be done later), but they are nonetheless issues, meaning this is not the best solution for grayscaling an image.</p>
 </section>
 <section id="rgb-versus-hsv">
-<h3>RGB Versus HSV<a class="headerlink" href="#rgb-versus-hsv" title="Permalink to this heading">#</a></h3>
+<h3>RGB Versus HSV<a class="headerlink" href="#rgb-versus-hsv" title="Link to this heading">#</a></h3>
 <p>These issues may be more apparent when using the HSV (hue, saturation, value) values for the image. You may have seen HSV value options when using a printer or image editing software. While RGB defines color in terms of the combination of the primary, colors red, green, and blue, HSV deals with lighting and tints. HSV is more sensitive to changes in lighting and is more helpful when making detailed and realistic modifications to an image. In this course, we’ll be primarily using RGB since it is more common for smaller changes like we’re doing and is also more well-known as a concept.</p>
 <p>However, HSV is actually the closest scheme to how humans perceive color, in comparison to RGB and CMYK (cyan, magenta, yellow, key; another color scheme). Hue is the portion of the model and is expressed as a number from 0 to 360 degrees, with primary colors falling in certain degree ranges. Saturation describes the amount of gray in a color and ranges from 0 to 100%, where the closer it gets to 0%, the more gray a color is. Value, also called brightness in some softwares (HSB), describes the intensity of a color and is also defined from 0 to 100%, with 0% being black/the darkest and 100% being white/the brightest, meaning it reveals the most color. The Python Image Library (PIL) uses 8-bit integers to represent hue, saturation, and value, so each channel ranges between 0-255.</p>
 <div class="cell docutils container">
@@ -531,19 +542,19 @@ document.write(`
 </section>
 </section>
 <section id="averaging">
-<h2>Averaging<a class="headerlink" href="#averaging" title="Permalink to this heading">#</a></h2>
+<h2>Averaging<a class="headerlink" href="#averaging" title="Link to this heading">#</a></h2>
 <p>Other than magnitude, you may also think that taking the average of the RGB values and applying it to the image would produce a grayscaled image. The goal with grayscaling is to diminish the color values to just their intensities, so, similar to magnitude, it may make sense to try and simply find what the “middle” of the colors is. It can also be considered a form of mixing, which is a way that gray-based colors can be found if you think about it in terms of mixing paint.</p>
-<section id="span-style-color-red-exercise-2-span">
-<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-2">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
 <p>What happens if we replace the RGB vector for a pixel with the average of the 3 vector values? Use the same M&amp;M’s picture from the previous exercise. Compare the results with the magnitude method.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 2 Below </h3><p>In this case, we will not be taking the average of the HSV values since these values represent different characteristics, unlike how RGB is representative of the combination of the values. In other words, averaging HSV values does not have a physical interpretation.</p>
 </section>
 </section>
 <section id="using-a-specific-vector">
-<h2>Using a Specific Vector<a class="headerlink" href="#using-a-specific-vector" title="Permalink to this heading">#</a></h2>
+<h2>Using a Specific Vector<a class="headerlink" href="#using-a-specific-vector" title="Link to this heading">#</a></h2>
 <p>As mentioned before, taking the magnitude or average of the colors doesn’t produce a well-grayscaled image for multiple reasons. So what do people normally do when trying to grayscale an image? Again, there are many methods that can be used, but one of the most common, and simplest, ways is to take the dot product of the RGB vector at each pixel and a specific vector that has the express purpose of manipulating the red, green, and blue values in an image to be gray. The specific vector you see most often is <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code>; however there are a few other vectors that produce properly grayscaled images, such as <code class="docutils literal notranslate"><span class="pre">[0.2126,</span> <span class="pre">0.7512,</span> <span class="pre">0.0722]</span></code>. Rounding these vectors to the tenth place is also used relatively often in coding, producing <code class="docutils literal notranslate"><span class="pre">[0.3,</span> <span class="pre">0.6,</span> <span class="pre">0.1]</span></code>.</p>
-<section id="span-style-color-red-exercise-3-span">
-<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-3">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p><strong>Part 1:</strong> The averaging method in Exercise 2 is equivalent to grayscaling with what specific vector?</p>
 <p><strong>Part 2:</strong> Use the vector <code class="docutils literal notranslate"><span class="pre">[0.2989,</span> <span class="pre">0.5870,</span> <span class="pre">0.1140]</span></code> to grayscale the image of M&amp;M’s.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 3 Below </h3><p>If you compare the resulting grayscaled image to the other methods used, you can better see that the other methods aren’t producing the correct images. The correctly grayscaled image has more subdued tones and the colors blend together better. Besides this, the image also has more definition. The other methods produced images where the objects looked nearly flat or 2-dimensional even though they’re 3-dimensional objects, which most likely occurs due to a lack of proper blending.</p>
@@ -552,8 +563,8 @@ document.write(`
 <span style="color:green;"><left> </left></span>
 Try playing around with the vector values to see what happens to the resulting image. For example, try making one value much larger or smaller than the other two, making all the values extremely large or small, etc. You can get some super weird looking images from doing this! Or look at what the grayscaled image of the HSV looks like in comparison to see what color intensities convert better than others.</section>
 </section>
-<section id="span-style-color-orange-2-quantization-span">
-<h2><span style="color:orange;"> 2. Quantization </span><a class="headerlink" href="#span-style-color-orange-2-quantization-span" title="Permalink to this heading">#</a></h2>
+<section id="quantization">
+<h2><span style="color:orange;"> 2. Quantization </span><a class="headerlink" href="#quantization" title="Link to this heading">#</a></h2>
 <p>We mentioned before that we have <span class="math notranslate nohighlight">\(256 \times 256 \times 256 = 16,777,216\)</span> colors to work with since there are 256 integers to choose from for a red, green, and blue channel value. This is one form of color quantization since there are infinitely many colors and we’ve reduced that down to about 16.7 million. In many applications, further quantization is necessary. Quantization is used for image compression by reducing the information of an image so that it requires less storage, and some devices like phones or printers only support a certain palette of colors.</p>
 <p>Grayscaling, like the transformations you were performing in the first section of this lab, can be considered a form of quantization as you were taking a large collection of different values and converting them to be a smaller set of values.</p>
 <p>Now, suppose we are only able to use 10 gray values instead of the usual 256. We can do this with a quantization algorithm.
@@ -573,19 +584,19 @@ Uniform quantization is a simple type of quantization where the quantization lev
 </div>
 </div>
 </div>
-<section id="span-style-color-red-exercise-4-span">
-<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-4">
+<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>In your own words, explain how to read the graph above as if you were talking to a friend who has never learned about color science.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 4 Below </h3></section>
-<section id="span-style-color-red-exercise-5-span">
-<h3><span style="color:red"> Exercise 5</span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-5">
+<h3><span style="color:red"> Exercise 5</span><a class="headerlink" href="#exercise-5" title="Link to this heading">#</a></h3>
 <p>Write a function that converts an image to grayscale and then uniformly quantizes the gray image with <span class="math notranslate nohighlight">\(k\)</span> levels. Show your results when <span class="math notranslate nohighlight">\(k=2,10,24,\)</span> and <span class="math notranslate nohighlight">\(100\)</span>.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 5 Below </h3><p>We can also quantize color images. Let’s define our own palette of colors and map each to pixel to 1 of 4 options based on Euclidean distance.
 The distance between the two colors <span class="math notranslate nohighlight">\((R_1,G_1,B_1)\)</span> and <span class="math notranslate nohighlight">\((R_2,G_2,B_2)\)</span> is <span class="math notranslate nohighlight">\(
     d = \sqrt{ (R_1-R_2)^2 + (G_1-G_2)^2 + (B_1-B_2)^2 }.\)</span></p>
 </section>
-<section id="span-style-color-red-exercise-6-span">
-<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-6">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#exercise-6" title="Link to this heading">#</a></h3>
 <p><strong>Part 1</strong></p>
 <p>Choose your own palette of at least 4 colors and write a function that quantizes a color image (of your chosing) to your palette based on the shortest Euclidean distance among the chosen colors. For example, if the palette of four colors is (0,0,10), (41,200,0), (36,0,85), and (40,40,40), then to quantize a pixel in the original image with RGB values (1,1,9) compute the 4 distances between (1,1,9) and (0,0,10); (1,1,9) and (41,200,0); etc. Replace the original value (1,1,9) with the color (0,0,10) from the palette since that color is the shortest distance from the original color.</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 6 Part 1 Below </h3><p><strong>Part 2</strong></p>
@@ -621,15 +632,15 @@ The distance between the two colors <span class="math notranslate nohighlight">\
 </div>
 </section>
 </section>
-<section id="span-style-color-orange-3-gamma-correction-span">
-<h2><span style="color:orange;"> 3. Gamma Correction </span><a class="headerlink" href="#span-style-color-orange-3-gamma-correction-span" title="Permalink to this heading">#</a></h2>
+<section id="gamma-correction">
+<h2><span style="color:orange;"> 3. Gamma Correction </span><a class="headerlink" href="#gamma-correction" title="Link to this heading">#</a></h2>
 <p>Consider the game of “guess how many jellybeans (or other small objects) are in the jar”. This game would be very uninteresting if there were only 4 jellybeans in the jar. We would have a much harder time visually distinguishing between 140 and 141 jellybeans, but there is some threshold where, say, 180 jellybeans looks noticeably different from 140 jellybeans. If you’re a fan of psychology, you may have heard of <a class="reference external" href="https://en.wikipedia.org/wiki/Weber%E2%80%93Fechner_law">Weber’s Law</a>, which quantifies human perception in response to a stimulus like an increase in jellybeans. Weber’s Law suggests that this threshold is proportional to the relative stimulus increment. In other words, if <span class="math notranslate nohighlight">\(dV\)</span> is a just perceivable difference in the amount of jellybeans <span class="math notranslate nohighlight">\(J\)</span>, then for a constant <span class="math notranslate nohighlight">\(\alpha\)</span>, <span class="math notranslate nohighlight">\(
     dV = \alpha \frac{dJ}{J}.\)</span>
 Integrating both sides, we get <span class="math notranslate nohighlight">\(
     V = \alpha \ln(J).\)</span>
 Weber’s Law also applies to how we perceive light and color. The relationship we just derived suggests that we should quantize color levels logarithmically instead of uniformly (like in Exercise 5) so the levels are farther apart as the value increases.</p>
-<section id="span-style-color-red-exercise-7-span">
-<h3><span style="color:red"> Exercise 7</span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this heading">#</a></h3>
+<section id="exercise-7">
+<h3><span style="color:red"> Exercise 7</span><a class="headerlink" href="#exercise-7" title="Link to this heading">#</a></h3>
 <p>Follow the wiring directions from Lab 2 to connect at least one NeoPixel to your Pico.
 Write a script that displays Purdue Old Gold (RGB = (206, 184, 136)) on the NeoPixel(s).</p>
 <p>It doesn’t look quite right. That’s because according to Weber’s Law we need to adjust the brightness levels for the NeoPixel to be logarithmic. This process is called <em>gamma correction</em>. The new, gamma-corrected RGB values are <span class="math notranslate nohighlight">\(
@@ -638,8 +649,8 @@ Typically, <span class="math notranslate nohighlight">\(\gamma=2.2\)</span> for 
 <p>Gamma correct the Purdue Old Gold RGB values for different values <span class="math notranslate nohighlight">\(1 \leq \gamma \leq 10\)</span> and show these colors on the NeoPixels. What does Purdue Old Gold look like now? Report your findings. What gamma value produces the closest color to Purdue Old Gold?</p>
 <h3 style="background-color:lightblue"> Write Answers for Exercise 7 Below </h3></section>
 </section>
-<section id="span-style-color-green-reflection-span">
-<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this heading">#</a></h2>
+<section id="reflection">
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#reflection" title="Link to this heading">#</a></h2>
 <p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
 2. What are some things you learned today? <br>
 3. Are there any topics that could use more clarification? <br>
@@ -674,7 +685,7 @@ Typically, <span class="math notranslate nohighlight">\(\gamma=2.2\)</span> for 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -704,39 +715,40 @@ Typically, <span class="math notranslate nohighlight">\(\gamma=2.2\)</span> for 
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-00-content-span"><span style="color:orange;"> 00. Content </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-0-required-hardware-span"><span style="color:orange;"> 0. Required Hardware </span></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-1-grayscale-desaturation-span"><span style="color:orange;"> 1. Grayscale/Desaturation </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#content"><span style="color:orange;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-hardware"><span style="color:orange;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grayscale-desaturation"><span style="color:orange;"> 1. Grayscale/Desaturation </span></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude">Magnitude</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1"><span style="color:red"> Exercise 1 </span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rgb-versus-hsv">RGB Versus HSV</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#averaging">Averaging</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2"><span style="color:red"> Exercise 2 </span></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-specific-vector">Using a Specific Vector</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3"><span style="color:red"> Exercise 3 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-2-quantization-span"><span style="color:orange;"> 2. Quantization </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantization"><span style="color:orange;"> 2. Quantization </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4"><span style="color:red"> Exercise 4 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5"><span style="color:red"> Exercise 5</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6"><span style="color:red"> Exercise 6 </span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-orange-3-gamma-correction-span"><span style="color:orange;"> 3. Gamma Correction </span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-correction"><span style="color:orange;"> 3. Gamma Correction </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7"><span style="color:red"> Exercise 7</span></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection"><span style="color:green"> Reflection </span></a></li>
 </ul>
   </nav></div>
 
@@ -774,6 +786,12 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <p>
+This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+
+</div>
   </div>
   
 </div>
@@ -785,8 +803,8 @@ By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The auth
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
