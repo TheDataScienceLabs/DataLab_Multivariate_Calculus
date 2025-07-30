@@ -2,9 +2,9 @@
 ## The Data Science Labs on Multivariable Calculus
 **By Kindyl King and Mireille Boutin with Alden Bradford and Julia Long**
 
-Welcome to MA29000, The Data Science Labs on Multivariable Calculus! This is a one credit course to accompany Calculus 3, during which you will discover applications of multivariable calculus to data science. You will also practice programming in Python and using Arduino sensors and microprocessors to acquire data.
+Welcome to MA26190, The Data Science Labs on Multivariable Calculus! This is a one credit course to accompany Calculus 3, during which you will discover applications of multivariable calculus to data science. You will also practice programming in Python and using Arduino sensors and microprocessors to acquire data.
 
-This course requires no work outside of the lab. There is no homework, no quizzes, no tests, and no exams. All work is performed during the 150 minutes spent in the lab each week. Calculus 3 is a co-requisite for taking this course. MA16290 is a pre-requisite, but it can be waived if you have experience in Pytho
+This course requires no work outside of the lab. There is no homework, no quizzes, no tests, and no exams. All work is performed during the 150 minutes spent in the lab each week. Calculus 3 is a co-requisite for taking this course. MA16290 is a pre-requisite, but it can be waived if you have experience in Python
 
 Purdue students: You can earn Honors credit for Calculus 3 by taking this lab. See syllabus for details.
 <br>
@@ -42,3 +42,8 @@ If you have any questions or are experiencing any difficulties during these labs
 ## Acknowledgements
 
 The development of this course was supported by Purdue’s College of Engineering Honors Program and Purdue's Department of Mathematics. We thank Prof. Alina Alexeenko, Prof. Eric Nauman , Prof.  Kristina Bross, Prof. Milind Kulkarni, Prof. Uli Walther and Dr. Natasha Duncan for their invaluable input and support. Also thank you to Ben Manning for help making the camera work. 
+
+---
+license: CC-BY-4.0
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
