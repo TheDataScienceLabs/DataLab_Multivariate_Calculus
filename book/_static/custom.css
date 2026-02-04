@@ -1,0 +1,34 @@
+/* Custom TOC styling for right-hand in-page table of contents */
+.bd-toc nav a {
+  color: #397cac;
+}
+.bd-toc nav a:hover,
+.bd-toc nav a:focus {
+  color: #2f6790;
+}
+.bd-toc nav .active > a {
+  color: #245074;
+  font-weight: 600;
+}
+
+/* Content hyperlinks */
+.bd-content a {
+  color: #397cac;
+}
+.bd-content a:hover,
+.bd-content a:focus {
+  color: #2f6790;
+}
+
+/* Left sidebar (book-wide table of contents) */
+.bd-sidebar .nav-link {
+  color: #397cac;
+}
+.bd-sidebar .nav-link:hover,
+.bd-sidebar .nav-link:focus {
+  color: #2f6790;
+}
+.bd-sidebar .nav-link.active {
+  color: #245074;
+  font-weight: 600;
+}
