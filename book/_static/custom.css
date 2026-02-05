@@ -26,6 +26,15 @@
   color: #ef0000 !important;
 }
 
+/* Green reflection text in right-side TOC */
+.bd-toc nav a[href*="green"],
+.bd-toc nav a[style*="color:green"],
+.bd-content span[style*="color:green"],
+.bd-content .Reflection,
+span.Reflection {
+  color: #0a8a0a !important;  /* ANDI suggested color for better contrast */
+}
+
 /* Content hyperlinks */
 .bd-content a {
   color: #1f4e79 !important;  /* Darker blue for better contrast */
@@ -294,6 +303,20 @@ html[data-theme="dark"] .bd-content span[style*="color:red"],
 .theme-dark .bd-toc nav a[style*="color:red"],
 .theme-dark .bd-content span[style*="color:red"] {
   color: red !important;  /* Keep original red in dark mode */
+}
+
+/* Change green in dark mode */
+html[data-theme="dark"] .bd-toc nav a[href*="green"],
+html[data-theme="dark"] .bd-toc nav a[style*="color:green"],
+html[data-theme="dark"] .bd-content span[style*="color:green"],
+html[data-theme="dark"] .bd-content .Reflection,
+html[data-theme="dark"] span.Reflection,
+.theme-dark .bd-toc nav a[href*="green"],
+.theme-dark .bd-toc nav a[style*="color:green"],
+.theme-dark .bd-content span[style*="color:green"],
+.theme-dark .bd-content .Reflection,
+.theme-dark span.Reflection {
+  color: #149414 !important;  /* Change in dark mode */
 }
 
 html[data-theme="dark"] .bd-content a,
