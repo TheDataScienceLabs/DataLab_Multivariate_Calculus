@@ -35,6 +35,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  extra_css:
+    - _static/custom.css
   extra_footer: |
     <p>
     This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.

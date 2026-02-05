@@ -6,23 +6,23 @@ root: intro
 parts:
 - caption: Intro
   chapters:
-  - file: labs/0_Introduction/lab0.ipynb
+  - file: labs/0_Introduction/lab0
 - caption: Color and Grayscale
   chapters:
-  - file: labs/1_Color_Labs/1_Color_Vector/lab01.ipynb
-  - file: labs/1_Color_Labs/1_Color_Vector/lab02.ipynb
-  - file: labs/1_Color_Labs/2_Human_Perception/lab03.ipynb
-  - file: labs/1_Color_Labs/3_Color_Quantization/lab04.ipynb
-  - file: labs/1_Color_Labs/4_MnMs/lab05.ipynb
-  - file: labs/1_Color_Labs/5_Edge_Detection/lab06.ipynb
+  - file: labs/1_Color_Labs/1_Color_Vector/lab01
+  - file: labs/1_Color_Labs/1_Color_Vector/lab02
+  - file: labs/1_Color_Labs/2_Human_Perception/lab03
+  - file: labs/1_Color_Labs/3_Color_Quantization/lab04
+  - file: labs/1_Color_Labs/4_MnMs/lab05
+  - file: labs/1_Color_Labs/5_Edge_Detection/lab06
 - caption: Video
   chapters:
-  - file: labs/2_Video_Labs/lab07.ipynb
-  - file: labs/2_Video_Labs/lab08.ipynb
-  - file: labs/2_Video_Labs/lab09.ipynb
+  - file: labs/2_Video_Labs/lab07
+  - file: labs/2_Video_Labs/lab08
+  - file: labs/2_Video_Labs/lab09
 - caption: Green's Theorem
   chapters:
-  - file: labs/3_Greens_Theorem_Labs/lab10.ipynb
+  - file: labs/3_Greens_Theorem_Labs/lab10
 - caption: Supplementary material
   chapters:
-  - file: labs/extra/breadboard_LED.ipynb
+  - file: labs/extra/breadboard_LED
