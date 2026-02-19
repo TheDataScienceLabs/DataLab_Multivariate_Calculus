@@ -407,3 +407,20 @@ html[data-theme="dark"] a:focus,
 .theme-dark a:focus {
   color: #7ca3d1 !important;
 }
+
+/* Change lightblue background to #6994a2 in dark mode for better contrast */
+html[data-theme="dark"] h3[style*="background-color:lightblue"],
+html[data-theme="dark"] h3[style*="background-color: lightblue"],
+html[data-theme="dark"] [style*="background-color:lightblue"],
+html[data-theme="dark"] [style*="background-color: lightblue"],
+.theme-dark h3[style*="background-color:lightblue"],
+.theme-dark h3[style*="background-color: lightblue"],
+.theme-dark [style*="background-color:lightblue"],
+.theme-dark [style*="background-color: lightblue"] {
+  background-color: #6994a2 !important;
+}
+
+/* More aggressive background targeting */
+[data-theme="dark"] {
+  background-color: #13171d !important;
+}
