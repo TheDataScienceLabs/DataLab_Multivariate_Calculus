@@ -1,0 +1,945 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Weeks 13 &amp; 14: Build a Planimeter &#8212; The Data Science Labs on Multivariable Calculus</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/3_Greens_Theorem_Labs/lab10';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../extra/breadboard_LED.html" />
+    <link rel="prev" title="Week 12: Motion Detection" href="../2_Video_Labs/lab09.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">The Data Science Labs on Multivariable Calculus</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    About This Course
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Intro</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../0_Introduction/lab0.html">Week 1: Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Color and Grayscale</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab01.html">Week 2: Color as a Vector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/1_Color_Vector/lab02.html">Weeks 3 &amp; 4: Creating Color with LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/2_Human_Perception/lab03.html">Weeks 5 &amp; 6: Human Perception of Color</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/3_Color_Quantization/lab04.html">Week 7: Color Quantization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/4_MnMs/lab05.html">Week 8: Detect the Color of M&amp;Ms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Color_Labs/5_Edge_Detection/lab06.html">Week 9: Edge Detection in Images</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2_Video_Labs/lab07.html">Week 10: Acquiring and Manipulating Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Video_Labs/lab08.html">Week 11: Optical Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Video_Labs/lab09.html">Week 12: Motion Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Green's Theorem</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Weeks 13 &amp; 14: Build a Planimeter</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/issues/new?title=Issue%20on%20page%20%2Flabs/3_Greens_Theorem_Labs/lab10.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/labs/3_Greens_Theorem_Labs/lab10.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Weeks 13 & 14: Build a Planimeter</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-00-content-span"><span style="color:#d97f00;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-0-required-hardware-span"><span style="color:#d97f00;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-1-green-s-theorem-span"><span style="color:#d97f00;"> 1. Green’s Theorem </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-2-planimeters-span"><span style="color:#d97f00;"> 2. Planimeters </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-3-the-math-behind-a-rolling-planimeter-span"><span style="color:#d97f00;"> 3. The Math Behind a Rolling Planimeter </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-4-the-math-behind-a-polar-planimeter-span"><span style="color:#d97f00;"> 4. The Math Behind a Polar Planimeter </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-coordinates">Change of coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-the-formula-together">Putting the formula together</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-4-building-a-polar-planimeter-span"><span style="color:#d97f00;"> 4. Building a Polar Planimeter </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-instructions">Wiring Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span"><span style="color:red"> Exercise 8 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span"><span style="color:red"> Exercise 9 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="weeks-13-14-build-a-planimeter">
+<h1>Weeks 13 &amp; 14: Build a Planimeter<a class="headerlink" href="#weeks-13-14-build-a-planimeter" title="Permalink to this heading">#</a></h1>
+<p><font size="6"> Laboratory 10 </font> <br>
+<font size="3"> Last updated Jan 5, 2023 </font></p>
+<section id="span-style-color-d97f00-00-content-span">
+<h2><span style="color:#d97f00;"> 00. Content </span><a class="headerlink" href="#span-style-color-d97f00-00-content-span" title="Permalink to this heading">#</a></h2>
+<p><font size="5"> Mathematics </font></p>
+<ul class="simple">
+<li><p>Fundamental Theorem of Calculus</p></li>
+<li><p>Fundamental Theorem for Line Integrals</p></li>
+<li><p>Green’s Theorem</p></li>
+<li><p>Partial Derivatives</p></li>
+<li><p>Vector Fields</p></li>
+<li><p>Path Integrals</p></li>
+<li><p>Double Integration</p></li>
+</ul>
+<p><font size="5"> Programming Skills </font></p>
+<ul class="simple">
+<li><p>N/A</p></li>
+</ul>
+<p><font size="5"> Embedded Systems </font></p>
+<ul class="simple">
+<li><p>Thonny and MicroPython</p></li>
+</ul>
+</section>
+<section id="span-style-color-d97f00-0-required-hardware-span">
+<h2><span style="color:#d97f00;"> 0. Required Hardware </span><a class="headerlink" href="#span-style-color-d97f00-0-required-hardware-span" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Microcontroller: Raspberry Pi Pico</p></li>
+<li><p>Breadboard</p></li>
+<li><p>USB connector</p></li>
+<li><p>OLED display</p></li>
+<li><p>Button</p></li>
+<li><p>0.1 uF capacitor</p></li>
+<li><p>Materials from (<a class="github reference external" href="https://github.com/AldenMB/Planimeter">AldenMB/Planimeter</a>)</p></li>
+</ul>
+<h3 style="background-color:#6994a2"> Write your name and email below: </h3>
+<p><strong>Name:</strong> me</p>
+<p><strong>Email:</strong> me &#64;purdue.edu</p>
+<p><strong>Exercises 1-7 require no hardware and should be completed in one lab session. The remaining exercises, including building the planimeter, should be completed the following week.</strong></p>
+</section>
+<section id="span-style-color-d97f00-1-green-s-theorem-span">
+<h2><span style="color:#d97f00;"> 1. Green’s Theorem </span><a class="headerlink" href="#span-style-color-d97f00-1-green-s-theorem-span" title="Permalink to this heading">#</a></h2>
+<p>Recall the Fundamental Theorem of Calculus. If the function <span class="math notranslate nohighlight">\(f(x)\)</span> is continuous on the closed interval <span class="math notranslate nohighlight">\([a,b]\)</span> and <span class="math notranslate nohighlight">\(F'(x)=f(x)\)</span>, i.e., <span class="math notranslate nohighlight">\(F\)</span> is an antiderivative of <span class="math notranslate nohighlight">\(f\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \int_a^b f(x)dx = F(b)-F(a).
+\end{align*}\]</div>
+<p>You have also have seen the Fundamental Theorem for Line Integrals. Suppose the smooth curve <span class="math notranslate nohighlight">\(C\)</span> is parameterized by <span class="math notranslate nohighlight">\(\mathbf{r}(t), a \leq t \leq b\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable with gradient <span class="math notranslate nohighlight">\(\nabla f\)</span>. Then,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \int_C \nabla f(\mathbf{r}) \cdot d\mathbf{r} = \int_a^b \nabla f(\mathbf{r}(t)) \cdot \mathbf{r}'(t) dt = f(\mathbf{r}(b)) - f(\mathbf{r}(a)).
+\end{align*}\]</div>
+<p>Green’s Theorem is an extension of the Fundamental Theorem of Calculus to two dimensions. In a general sense, the theorem relates line integrals to double integrals, and more specifically, Green’s Theorem tells us that we can calculate a double integral over a region using only information on the boundary of that region. Suppose the region <span class="math notranslate nohighlight">\(D\)</span> is bounded by a simple, smooth, closed curve <span class="math notranslate nohighlight">\(C\)</span> which is parameterized in a counter-clockwise direction. If the two-dimensional vector field <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle\)</span> is such that <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> have continous partial derivatives on <span class="math notranslate nohighlight">\(D\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \oint_C \mathbf{F} \cdot dr = \oint_C Pdx+Qdy = \iint_D (Q_x-P_y)dA,
+\end{align*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Q_x = \frac{\partial Q}{\partial x}\)</span> and <span class="math notranslate nohighlight">\(P_y = \frac{\partial P}{\partial y}\)</span>.</p>
+</section>
+<section id="span-style-color-d97f00-2-planimeters-span">
+<h2><span style="color:#d97f00;"> 2. Planimeters </span><a class="headerlink" href="#span-style-color-d97f00-2-planimeters-span" title="Permalink to this heading">#</a></h2>
+<p>One really neat application of Green’s Theorem is that we can calculate the area of a region simply by tracing its boundary. A planimeter is an instrument that does exactly this! The first planimeters were invented as early as 1814 due to a need to calculate land area. In the late 19th century, planimeters became more popular, different internal mechanisms were developed, and even specialty planimeters emerged to calculate things like engine horse-power. More modern uses include finding leaf area in botany and measuring the area of cross-sectional regions from MRI images. All planimeters have a tracer point, a pivot point, and a measuring wheel or mechanism that measures rotation. Here are some examples.</p>
+<p><img alt="Historical polar planimeter with two articulated arms and fixed pivot point" src="../../_images/polar_planimeter.jpg" /> <img alt="Rolling planimeter with linear motion capability and measuring wheel" src="../../_images/rolling_planimeter.jpg" /> <img alt="Modern digital rolling planimeter with LCD display for area measurement" src="../../_images/modern_planimeter.jpg" /></p>
+<p>The left image is of a polar planimeter. It has two arms and is fixed at one end while the arm with the tracer point is able to move in a circular region around the fixed point. The center image is of a rolling planimeter. This kind of planimeter is able to move freely on a linear path. The right image is of a modern rolling planimeter that is still being produced.</p>
+</section>
+<section id="span-style-color-d97f00-3-the-math-behind-a-rolling-planimeter-span">
+<h2><span style="color:#d97f00;"> 3. The Math Behind a Rolling Planimeter </span><a class="headerlink" href="#span-style-color-d97f00-3-the-math-behind-a-rolling-planimeter-span" title="Permalink to this heading">#</a></h2>
+<p>Watch this 18 second <a class="reference external" href="https://www.youtube.com/watch?v=qThV6gTaYMI">animation</a> of a rolling planimeter. Notice that the gray roller only moves forward and backward on a fixed path, and the yellow arm pivots at the point <span class="math notranslate nohighlight">\(B\)</span>. As the arm pivots, the marked wheel at the back rotates and skids as the tracer point at <span class="math notranslate nohighlight">\(A\)</span> follows the red curve. As the tracer follows the curve the marked wheel will rotate some amount. We will prove that the area of the region is length of the tracer arm (the length from <span class="math notranslate nohighlight">\(A\)</span> to <span class="math notranslate nohighlight">\(B\)</span>) multiplied by the total rolling distance of the wheel after the tracer completely follows the curve counter-clockwise.</p>
+<p>The area of a region <span class="math notranslate nohighlight">\(D\)</span> can be written as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{area of region $D$} = \iint_D 1 \,dA.
+\end{align*}\]</div>
+<p>Remember in Green’s Theorem, <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle P(x,y),Q(x,y)\rangle\)</span> and</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \oint_C \mathbf{F} \cdot dr = \oint_C Pdx+Qdy = \iint_D (Q_x-P_y)dA.
+\end{align*}\]</div>
+<p>So to calculate area, we need a function <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)\)</span> such that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{F}(x,y)=\langle 0,x \rangle\)</span>, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    Q_x-P_y = \frac{\partial}{\partial x}(x) - \frac{\partial}{\partial y}(0) = 1-0 = 1.
+\end{align*}\]</div>
+<p>Thus we have</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{area of region $D$} = \iint_D 1 \,dA = \oint_C Pdx+Qdy = \oint_C xdy.
+\end{align*}\]</div>
+<p>This gives us the important result:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{area of region $D$} = \oint_C xdy.
+\end{align*}\]</div>
+<section id="span-style-color-red-exercise-1-span">
+<h3><span style="color:red"> Exercise 1 </span><a class="headerlink" href="#span-style-color-red-exercise-1-span" title="Permalink to this heading">#</a></h3>
+<p>In our proof, we specifically chose <span class="math notranslate nohighlight">\(P(x,y)=0\)</span> and <span class="math notranslate nohighlight">\(Q(x,y)=x\)</span>, but there are infintely many pairs of <span class="math notranslate nohighlight">\(P(x,y)\)</span> and <span class="math notranslate nohighlight">\(Q(x,y)\)</span> with the property that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.
+Edit this cell to fill in three different pairs of functions <span class="math notranslate nohighlight">\(P\)</span> and <span class="math notranslate nohighlight">\(Q\)</span> such that <span class="math notranslate nohighlight">\(Q_x-P_y = 1\)</span>.</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 1 Below </h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(x,y) = \)</span>, <span class="math notranslate nohighlight">\(Q(x,y) = \)</span></p></li>
+</ol>
+<p>Now we will relate the total wheel roll along a closed curve to the integral <span class="math notranslate nohighlight">\(\oint_C xdy\)</span>.</p>
+<p>To do this, we write points on the curve <span class="math notranslate nohighlight">\(C\)</span> as ordered pairs <span class="math notranslate nohighlight">\((x,y)\)</span>. In the diagram below <a class="reference external" href="https://openstax.org/books/calculus-volume-3/pages/6-4-greens-theorem">[1]</a>,
+the pivot point is at <span class="math notranslate nohighlight">\((0,Y)\)</span> so the roller moves up and down the <span class="math notranslate nohighlight">\(y\)</span>-axis. The tracer arm is length <span class="math notranslate nohighlight">\(L\)</span> and the distance from the wheel to the pivot is <span class="math notranslate nohighlight">\(l\)</span>.</p>
+<p><img alt="Geometric diagram of rolling planimeter showing tracer arm, pivot point, and measuring wheel with labeled dimensions and angles" src="../../_images/derivation.jpg" /></p>
+<p>Say we move a very small distance counter-clockwise along the curve <span class="math notranslate nohighlight">\(C\)</span> from the point <span class="math notranslate nohighlight">\((x,y)\)</span> to <span class="math notranslate nohighlight">\((x+dx,y+dy)\)</span>. Then, the pivot point will move from <span class="math notranslate nohighlight">\((0,Y)\)</span> to <span class="math notranslate nohighlight">\((0,Y+dY)\)</span>. We want to know how much the measuring wheel turns as a result of this small motion. If we first move the roller forward without moving the tracer arm, then the tracer moves from <span class="math notranslate nohighlight">\((x,y)\)</span> to <span class="math notranslate nohighlight">\((x,y+dY)\)</span>. Next, we move the tracer arm by <span class="math notranslate nohighlight">\(d \theta\)</span> without moving the roller. Now we are at the point <span class="math notranslate nohighlight">\((x+dx,y+dy).\)</span> The wheel only rolls with motion that is perpendicular to the tracer arm. The distance the wheel rolls is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \text{total wheel roll} &amp;= \text{wheel roll from translation} + \text{wheel roll from rotation}\\
+    &amp;= \text{distance between the parallel lines} + \frac{d\theta}{2\pi}\cdot 2l\pi \\
+    &amp;= \sin(\phi)dY + ld\theta \\
+    &amp;= \frac{x}{L}dY + ld\theta.
+\end{align*}\]</div>
+<p>If we integrate over <span class="math notranslate nohighlight">\(C\)</span> the total wheel roll, then</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \oint_C \frac{x}{L}dY + \oint_C l\,d\theta = \frac{1}{L} \oint_C x\,dY + l\oint_C d\theta = \frac{1}{L} \oint_C x\,dY.
+\end{align*}\]</div>
+</section>
+<section id="span-style-color-red-exercise-2-span">
+<h3><span style="color:red"> Exercise 2 </span><a class="headerlink" href="#span-style-color-red-exercise-2-span" title="Permalink to this heading">#</a></h3>
+<p>Explain why <span class="math notranslate nohighlight">\(\oint_C d\theta = 0.\)</span></p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 2 Below </h3><p>We are almost there. We only need to relate <span class="math notranslate nohighlight">\(\frac{1}{L} \oint_C x\,dY\)</span> to the area of <span class="math notranslate nohighlight">\(D\)</span>, which we found to be <span class="math notranslate nohighlight">\(\oint_C xdy\)</span>.
+From the diagram, imagine the right triangle formed by the vertices <span class="math notranslate nohighlight">\((0,Y),(x,y)\)</span>, and <span class="math notranslate nohighlight">\((0,y)\)</span>.
+By the Pythagorean Theorem,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    x^2 + (y-Y)^2 = L^2.
+\end{align*}\]</div>
+<p>From the mechanical design of a rolling planimeter, the tracer arm never passes behind the roller, so <span class="math notranslate nohighlight">\(y \geq Y\)</span> for every point <span class="math notranslate nohighlight">\((x,y)\)</span> on <span class="math notranslate nohighlight">\(C\)</span>.
+That is, <span class="math notranslate nohighlight">\(Y\)</span> is unique given <span class="math notranslate nohighlight">\((x,y)\)</span>.
+Differentiating both sides of <span class="math notranslate nohighlight">\(x^2 + (y-Y)^2 = L^2\)</span>, we get</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    2x dx + 2(y-Y)(dy-dY) &amp;= 0 \\
+    x dx + (y-Y)(dy-dY) &amp;= 0 \\
+    dy-dY &amp;= -\frac{x}{y-Y}dx \\
+    dY &amp;= dy + \frac{x}{y-Y}dx \\
+    dY &amp;= dy + \frac{x}{\sqrt{L^2-x^2}}dx
+\end{align*}\]</div>
+<p>Now, the total amount the wheel rolls is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+    \frac{1}{L} \oint_C x\,dY = \frac{1}{L} \oint_C x\,dy + \frac{1}{L} \oint_C \frac{x^2}{\sqrt{L^2-x^2}}dx.
+\end{align*}\]</div>
+</section>
+<section id="span-style-color-red-exercise-3-span">
+<h3><span style="color:red"> Exercise 3 </span><a class="headerlink" href="#span-style-color-red-exercise-3-span" title="Permalink to this heading">#</a></h3>
+<p>Explain why <span class="math notranslate nohighlight">\( \oint_C \frac{x^2}{\sqrt{L^2-x^2}}dx = 0.\)</span></p>
+<p><em>Hint: use Green’s Theorem</em></p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 3 Below </h3></section>
+<section id="span-style-color-red-exercise-4-span">
+<h3><span style="color:red"> Exercise 4 </span><a class="headerlink" href="#span-style-color-red-exercise-4-span" title="Permalink to this heading">#</a></h3>
+<p>Show that the area of <span class="math notranslate nohighlight">\(D\)</span> is <span class="math notranslate nohighlight">\(L\)</span> times the total wheel roll after tracing the curve <span class="math notranslate nohighlight">\(C\)</span> counter-clockwise.</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 4 Below </h3><p>Great job! One pretty remarkable fact is that at the end, the wheel placement - the length <span class="math notranslate nohighlight">\(l\)</span> - didn’t matter at all! Now we know exactly how a rolling planimeter works. The derivation for how polar planimeters calculate area is very similar. The big difference is that the integration is done in polar coordinates instead of Cartesian coordinates.</p>
+</section>
+</section>
+<section id="span-style-color-d97f00-4-the-math-behind-a-polar-planimeter-span">
+<h2><span style="color:#d97f00;"> 4. The Math Behind a Polar Planimeter </span><a class="headerlink" href="#span-style-color-d97f00-4-the-math-behind-a-polar-planimeter-span" title="Permalink to this heading">#</a></h2>
+<p>Watch this short <a class="reference external" href="https://www.youtube.com/shorts/kdxPEZnv-U0">animation</a> on how to trace an area with a polar planimeter. In the video, the stationary pivot is at point A, the tracer is at point B, and the “elbow” is at point C.</p>
+<p>We begin by imposing a coordinate system. Place the stationary pivot at the origin and the tracer at a point <span class="math notranslate nohighlight">\((x, y)\)</span>. The “elbow” will be constrained to be at <span class="math notranslate nohighlight">\((a, b)\)</span>, a point <span class="math notranslate nohighlight">\(R\)</span> units from the origin and <span class="math notranslate nohighlight">\(L\)</span> units from <span class="math notranslate nohighlight">\((x, y)\)</span>. In this way, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>We place the measuring wheel a distance <span class="math notranslate nohighlight">\(\ell\)</span> from the elbow, along the tracer arm. Note that in the video the wheel is behind the elbow and in the diagram below the wheel is infront of the elbow. Let <span class="math notranslate nohighlight">\(S\)</span> denote the distance from the wheel to the origin, and <span class="math notranslate nohighlight">\(Z\)</span> the distance from the tracer to the origin. Let <span class="math notranslate nohighlight">\(c=x-a\)</span>, and <span class="math notranslate nohighlight">\(d=y-b\)</span>. Then we can summarize many of the relationships succinctly:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a^2+b^2&amp;=R^2\\
+c^2+d^2&amp;=L^2\\
+x^2+y^2&amp;=Z^2
+\end{align*}\]</div>
+<p>The most straightforward way to decompose the motions of the arm are by rotations at the pivots. For this reason, we define a few angles: <span class="math notranslate nohighlight">\(\theta\)</span> the angle from the elbow to the origin, <span class="math notranslate nohighlight">\(\phi\)</span> the exterior angle between the two arms, and <span class="math notranslate nohighlight">\(\psi\)</span> the angle between the tracer arm and a line extending from the origin, at the position of the wheel. All this is summarized in <a class="reference external" href="https://www.geogebra.org/calculator/btjmzmam">the following diagram</a>:</p>
+<p><img alt="Geometric diagram of polar planimeter showing angles theta, phi, and psi with labeled distances R, L, S, and Z" src="../../_images/polar_derivation.png" /></p>
+<p>Let <span class="math notranslate nohighlight">\(w\)</span> denote the amount the wheel moves. Clearly <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \phi}=\ell\)</span>. Furthermore, since the wheel only picks up the component of its motion perpendicular to the rod, <span class="math notranslate nohighlight">\(\frac{\partial w}{\partial \theta} = S\cos\psi\)</span>. The chain rule allows us to write the change in <span class="math notranslate nohighlight">\(w\)</span> in terms of its component parts,</p>
+<div class="math notranslate nohighlight">
+\[ dw = \ell d\phi + S\cos\psi d\theta. \]</div>
+<p>Since we are controlling the motion of the planimeter at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we should do what we can to put this formula in terms of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. Notice the projection of line <span class="math notranslate nohighlight">\(S\)</span> onto <span class="math notranslate nohighlight">\(L\)</span> is just <span class="math notranslate nohighlight">\(\ell\)</span> units more than the projection of line <span class="math notranslate nohighlight">\(R\)</span> onto <span class="math notranslate nohighlight">\(L\)</span>. Therefore,</p>
+<div class="math notranslate nohighlight">
+\[ S\cos\psi = R\cos\phi +\ell. \]</div>
+<p>We can go a step further and apply the law of cosines,</p>
+<div class="math notranslate nohighlight">
+\[ Z^2=R^2+L^2+2RL\cos\phi, \]</div>
+<p>to get rid of the <span class="math notranslate nohighlight">\(\cos\phi\)</span>. All together, this gives us a nicer formula,</p>
+<div class="math notranslate nohighlight">
+\[ dw = \ell d\phi + \left(\ell + \frac{Z^2-R^2-L^2}{2L}\right)d\theta. \]</div>
+<p>This is a nicer formula because everything except <span class="math notranslate nohighlight">\(Z\)</span> is a constant.</p>
+<section id="span-style-color-red-exercise-5-span">
+<h3><span style="color:red"> Exercise 5 </span><a class="headerlink" href="#span-style-color-red-exercise-5-span" title="Permalink to this heading">#</a></h3>
+<p>Explain why <span class="math notranslate nohighlight">\(\oint \ell d\phi\)</span> and <span class="math notranslate nohighlight">\(\oint \ell-\frac{R^2+L^2}{2L}d\theta\)</span> are both zero, when you integrate over an entire loop. Explain how this reduces the integral to <span class="math notranslate nohighlight">\(w=\oint dw = \oint \frac{Z^2}{2L}d\theta\)</span>.</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 5 Below </h3></section>
+<section id="change-of-coordinates">
+<h3>Change of coordinates<a class="headerlink" href="#change-of-coordinates" title="Permalink to this heading">#</a></h3>
+<p>Our goal is to apply Green’s theorem, which is given in Cartesian coordinates as</p>
+<div class="math notranslate nohighlight">
+\[ \oint Pdx+Qdy = \iint \frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} dxdy. \]</div>
+<p>To get our integral into Cartesian coordinates we will use the chain rule. In this case that gives</p>
+<div class="math notranslate nohighlight">
+\[ d\theta = \frac{\partial \theta}{\partial x}dx + \frac{\partial \theta}{\partial y}dy. \]</div>
+<p>What is the formula for <span class="math notranslate nohighlight">\(\theta\)</span> in terms of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>? We can find the angle between <span class="math notranslate nohighlight">\((a, b)\)</span> and <span class="math notranslate nohighlight">\((x, y)\)</span> using the law of cosines,</p>
+<div class="math notranslate nohighlight">
+\[ \arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right). \]</div>
+<p>The total angle from <span class="math notranslate nohighlight">\((x, y)\)</span> to the origin is <span class="math notranslate nohighlight">\(\arctan(y/x)\)</span>. <span class="math notranslate nohighlight">\(\theta\)</span> must therefore be their difference,</p>
+<div class="math notranslate nohighlight">
+\[ \theta = \arctan(y/x)-\arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right). \]</div>
+<p>From this we can compute the derivatives we need. Actually, to keep things tidy, let’s write <span class="math notranslate nohighlight">\(h(Z)=-\arccos\left(\frac{R^2+Z^2-L^2}{2RZ}\right)\)</span>. For reasons which will become apparent, we won’t actually need to compute the derivatives of <span class="math notranslate nohighlight">\(h\)</span>, so it’s better to leave it symbolic.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{aligned}
+\theta &amp;= \arctan(y/x) + h(Z)\\
+\frac{\partial \theta}{\partial x} &amp;=-\frac{y}{Z^2} + \frac{x}{Z}h'(Z)\\
+\frac{\partial \theta}{\partial y} &amp;= \frac{x}{Z^2} + \frac{y}{Z}h'(Z)
+\end{aligned} \end{split}\]</div>
+</section>
+<section id="span-style-color-red-exercise-6-span">
+<h3><span style="color:red"> Exercise 6 </span><a class="headerlink" href="#span-style-color-red-exercise-6-span" title="Permalink to this heading">#</a></h3>
+<p>Explain why
+$<span class="math notranslate nohighlight">\(
+\frac{\partial}{\partial x} h(Z) = \frac{x}{Z} h'(Z).
+\)</span>$</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 6 Below </h3></section>
+<section id="putting-the-formula-together">
+<h3>Putting the formula together<a class="headerlink" href="#putting-the-formula-together" title="Permalink to this heading">#</a></h3>
+<p>All this comes together into one grand formula:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+w &amp;= \oint \frac{Z^2}{2L}d\theta\\
+&amp;=\oint  \left(-\frac{y}{2L}+\frac{xZ}{2L}h'(Z)\right) dx + \left(\frac{x}{2L}+\frac{yZ}{2L}h'(Z)\right)dy\\
+&amp;=\oint Pdx+Qdy
+\end{align*}\]</div>
+<p>We are now ready to apply the Green’s theorem. We will need some partial derivatives.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{\partial Q}{\partial x} &amp;= \frac{1}{2L} +\frac{xy}{2LZ}\frac{\partial (Zh'(Z))}{\partial Z}\\
+\frac{\partial P}{\partial y} &amp;= \frac{-1}{2L} +\frac{xy}{2LZ}\frac{\partial (Zh'(Z))}{\partial Z}
+\end{align*}\]</div>
+<p>Now it is clear why we don’t need to worry about computing <span class="math notranslate nohighlight">\(h'(Z)\)</span>. When we subtract, those terms will cancel.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+w &amp;= \iint \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)dxdy\\
+&amp;= \iint \frac{1}{L}dxdy
+\end{align*}\]</div>
+<p>There we have it: the distance on the wheel will be exactly the area of the region, divided by the tracer arm length L.</p>
+</section>
+<section id="span-style-color-red-exercise-7-span">
+<h3><span style="color:red"> Exercise 7 </span><a class="headerlink" href="#span-style-color-red-exercise-7-span" title="Permalink to this heading">#</a></h3>
+<p>When a very large area is to be measured, the manual for my planimeter suggests placing the fixed end in the center of the region and moving the tracer in a full loop around it. When you do this, one of the terms which disappeared in the calculation above is no longer zero. Which term would it be? What would you need to do with your answer to get an accurate number, when using this strategy?</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 7 Below </h3></section>
+</section>
+<section id="span-style-color-d97f00-4-building-a-polar-planimeter-span">
+<h2><span style="color:#d97f00;"> 4. Building a Polar Planimeter </span><a class="headerlink" href="#span-style-color-d97f00-4-building-a-polar-planimeter-span" title="Permalink to this heading">#</a></h2>
+<p>The planimeter you will be using includes a potentiometer, a button, a capacitor, and an OLED display screen. The potentiometer will be used for receiving values that you will then have to mathematically convert into displacement. The button will be used so that you can reset the screen’s values without restarting the program. The OLED display screen will be used to display the potentiometer’s output values.</p>
+<p><img alt="Assembled DIY planimeter with 3D printed parts, wooden dowels, and electronic components" src="../../_images/planimeter.jpg" /> <img alt="Top view of DIY planimeter showing OLED display, button, and wiring connections" src="../../_images/planimeter_top.jpg" /> <img alt="Side view of DIY planimeter showing pivot mechanism and tracer arm assembly" src="../../_images/planimeter_side.jpg" /></p>
+<p><strong>The Button</strong></p>
+<p>You have been provided a button. It is a very common type, more precisely called a tactile switch. It has four legs, but opposite pairs of them are connected internally, so there are only two electrical connections to be made. Have a look at the <a class="reference external" href="https://github.com/TheDataScienceLabs/DSLab_Calculus/blob/main/book/labs/4_measure_tall_things/b_build_an_inclinometer/TL1105.pdf">data sheet</a> for the TL1105 tactile switch, which shows a schematic of how the legs are connected. One side of the button will be connected to a ground pin of the Pico and the other side to a GP pin.</p>
+<p><strong>Instructions</strong></p>
+<p>Assemble the 3D-printed parts with the wooden dowels separately and place the potentiometer into the elbow piece. Secure the potentiometer in place. Then, follow the wiring instructions.</p>
+</section>
+<section id="wiring-instructions">
+<h2>Wiring Instructions<a class="headerlink" href="#wiring-instructions" title="Permalink to this heading">#</a></h2>
+<p>Please make sure your microcontroller is not plugged to the computer while you are wiring things together. Ask the instructor if you are unsure about your wiring.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potentiometer</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>outermost tab</p></td>
+<td><p>GP28</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potentiometer</p></th>
+<th class="head"><p>OLED</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>middle tab</p></td>
+<td><p>GND</p></td>
+</tr>
+<tr class="row-odd"><td><p>innermost tab</p></td>
+<td><p>VCC</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>OLED</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SDA</p></td>
+<td><p>GP4</p></td>
+</tr>
+<tr class="row-odd"><td><p>SCL</p></td>
+<td><p>GP5</p></td>
+</tr>
+<tr class="row-even"><td><p>VCC</p></td>
+<td><p>3V3(OUT)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GND</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Button</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>One pin</p></td>
+<td><p>GP16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other pin</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</br>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>0.1 uF Capacitor</p></th>
+<th class="head"><p>Pico</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>One leg</p></td>
+<td><p>GP28</p></td>
+</tr>
+<tr class="row-odd"><td><p>Other leg</p></td>
+<td><p>GND</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="Top view of planimeter wiring showing breadboard connections between Pico, OLED, and potentiometer" src="../../_images/wiring_top.jpg" /> <img alt="Side view of planimeter wiring showing component placement and wire routing" src="../../_images/wiring_side.jpg" /> <img alt="Close-up view of potentiometer wiring connections with labeled terminals" src="../../_images/pot_wiring.jpg" /></p>
+<section id="span-style-color-red-exercise-8-span">
+<h3><span style="color:red"> Exercise 8 </span><a class="headerlink" href="#span-style-color-red-exercise-8-span" title="Permalink to this heading">#</a></h3>
+<p>To test out your planimeter, print out and measure the shapes on <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/3_Greens_Theorem_Labs/Shapes.pdf">this PDF</a> and download <a class="reference external" href="https://github.com/TheDataScienceLabs/DataLab_Multivariate_Calculus/blob/main/book/labs/3_Greens_Theorem_Labs/planimeter.py">planimeter.py</a> (run in Thonny). Start with the shapes you can calculate manually (at the top of the page). Once these results are relatively accurate, move onto the more complicated shapes. It may take a few tries to get it working properly.</p>
+<p>The change in voltage at the wiper (before versus after the tracing operation) will be proportional to the area swept out, and this change in voltage is displayed on the OLED display.</p>
+<p>Describe how close your estimates are to the exact area.</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 8 Below </h3></section>
+<section id="span-style-color-red-exercise-9-span">
+<h3><span style="color:red"> Exercise 9 </span><a class="headerlink" href="#span-style-color-red-exercise-9-span" title="Permalink to this heading">#</a></h3>
+<p>Print out a map to calculate area of Indiana or some other state/country with a well known land area. Use your planimeter to measure the area. How close are your calculations? Keep in mind the scale of the map you print.</p>
+<h3 style="background-color:#6994a2"> Write Answers for Exercise 9 Below </h3></section>
+</section>
+<section id="span-style-color-green-reflection-span">
+<h2><span style="color:green"> Reflection </span><a class="headerlink" href="#span-style-color-green-reflection-span" title="Permalink to this heading">#</a></h2>
+<p><strong>1. What parts of the lab, if any, do you feel you did well? <br>
+2. What are some things you learned today? <br>
+3. Are there any topics that could use more clarification? <br>
+4. Do you have any suggestions on parts of the lab to improve?</strong></p>
+<h3 style="background-color:#6994a2"> Write Answers for the Reflection Below </h3></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./labs/3_Greens_Theorem_Labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../2_Video_Labs/lab09.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 12: Motion Detection</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../extra/breadboard_LED.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-00-content-span"><span style="color:#d97f00;"> 00. Content </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-0-required-hardware-span"><span style="color:#d97f00;"> 0. Required Hardware </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-1-green-s-theorem-span"><span style="color:#d97f00;"> 1. Green’s Theorem </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-2-planimeters-span"><span style="color:#d97f00;"> 2. Planimeters </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-3-the-math-behind-a-rolling-planimeter-span"><span style="color:#d97f00;"> 3. The Math Behind a Rolling Planimeter </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-1-span"><span style="color:red"> Exercise 1 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-2-span"><span style="color:red"> Exercise 2 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-3-span"><span style="color:red"> Exercise 3 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-4-span"><span style="color:red"> Exercise 4 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-4-the-math-behind-a-polar-planimeter-span"><span style="color:#d97f00;"> 4. The Math Behind a Polar Planimeter </span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-5-span"><span style="color:red"> Exercise 5 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-of-coordinates">Change of coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-6-span"><span style="color:red"> Exercise 6 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-the-formula-together">Putting the formula together</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-7-span"><span style="color:red"> Exercise 7 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-d97f00-4-building-a-polar-planimeter-span"><span style="color:#d97f00;"> 4. Building a Polar Planimeter </span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-instructions">Wiring Instructions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-8-span"><span style="color:red"> Exercise 8 </span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-red-exercise-9-span"><span style="color:red"> Exercise 9 </span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#span-style-color-green-reflection-span"><span style="color:green"> Reflection </span></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Kindyl King and Mireille Boutin  with Alden Bradford and Julia Long# The author of the book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+This work is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
